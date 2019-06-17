@@ -4,7 +4,7 @@ import {FrontPageComponent} from "./BaseComponents/FrontPage/front-page.componen
 import {ContactUsComponent} from "./BaseComponents/FrontPage/contact-us.component";
 
 const routes: Routes = [{
-  path: '', component: FrontPageComponent, children: [{path: 'Contactus', component: ContactUsComponent}]
+  path: '', component: FrontPageComponent, children: [{path: 'ContactUs', component: ContactUsComponent}]
 }];
 
 @NgModule({

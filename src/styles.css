@@ -1,28 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
-body,html{height: 100%;font-family: 'ABeeZee';}
-.page1{background-image:url("assets/front-bg.png");
-  height: auto;
+body,html{height: 100%;font-family: 'SansSerif';}
+.page1{background-image:url("assets/background-image.jpg");
+   height: auto;
+  padding-top: 10px;
   background-position: center;
   background-size: cover;}
 #front-intro{
-  color:#E75A4C;
+  color: #fff9fc;
   line-height: 83px;
-  font-size: 58px;
+  font-size: 40px;
   text-align: center; }
 #front-intro2{line-height: 27px;
   font-size: 20px;
   text-align: center;
   padding-top:1.5%;
-  color: #ECECEC;}
+  color: #ffffff;}
 #front-intro3{line-height: 30px;
   font-size: 16px;
   text-align: center;
   margin-bottom:3%;
   padding-top:2%;
-  color: #ECECEC;}
+  color: #ffffff;}
 #know-more{ color:white;
   padding:0px 20px;
-  background: #E75A4C;
+  background: #e75a4c;
   border-radius: 27px;
   border-color: #E75A4C;
   margin-bottom:30%;}
@@ -36,12 +37,12 @@ body,html{height: 100%;font-family: 'ABeeZee';}
   font-size: 30px;
   text-transform: uppercase;
   padding-top:70px;
-  color:#9F42E6; }
+  color: #000000; }
 #connectUs{line-height: 41px;
   font-size: 30px;
   text-transform: uppercase;
-  padding-top:120px;
-  color:#9F42E6; }
+  padding-top:30px;
+  color:#000000; }
 .page2-para1{position: absolute;
   left: 19.86%;
   right: 19.79%;
@@ -68,4 +69,7 @@ body,html{height: 100%;font-family: 'ABeeZee';}
   border-top:none;
   border-left:none;
   border-right:none;
+}
+#navbar {
+  color: #ffffff;
 }
