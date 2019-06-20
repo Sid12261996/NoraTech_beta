@@ -1,49 +1,51 @@
-const express = require('express'),
+var express  = require('express'),
     app = express(),
     cors = require('cors'),
-    nodemailer = require('nodemailer'),
-    bodyParser= require('body-parser')
+    bodyParser= require('body-parser'),
+    path = require('path'),
+    nodemailer = require('nodemailer')
 ;
 app.use(cors());
+
+const testAccount={
+    user:'noratechsolutionspvtltd@gmail.com',
+    pass:'noraAsdf@123'
+}
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.get('/', (req, res) => {
-    res.send('Node is Working!!!')
-});
 
 
+async function sendMail(subject,body){
+    let info = await transporter.sendMail({
+        from: 'noratechsolutionspvtltd@gmail.com', // sender address
+        to: "sidharthrkc@gmail.com", // list of receivers
+        subject: subject, // Subject line
+        text: body, // plain text body
+        // html: "<b>Hello world?</b>" // html body
+    });
+}
 const transporter = nodemailer.createTransport({
     service: 'gmail',
+
     auth: {
-        user: 'noratechsolutionspvtltd@gmail.com',
-        pass: 'noraasdf@123'
+        user: testAccount.user, // generated ethereal user
+        pass: testAccount.pass // generated ethereal password
     }
 });
 
+app.post('/mail',(req,res)=>{
+    sendMail(req.body.subject,req.body.body);
+    res.send('mail sent successfully')
+})
 
-function SendMail(subject, to, body) {
 
-    const mailOptions = {
-        from: 'noratechsolutionspvtltd@gmail.com',
-        to: to,
-        subject: subject,
-        text: body
-    };
-
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
-}
-
-app.post('/mail', (req, res) => {
-    console.log(req.body.subject, req.body.to, req.body.body)
-    SendMail(req.body.subject, req.body.to, req.body.body);
-    res.send('mail sent successfuly');
+app.get('/*',(req,res)=>{
+    res.sendFile('./index.html',{root:__dirname});
 });
+
+
+
 
 
 module.exports = app;
