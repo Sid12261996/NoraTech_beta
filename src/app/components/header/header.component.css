@@ -1,0 +1,54 @@
+/* navbar_menu */
+.brand{
+    margin-left: 25px;
+    font-weight: 500;
+}
+.navbar_menu{
+    box-shadow: 1px 1px 3px #888888;
+}
+.menu{
+    font-size:12px;
+    margin-right:20px;
+    color:#989898;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.menu:hover{
+    color:black;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+/* navbar buttons */
+.requestdemo{
+    color:white;
+    background-color: #47B474;
+    font-weight:bold;
+    border-radius: 5px;
+    font-size:12px;
+    margin-right:10px;
+    border:1px solid #47B474;
+}
+.login{
+    color:#47B474;
+    font-weight:bold;
+    border-radius: 5px;
+    font-size:12px;
+    margin-right:10px;
+    border:1px solid #47B474;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.login:hover{
+    background-color:#47B474;
+    color:white;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+/* for icons */
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }

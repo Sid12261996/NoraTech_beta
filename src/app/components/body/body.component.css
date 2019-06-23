@@ -1,0 +1,229 @@
+.mainback{
+    background-image: url("../../../assets/mainback.jpg");
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+
+}
+.sidepadding{
+    padding-left: 8%;
+    padding-right: 8%;
+}
+.maincol{
+    margin-top: 8%;
+}
+.mainhead{
+    font-size: 55px;
+    line-height: 80px;
+    
+}
+.maintag{
+    margin-top: 5%;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight :bold;
+    letter-spacing: 2px;
+}
+.mainintro{
+    margin-top: 5%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 1px;
+}
+.mainplan{
+    margin-top:16px;
+    margin-bottom: 16px; 
+    letter-spacing: 2px;
+    font-weight: 800;
+    font-size: 12px;
+}
+/* pricing/feature button */
+.btnpricing{
+    background-color: #47B474;
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 5px 60px;
+    border: 2px solid #47B474;
+}
+.btnfeature{
+    margin-left: 16px;
+    background-color: white;
+    color: #47B474;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 5px 60px;
+    border: 2px solid #47B474;
+}
+/* main card form */
+.mat-card{
+    border-radius: 15px;
+}
+.maincardform{
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.horiline{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.maincardformslove{
+    font-size: 14px;
+    color: #777;
+}
+.btnschedule{
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background-color: #47B474;
+    color:white;
+    border: 4px solid #47B474;
+    margin-bottom: 10px;
+}
+/* slider */
+.slidercol{
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+.carousel-control-prev, .carousel-control-next{
+    width: 24px;
+    height: 24px;
+    background-color:#777;
+    border-radius: 12px;
+    padding: 5px;
+}
+/* company intro */
+.borderrow{
+    border-bottom: 0.5px solid rgb(170, 168, 168);
+}
+.companyintro{
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 300;
+    margin-bottom: 28px;
+}
+.introcol{
+    margin-top: 70px;
+}
+.companyintropara1, .companyintropara2{
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: rgb(78, 78, 78);
+    letter-spacing: 1px;
+}
+.btnscheduledemo{
+    color: white;
+    background-color: #47B474;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 30px;
+}
+.introimgcard{
+    border: 0px;
+    border-radius: 0px;
+}
+.introimg{
+    height: 100%;
+    width: 100%;
+}
+.introhr{
+    margin-top: 0px;
+}
+/* featuer row */
+.featurehead{
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    color: #47B474;
+}
+.featurecol{
+    margin-top: 60px;
+}
+.featurecolhead{
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-top: 40px;
+}
+.featurecolpara{
+    font-size: 14px;
+    line-height: 30px;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #666;
+}
+.featureicon{
+    font-size: 46px;
+    color: #47B474;
+}
+.paddingbottom{
+    padding: 70px;
+}
+.featurehead2{
+    font-size: 30px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    color: #47B474;
+}
+.featureimg{
+    height: 80%;
+    width: 100%;
+    margin-top: 30px;
+}
+.box{
+    width: 268.5px;
+    height: 208px;
+    background-color: #47B474;
+    border: 1px solid #47B474;
+    color:white;
+}
+.boxtext{
+    vertical-align: middle;
+    line-height: 208px;
+
+}
+/* customer */
+.uesrimg{
+    height: 100px;
+    width: 100px;
+}
+.userhead{
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 300;
+    color: #292929;
+    margin-bottom: 24px;
+    margin-top: 15px;
+}
+.userpara{
+    font-weight: 400;
+    margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #666;
+}
+.userinfo{
+    font-size: 14px;
+    line-height: 24px;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #666;
+}
+.username{
+    font-weight: 700;
+}
+.calc{
+    font-size: 52px;
+    margin-bottom: 0px;
+    padding-top: 30px;
+}
+.calctext{
+    font-size: 14px;
+    letter-spacing: 2px;
+}
