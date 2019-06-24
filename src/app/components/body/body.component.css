@@ -40,23 +40,23 @@
 }
 /* pricing/feature button */
 .btnpricing{
-    background-color: #47B474;
+    background-color: #b45d34;
     color: white;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 1px;
     padding: 5px 60px;
-    border: 2px solid #47B474;
+    border: 2px solid #b45d34;
 }
 .btnfeature{
     margin-left: 16px;
     background-color: white;
-    color: #47B474;
+    color: #b45d34;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 1px;
     padding: 5px 60px;
-    border: 2px solid #47B474;
+    border: 2px solid #b45d34;
 }
 /* main card form */
 .mat-card{
@@ -79,9 +79,9 @@
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
-    background-color: #47B474;
+    background-color: #b45d34;
     color:white;
-    border: 4px solid #47B474;
+    border: 4px solid #b45d34;
     margin-bottom: 10px;
 }
 /* slider */
@@ -119,7 +119,7 @@
 }
 .btnscheduledemo{
     color: white;
-    background-color: #47B474;
+    background-color: #b45d34;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -141,7 +141,7 @@
     font-size: 32px;
     line-height: 40px;
     letter-spacing: 1px;
-    color: #47B474;
+    color: #b45d34;
 }
 .featurecol{
     margin-top: 60px;
@@ -160,7 +160,7 @@
 }
 .featureicon{
     font-size: 46px;
-    color: #47B474;
+    color: #b45d34;
 }
 .paddingbottom{
     padding: 70px;
@@ -169,7 +169,7 @@
     font-size: 30px;
     line-height: 40px;
     letter-spacing: 1px;
-    color: #47B474;
+    color: #b45d34;
 }
 .featureimg{
     height: 80%;
@@ -179,8 +179,8 @@
 .box{
     width: 268.5px;
     height: 208px;
-    background-color: #47B474;
-    border: 1px solid #47B474;
+    background-color: #b45d34;
+    border: 1px solid #b45d34;
     color:white;
 }
 .boxtext{

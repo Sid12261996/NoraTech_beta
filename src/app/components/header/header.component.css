@@ -21,25 +21,25 @@
 /* navbar buttons */
 .requestdemo{
     color:white;
-    background-color: #47B474;
+    background-color: #b45d34;
     font-weight:bold;
     border-radius: 5px;
     font-size:12px;
     margin-right:10px;
-    border:1px solid #47B474;
+    border:1px solid #b45d34;
 }
 .login{
-    color:#47B474;
+    color:#b45d34;
     font-weight:bold;
     border-radius: 5px;
     font-size:12px;
     margin-right:10px;
-    border:1px solid #47B474;
+    border:1px solid #b45d34;
     -webkit-transition: 0.5s;
     transition: 0.5s;
 }
 .login:hover{
-    background-color:#47B474;
+    background-color:#b45d34;
     color:white;
     -webkit-transition: 0.5s;
     transition: 0.5s;
