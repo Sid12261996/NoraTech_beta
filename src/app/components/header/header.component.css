@@ -1,4 +1,4 @@
-/* navbar_menu */b45703
+/* navbar_menu */
 .brand{
     margin-left: 25px;
     font-weight: 500;
@@ -21,25 +21,25 @@
 /* navbar buttons */
 .requestdemo{
     color:white;
-    background-color: #b45703;
+    background-color: orange;
     font-weight:bold;
     border-radius: 5px;
     font-size:12px;
     margin-right:10px;
-    border:1px solid #b45703;
+    border:1px solid orange;
 }
 .login{
-    color:#b45703;
+    color:orange;
     font-weight:bold;
     border-radius: 5px;
     font-size:12px;
     margin-right:10px;
-    border:1px solid #b45703;
+    border:1px solid orange;
     -webkit-transition: 0.5s;
     transition: 0.5s;
 }
 .login:hover{
-    background-color:#b45703;
+    background-color:orange;
     color:white;
     -webkit-transition: 0.5s;
     transition: 0.5s;
