@@ -6,13 +6,13 @@ const express = require('express'),
 app.use(cors());
 
 
-app.use(express.static(path.join(__dirname+'/dist/NoraTech')));
-console.log(path.join(__dirname+'/dist/wrapItUp'));
+app.use(express.static(path.join(__dirname+'/dist/NoraWebsite')));
+console.log(path.join(__dirname+'/dist/NoraWebsite'));
 app.listen(process.env.PORT||5000,()=>console.log('Connected!'));
 
 app.get('/*',(req,res)=>{
   console.log("route..!")
 
 
-  res.sendFile(path.join(__dirname,'/dist/NoraTech/index.html'));
+  res.sendFile(path.join(__dirname,'/dist/NoraWebsite/index.html'));
 });

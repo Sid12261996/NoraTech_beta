@@ -1,0 +1,104 @@
+<div class="contactpage container-fluid" id="dotted-map">
+
+  <div class="row" id="connectUs">
+    <div class="col-md-1 col-sm-1"></div>
+    <div class="col-md-3 col-sm-3"><b>CONTACT US</b></div>
+  </div>
+  <div class="row" style="padding-top:30px;">
+
+    <div class="col-md-1 col-sm-1"></div>
+    <div class="col-md-10 col-sm-10">
+      <form [formGroup]="formControl">
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="col-md-12"><label>
+              <small><b>Name</b></small>
+            </label></div>
+            <div class="col-md-12"><label>
+              <input type="text" class="form-control input" formControlName="name">
+            </label></div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="col-md-12"><label>
+              <small><b>Contact Email </b></small>
+            </label></div>
+            <div class="col-md-12"><label>
+              <input type="email" class="form-control input" formControlName="email">
+            </label></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="col-md-12"><label>
+              <small><b>Contact Number</b></small>
+            </label></div>
+            <div class="col-md-12"><label>
+              <input type="tel" class="form-control input" formControlName="phNum">
+            </label></div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="col-md-12"><label>
+              <small><b>Courses</b></small>
+            </label></div>
+            <div class="col-md-12"><label>
+              <mat-form-field>
+                <mat-select class="form-control " formControlName="course" multiple>
+                  <mat-option *ngFor="let key of keys" [value]="course[key]">{{course[key]}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </label></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="col-md-12"><label>
+              <small><b>College</b></small>
+            </label></div>
+            <div class="col-md-12"><label>
+              <input type="text" class="form-control input" formControlName="college">
+            </label></div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="col-md-12"><label>
+              <small><b>Semester</b></small>
+            </label></div>
+            <div class="col-md-12"><label>
+              <input type="text" class="form-control input" formControlName="semester">
+            </label></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="col-md-12"><label>
+              <small><b>Queries (if any)</b></small>
+            </label></div>
+            <div class="col-md-12"><label></label><label>
+<textarea name="" formControlName="queries"
+          class="form-control input" cols="100"
+          maxlength="140"
+          rows="4"></textarea>
+            </label></div>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <!--<div class="errors">Errors: {{formControl.invalid}} </div>-->
+          <div class="col-sm-2 col-md-2">
+            <button type="button" mat-raised-button color="primary" [disabled]="formControl.invalid"
+                    style="margin-left:58px;" (click)="sendMail()">
+              Send
+            </button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <div class="col-md-1 col-sm-1"></div>
+
+  </div>
+</div>

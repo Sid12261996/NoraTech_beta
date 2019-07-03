@@ -1,0 +1,98 @@
+/* navbar_menu */
+.brand{
+    margin-left: 25px;
+    font-weight: 500;
+}
+.navbar_menu{
+    box-shadow: 1px 1px 3px #888888;
+}
+.menu{
+    font-size:12px;
+    margin-right:20px;
+    color:#989898;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.menu:hover{
+    color:black;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+/* navbar buttons */
+.requestdemo{
+    color:white;
+    background-color: orange;
+    font-weight:bold;
+    border-radius: 5px;
+    font-size:12px;
+    margin-right:10px;
+    border:1px solid orange;
+}
+.login{
+    color:orange;
+    font-weight:bold;
+    border-radius: 5px;
+    font-size:12px;
+    margin-right:10px;
+    border:1px solid orange;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.login:hover{
+    background-color:orange;
+    color:white;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+/* for icons */
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+}
+/* mobile menu */
+.togglebtn{
+    display: none;
+}
+.sidenav {
+    height: 100%; 
+    width: 0; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0; 
+    left: 0;
+    background-color: #fffffff7; 
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.5s;
+  }
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: Orange;
+    display: block;
+    transition: 0.3s;
+  }
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+@media only screen and (max-width: 992px) {
+    .navbar_menu{
+        display: none;
+    }
+    .togglebtn{
+        display:block;
+    }
+}
+

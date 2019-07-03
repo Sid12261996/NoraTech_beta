@@ -9,7 +9,7 @@
     <div class="col-md-1 col-sm-1"></div>
     <div class="col-md-10 col-sm-10">
       <form [formGroup]="formControl">
-
+        <div *ngIf="phoneNumber.errors.phoneNumber">Number need to have 10 digits</div>
         <div class="row">
           <div class="col-md-6 col-sm-6">
             <div class="col-md-12"><label>
@@ -35,7 +35,7 @@
               <small><b>Contact Number</b></small>
             </label></div>
             <div class="col-md-12"><label>
-              <input type="tel" class="form-control input" formControlName="phNum">
+              <input type="number" class="form-control input" formControlName="phNum">
             </label></div>
           </div>
           <div class="col-md-6 col-sm-6">
@@ -86,10 +86,9 @@
         </div>
         <br/>
         <div class="row">
-          <!--<div class="errors">Errors: {{formControl.invalid}} </div>-->
+
           <div class="col-sm-2 col-md-2">
-            <button type="button" mat-raised-button color="primary" [disabled]="formControl.invalid"
-                    style="margin-left:58px;" (click)="sendMail()">
+            <button type="button" mat-raised-button color="primary" [disabled]="formControl.invalid" style="margin-left:58px;" (click)="sendMail()">
               Send
             </button>
           </div>

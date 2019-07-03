@@ -1,75 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
-body,html{height: 100%;font-family: 'SansSerif';}
-.page1{background-image:url("assets/background-image.jpg");
-   height: auto;
-  padding-top: 10px;
-  background-position: center;
-  background-size: cover;}
-#front-intro{
-  color: #fff9fc;
-  line-height: 83px;
-  font-size: 40px;
-  text-align: center; }
-#front-intro2{line-height: 27px;
-  font-size: 20px;
-  text-align: center;
-  padding-top:1.5%;
-  color: #ffffff;}
-#front-intro3{line-height: 30px;
-  font-size: 16px;
-  text-align: center;
-  margin-bottom:3%;
-  padding-top:2%;
-  color: #ffffff;}
-#know-more{ color:white;
-  padding:0px 20px;
-  background: #e75a4c;
-  border-radius: 27px;
-  border-color: #E75A4C;
-  margin-bottom:30%;}
-#Send{ color:white;
-  padding:0px 20px;
-  background: #E75A4C;
-  border-radius: 27px;
-  border-color: #E75A4C;
-  margin-bottom:30%;}
-#page-heading{line-height: 41px;
-  font-size: 30px;
-  text-transform: uppercase;
-  padding-top:70px;
-  color: #000000; }
-#connectUs{line-height: 41px;
-  font-size: 30px;
-  text-transform: uppercase;
-  padding-top:30px;
-  color:#000000; }
-.page2-para1{position: absolute;
-  left: 19.86%;
-  right: 19.79%;
-  padding-top:130px;}
-#page2-para1{line-height: 32px;
-  font-size: 19px;
-  text-align: center;
-  padding-top:3%;
-  color: #8C8C8C;}
-#dots-img{padding-top: 10%;}
-#blockchain{margin-top: -10%;
-  color:white;
-  font-size:18px;}
-#message{background-image: url("assets/message.png");
-  height: auto;
-  background-position: center;
-  margin-top:120px;
-  color:white;}
-#dotted-map{background-image: url("assets/dotted-map.png");
-  height: auto;
-  background-position: center;
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+*{
+  font-family: Raleway,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-.input{
-  border-top:none;
-  border-left:none;
-  border-right:none;
-}
-#navbar {
-  color: #ffffff;
-}
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    z-index: 1;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #FFA500;
+    border-bottom: 16px solid #FFA500;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

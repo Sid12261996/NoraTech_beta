@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {API_URL} from '../environments/environment';
 import {MailerModel} from '../Models/mailer-model';
-import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
