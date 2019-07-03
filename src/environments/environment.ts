@@ -5,7 +5,8 @@
 export const environment = {
   production: false
 };
-export const API_URL = 'https://noraapi.herokuapp.com/';
+ export const API_URL = 'https://noraapi.herokuapp.com/';
+// export const API_URL = 'http://localhost:3000/';
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

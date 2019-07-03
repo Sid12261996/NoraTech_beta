@@ -4,6 +4,7 @@ import {MailerModel} from '../../../Models/mailer-model';
 import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {Courses} from '../../../Models/courses.enum';
 import {Location} from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact-us',
@@ -61,11 +62,27 @@ export class ContactUsComponent implements OnInit {
     // sending mail here
     this.mail.sendMail(email).subscribe(data => {
       console.log('success', data);
-      if(data){
+      if (data) {
         this.loc.back();
+        Swal.fire({
+          title: `Hey  ${this.form.name} !`,
+          text:
+            `We got your message.
+            We will get back to you shortly.`,
+          type: 'success',
+          confirmButtonText: 'Got it'
+        });
       }
     }, err => {
       console.error(err);
+      Swal.fire({
+        title: 'Oops!',
+        text:
+          `Hey !! ${this.form.name},
+            Check your connection status and try again!!`,
+        type: 'error',
+        confirmButtonText: 'Got it'
+      });
     });
   }
 
