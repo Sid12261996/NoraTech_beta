@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {FrontPageComponent} from './BaseComponents/FrontPage/front-page.component';
 import {ContactUsComponent} from './BaseComponents/FrontPage/contact-us.component';
 import {AboutUsComponent} from './BaseComponents/FrontPage/about-us.component';
-import {LoginComponent} from './login/login.component';
+
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
@@ -17,7 +17,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FrontPageComponent,
     ContactUsComponent,
     AboutUsComponent,
-    LoginComponent
+
   ],
   imports: [
     BrowserModule,
