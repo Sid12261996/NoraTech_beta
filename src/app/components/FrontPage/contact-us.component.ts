@@ -3,7 +3,7 @@ import {MailService} from '../../../Services/mail.service';
 import {MailerModel} from '../../../Models/mailer-model';
 import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {Courses} from '../../../Models/courses.enum';
-import {Location} from '@angular/common';
+import {ValidateFn} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
   selector: 'app-contact-us',
@@ -12,7 +12,7 @@ import {Location} from '@angular/common';
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor(private mail: MailService, private fB: FormBuilder, private loc: Location) {
+  constructor(private mail: MailService, private fB: FormBuilder) {
   }
 
   formControl: FormGroup;
@@ -23,7 +23,7 @@ export class ContactUsComponent implements OnInit {
     this.formControl = this.fB.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phNum: ['', [Validators.required, Validators.pattern('[0-9]{0,10}')]],
+      phNum: ['', [Validators.required, this.customValidation()]],
       course: ['', Validators.required],
       college: ['', Validators.required],
       semester: ['', Validators.required],
@@ -32,15 +32,8 @@ export class ContactUsComponent implements OnInit {
   }
 
   get form() {
-    if (this.formControl !== undefined && this.formControl !== null) {
-      return this.formControl.value;
-    }
+    return this.formControl.value;
   }
-
-  // get Errors() {
-  //
-  //   return this.formControl.getError();
-  // }
 
   sendMail(): void {
     console.log(this.form);
@@ -61,28 +54,25 @@ export class ContactUsComponent implements OnInit {
     // sending mail here
     this.mail.sendMail(email).subscribe(data => {
       console.log('success', data);
-      if(data){
-        this.loc.back();
-      }
     }, err => {
       console.error(err);
     });
   }
 
   get phoneNumber() {
-    if (this.formControl.get('phNumber') != null) {
+    if(this.formControl.get('phNumber') != null ) {
       return this.formControl.get('phNumber').value;
     }
   }
 
   customValidation(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: boolean } | null => {
-      if (this.form !== undefined) {
-        if (this.form.phNum.toString().length === 10) {
+      if (control.value.phNum !== undefined) {
+        if (control.value.phNum.length === 10) {
           console.log(' Valid');
           return {phoneNumber: true};
         } else {
-          console.log('Not Valid', this.form.phNum.toString().length);
+          console.log('Not Valid');
           return {phoneNumber: false};
         }
       } else {

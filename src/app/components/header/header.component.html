@@ -1,0 +1,27 @@
+<mat-toolbar color="" class="navbar_menu">
+  <mat-toolbar-row>
+    <span class="brand">Nora Tech</span>
+    <span class="example-spacer"></span>
+    <span class="menu">FEATURES</span>
+    <span class="menu">SOLUTIONS</span>
+    <span class="menu">SUCCESS STORIES</span>
+    <span class="menu" routerLink="/contact">Contact Us</span>
+    <span class="menu">PRICING</span>
+    <button mat-flat-button class="requestdemo">REQUEST DEMO</button>
+    <button mat-flat-button class="login" routerLink="/login">LOGIN</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- for mobile side navbar -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+<div class="row togglebtn m-0 pt-2 pb-2">
+  <span class="pl-4 col-sm-1 col-1" style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
+  <span class="brand pl-5 col-sm-8 col-6">Company Logo</span>
+  <button mat-flat-button class="requestdemo col-sm-2 col-4">REQUEST DEMO</button>
+</div>

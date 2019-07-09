@@ -1,45 +1,56 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {FrontPageComponent} from './BaseComponents/FrontPage/front-page.component';
-import {ContactUsComponent} from './BaseComponents/FrontPage/contact-us.component';
-import {AboutUsComponent} from './BaseComponents/FrontPage/about-us.component';
-
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { BodyComponent } from './components/body/body.component';
+import { FooterComponent } from './components/footer/footer.component';
+
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
+import {ContactUsComponent} from './components/ContactUs/contact-us.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    FrontPageComponent,
+    HeaderComponent,
+    BodyComponent,
+    FooterComponent,
     ContactUsComponent,
-    AboutUsComponent,
-
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    ReactiveFormsModule,
-    ReactiveFormsModule,
-    ReactiveFormsModule,
-    ReactiveFormsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCheckboxModule,
+     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    AppRoutingModule
+
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
