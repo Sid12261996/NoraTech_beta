@@ -7,5 +7,7 @@ export enum Courses {
   'Js' = 'Javascript',
   NodeJs = 'Node Js',
   mongo = 'Mongo DB',
+  sql = 'mySQL',
+  CEH = 'Certified Ethical Hacker'
 
 }
