@@ -17,6 +17,11 @@
             </label></div>
             <div class="col-md-12"><label>
               <input type="text" class="form-control input" formControlName="name">
+              <mat-error
+                *ngIf="formControl.controls['name'].hasError('required') && formControl.controls['name'].dirty">Please
+                fill this field
+              </mat-error>
+
             </label></div>
           </div>
           <div class="col-md-6 col-sm-6">
@@ -25,6 +30,14 @@
             </label></div>
             <div class="col-md-12"><label>
               <input type="email" class="form-control input" formControlName="email">
+              <mat-error
+                *ngIf="formControl.controls['email'].hasError('required') && formControl.controls['email'].dirty">Please
+                fill this field
+              </mat-error>
+              <mat-error *ngIf="formControl.controls['email'].hasError('email') && formControl.controls['email'].dirty">Try again
+                with a valid format
+              </mat-error>
+
             </label></div>
           </div>
         </div>
@@ -36,21 +49,35 @@
             </label></div>
             <div class="col-md-12"><label>
               <input type="tel" class="form-control input" formControlName="phNum">
+              <mat-error
+                *ngIf="formControl.controls['phNum'].hasError('phoneNumber') && formControl.controls['phNum'].touched">
+                Please Enter valid mobile Number (should be 10 numbers)
+              </mat-error>
+              <mat-error
+                *ngIf="formControl.controls['phNum'].hasError('required') && formControl.controls['phNum'].touched">
+                Mobile Number is required
+              </mat-error>
             </label></div>
           </div>
           <div class="col-md-6 col-sm-6">
             <div class="col-md-12"><label>
               <small><b>Courses</b></small>
             </label></div>
-            <div class="col-md-12"><label>
+            <div class="col-md-12">
               <mat-form-field>
                 <mat-select class="form-control " formControlName="course" multiple>
-                  <mat-option *ngFor="let key of keys" [value]="course[key]">{{course[key]}}</mat-option>
+                  <mat-option *ngFor="let key of keys" [value]="course[key]"
+                              (click)="setPrice()">{{course[key]}}</mat-option>
                 </mat-select>
+                <mat-error
+                  *ngIf="formControl.controls['course'].hasError('required')  && formControl.controls['course'].touched">
+                  Please fill this field
+                </mat-error>
               </mat-form-field>
 
-            </label></div>
+            </div>
           </div>
+
         </div>
 
         <div class="row">
@@ -60,6 +87,10 @@
             </label></div>
             <div class="col-md-12"><label>
               <input type="text" class="form-control input" formControlName="college">
+              <mat-error
+                *ngIf="formControl.controls['college'].hasError('required') && formControl.controls['college'].touched">
+                Please fill this field
+              </mat-error>
             </label></div>
           </div>
           <div class="col-md-6 col-sm-6">
@@ -68,6 +99,21 @@
             </label></div>
             <div class="col-md-12"><label>
               <input type="text" class="form-control input" formControlName="semester">
+              <mat-error
+                *ngIf="formControl.controls['semester'].hasError('required') && formControl.controls['semester'].touched">
+                Please fill this field
+              </mat-error>
+
+            </label></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="col-md-12"><label>
+              <small><b>Price</b></small>
+            </label></div>
+            <div class="col-md-12"><label>
+              <input type="text" class="form-control input" formControlName="price" readonly>
             </label></div>
           </div>
         </div>
@@ -79,7 +125,7 @@
             </label></div>
             <div class="col-md-12"><label></label><label>
 <textarea name="" formControlName="queries"
-          class="form-control input" cols="100"
+          class="form-control input" cols="110"
           maxlength="140"
           rows="4"></textarea>
             </label></div>
@@ -87,7 +133,7 @@
         </div>
         <br/>
         <div class="row">
-          <!--<div class="errors">Errors: {{formControl.invalid}} </div>-->
+          <!--          <div class="errors">Errors: {{formControl.errors}} </div>-->
           <div class="col-sm-2 col-md-2">
             <button type="button" mat-raised-button color="primary" [disabled]="formControl.invalid"
                     style="margin-left:58px;" (click)="sendMail()">
