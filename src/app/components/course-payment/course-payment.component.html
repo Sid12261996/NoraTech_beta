@@ -1,0 +1,14 @@
+
+
+<div *ngFor="let c of courses|keyvalue">
+<div class="">
+<mat-card>
+  <mat-card-title>{{c.value['name']}}   -----------------------  {{c.value['price']}}</mat-card-title>
+  <mat-card-content>
+    <label>{{c.value['about']}} -----{{c.value['duration']}} </label>
+  </mat-card-content>
+
+</mat-card>
+</div>
+
+</div>

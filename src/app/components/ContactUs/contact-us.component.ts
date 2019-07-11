@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MailService} from '../../../Services/mail.service';
 import {MailerModel} from '../../../Models/mailer-model';
 import {AbstractControl, FormBuilder, FormGroup, Validator, ValidatorFn, Validators} from '@angular/forms';
-import {Course, Courses} from '../../../Models/courses.enum';
+import {Course, Courses} from '../../../Models/courses';
 import {Location} from '@angular/common';
 import Swal from 'sweetalert2';
 import {CourseChargeSheet} from '../../../Models/course-charge-sheet';
@@ -101,12 +101,12 @@ export class ContactUsComponent implements OnInit {
   // }
 
   setPrice(): void {
-    const temp = [];
-    for (const justTemp of this.form.course) {
-      temp.push(Course.stringToEnum(justTemp));
-    }
+    // const temp = [];
+    // for (const justTemp of this.form.course) {
+    //   temp.push(Course.stringToEnum(justTemp));
+    // }
     this.formControl.patchValue({
-      price: CourseChargeSheet.CalculateChargeforAll(temp)
+      price: CourseChargeSheet.CalculateChargeforAll(this.form.course)
     });
   }
 }

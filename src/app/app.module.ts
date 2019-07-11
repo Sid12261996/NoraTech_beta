@@ -20,6 +20,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CoursePaymentComponent } from './components/course-payment/course-payment.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { RegisterComponent } from './components/register/register.component';
     FooterComponent,
     ContactUsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CoursePaymentComponent
   ],
   imports: [
     BrowserModule,

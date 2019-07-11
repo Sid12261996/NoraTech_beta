@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MailService} from '../../../Services/mail.service';
 import {MailerModel} from '../../../Models/mailer-model';
 import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
-import {Courses} from '../../../Models/courses.enum';
+import {Courses} from '../../../Models/courses';
 import {ValidateFn} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
