@@ -1,0 +1,15 @@
+.coursename{
+    font-size:20px;
+    font-weight:600;
+}
+.coursename:hover{
+    color:orange;
+}
+.learnmore{
+    font-size:16px;
+    font-weight:600;
+    letter-spacing: 1px
+}
+.learnmore:hover{
+    color:orange;
+}
