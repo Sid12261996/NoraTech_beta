@@ -1,30 +1,29 @@
-<!--  expansion panel-->
-<mat-accordion class="example-headers-align">
-  <div *ngFor="let c of courses|keyvalue; let i = start;">
-    <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)" hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{c.value['name']}}
-        </mat-panel-title>
-        <mat-panel-description>
-
-          Learn more
-
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-
-
-      <mat-panel-title> {{c.value['price']}}</mat-panel-title>
-      <mat-action-row>
-        {{c.value['about']}}
-
-      </mat-action-row>
-      <mat-action-row>
-        <button mat-raised-button color="accent">Enroll</button>
-      </mat-action-row>
-    </mat-expansion-panel>
+<div class="row m-0 mb-4">
+  <div class="col-md-12">
+  <!--  expansion panel-->
+  <mat-accordion class="example-headers-align">
+    <div *ngFor="let c of courses|keyvalue; let i = start;">
+      <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+        <mat-expansion-panel-header class="row m-0">
+          <mat-panel-title class="col-md-4 coursename">
+           {{c.value['name']}}
+          </mat-panel-title>
+          <mat-panel-description class="col-md-8 learnmore">
+            Learn more...
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="row m-0">
+            <mat-panel-title class="col-md-12"> Rs: {{c.value['price']}}</mat-panel-title>
+            <mat-action-row  class="col-md-12">
+                {{c.value['about']}}
+            </mat-action-row>
+            <mat-action-row  class="col-md-12"> 
+              <button mat-raised-button color="accent">Enroll</button>
+            </mat-action-row>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </mat-accordion>
   </div>
-
-
-</mat-accordion>
+</div>
 
