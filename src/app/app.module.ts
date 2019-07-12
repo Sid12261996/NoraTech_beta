@@ -14,7 +14,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {ContactUsComponent} from './components/ContactUs/contact-us.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -46,10 +46,11 @@ import { CoursePaymentComponent } from './components/course-payment/course-payme
     MatSidenavModule,
     MatListModule,
     MatCheckboxModule,
-     HttpClientModule,
+    HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatExpansionModule,
 
   ],
   providers: [HttpClient],

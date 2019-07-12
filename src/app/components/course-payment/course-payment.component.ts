@@ -14,9 +14,24 @@ export class CoursePaymentComponent implements OnInit {
 
   courses = Object.values(Course.CourseView());
 
+  step = 0;
+  start = 0;
+
   ngOnInit() {
 
     console.log(this.courses);
+  }
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
   }
 
 }

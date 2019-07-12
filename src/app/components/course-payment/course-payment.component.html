@@ -1,14 +1,30 @@
+<!--  expansion panel-->
+<mat-accordion class="example-headers-align">
+  <div *ngFor="let c of courses|keyvalue; let i = start;">
+    <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{c.value['name']}}
+        </mat-panel-title>
+        <mat-panel-description>
+
+          Learn more
+
+        </mat-panel-description>
+      </mat-expansion-panel-header>
 
 
-<div *ngFor="let c of courses|keyvalue">
-<div class="">
-<mat-card>
-  <mat-card-title>{{c.value['name']}}   -----------------------  {{c.value['price']}}</mat-card-title>
-  <mat-card-content>
-    <label>{{c.value['about']}} -----{{c.value['duration']}} </label>
-  </mat-card-content>
+      <mat-panel-title> {{c.value['price']}}</mat-panel-title>
+      <mat-action-row>
+        {{c.value['about']}}
 
-</mat-card>
-</div>
+      </mat-action-row>
+      <mat-action-row>
+        <button mat-raised-button color="accent">Enroll</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </div>
 
-</div>
+
+</mat-accordion>
+
