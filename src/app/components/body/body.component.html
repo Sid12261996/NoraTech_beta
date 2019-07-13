@@ -1,6 +1,38 @@
-<div class="row m-0 mainback sidepadding">
+
+<div class="row m-0">
   <div class="col-md-12 p-0">
-    <div class="row m-0">
+    <div class="mainback">
+      <div class="row m-0">
+        <div class="col-md-12 p-0">
+            <mat-toolbar color="" class="navbar_menu">
+              <mat-toolbar-row>
+                <span class="brand">Nora Tech</span>
+                <span class="example-spacer"></span>
+                <span class="menu">FEATURES</span>
+                <span class="menu">SOLUTIONS</span>
+                <span class="menu">SUCCESS STORIES</span>
+                  <span class="menu" routerLink="/contact">CONTACT US</span>
+                <span class="menu" routerLink="/course">COURSES</span>
+                <button mat-flat-button class="requestdemo">REQUEST DEMO</button>
+                <button mat-flat-button class="login" routerLink="/login">LOGIN</button>
+              </mat-toolbar-row>
+            </mat-toolbar>
+            <!-- for mobile side navbar -->
+            <div id="mySidenav" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+              <a href="#">About</a>
+              <a href="#">Services</a>
+              <a href="#">Clients</a>
+              <a href="#">Contact</a>
+            </div>
+            <div class="row togglebtn m-0 pt-2 pb-2">
+              <span class="pl-4 col-sm-1 col-1" style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
+              <span class="brand pl-5 col-sm-8 col-6">Company Logo</span>
+              <button mat-flat-button class="requestdemo col-sm-2 col-4">REQUEST DEMO</button>
+            </div>
+        </div>
+      </div>
+      <div class="row m-0 sidepadding">
         <div class="col-md-7 p-0 col-sm-12 maincol">
           <p class="mainhead">The world is complex. Search shouldn't be.</p>
           <p class="maintag">FAST AND RELEVANT SEARCH SOLUTION FOR SMALL, MEDIUM OR ENTREPRISE LEVEL E-COMMERCE WEBSITES AND MOBILE APPS.</p>
@@ -9,30 +41,29 @@
           <button mat-flat-button class="btnpricing">PRICING</button>
           <button mat-flat-button class="btnfeature">FEATURES</button>
         </div>
-        <div class="col-md-5 col-sm-12 pl-5 maincol">
-          <mat-card>
-            <div class="row m-0">
-              <div class="col-md-12 p-0 text-center">
-                  <p class="maincardform">Looking for a personalised demo?</p>
-                  <hr class="horiline">
-                  <p class="maincardformslove">Speak with a Search expert so we can learn about your unique goals.</p>
+          <div class="col-md-5 col-sm-12 pl-5 maincol">
+            <mat-card>
+              <div class="row m-0">
+                <div class="col-md-12 p-0 text-center">
+                    <p class="maincardform">Looking for a personalised demo?</p>
+                    <hr class="horiline">
+                    <p class="maincardformslove">Speak with a Search expert so we can learn about your unique goals.</p>
+                      <mat-form-field class="example-full-width col-md-12">
+                        <input matInput placeholder="Name" value="">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width col-md-12">
+                        <input matInput placeholder="Phone" value="">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width col-md-12">
+                        <input matInput placeholder="Email" value="">
+                      </mat-form-field>
 
-                    <mat-form-field class="example-full-width col-md-12">
-                      <input matInput placeholder="Name" value="">
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width col-md-12">
-                      <input matInput placeholder="Phone" value="">
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width col-md-12">
-                      <input matInput placeholder="Email" value="">
-                    </mat-form-field>
-
-                  <button mat-flat-button class="btnschedule">SCHEDULE DEMO</button>
+                    <button mat-flat-button class="btnschedule">SCHEDULE DEMO</button>
+                </div>
               </div>
-            </div>
-          </mat-card>    
-        </div>
-        <div class="col-md-12 slidercol">
+            </mat-card>    
+          </div>
+          <div class="col-md-12 slidercol">
             <div id="demo" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active text-center">
@@ -76,6 +107,7 @@
               </a>
             </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
@@ -141,7 +173,7 @@
   </div>
  
 </div>
-<div class="row m-0 sidepadding borderrow paddingbottom">
+<!-- <div class="row m-0 sidepadding borderrow paddingbottom">
     <div class="col-md-12 text-center p-0">
       <p class="featurehead2">We like to work in silence, our search makes all the noise</p>
     </div>
@@ -193,8 +225,8 @@
         </div>
       </div>
     </div>
-</div>
-<div class="row m-0 sidepadding borderrow paddingbottom">
+</div> -->
+<!-- <div class="row m-0 sidepadding borderrow paddingbottom">
   <div class="col-md-12 p-0 text-center">
       <p class="featurehead2">People like you <i class='far fa-heart' style='font-size:36px'></i> (company name)</p>
   </div>
@@ -243,4 +275,4 @@
           </div>
       </mat-card>
   </div>
-</div>
+</div> -->
