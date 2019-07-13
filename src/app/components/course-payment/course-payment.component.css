@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 .coursename{
     font-size:20px;
     font-weight:600;
@@ -14,23 +14,3 @@
 .learnmore:hover{
     color:orange;
 }
-/* .mat-expansion-panel-header:nth-child(odd){
-    background-color:black;
-} */
-=======
-.coursename{
-    font-size:20px;
-    font-weight:600;
-}
-.coursename:hover{
-    color:orange;
-}
-.learnmore{
-    font-size:16px;
-    font-weight:600;
-    letter-spacing: 1px
-}
-.learnmore:hover{
-    color:orange;
-}
->>>>>>> 85f0f26fe0a5b7f03c5da0f6a09eb707b5edcb97
