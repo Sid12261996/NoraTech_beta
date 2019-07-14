@@ -23,6 +23,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { CoursePaymentComponent } from './components/course-payment/course-payment.component';
 import { MatTableModule } from '@angular/material'
 
+
 @NgModule({
   declarations: [
     AppComponent,
