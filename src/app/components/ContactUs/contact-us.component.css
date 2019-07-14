@@ -1,0 +1,30 @@
+.backcolor{
+    background-image: linear-gradient(to right, #4886B0,#659EBC)
+}
+.contactus{
+    font-weight:bold;
+    color:white;
+    font-size:40px;
+    padding-top: 50px;
+}
+.mat-form-field-infix{
+    border: 0 !important;
+    padding: 0 !important;
+}
+.btnsend{
+    background-color:white;
+    color:#4886B0;
+    border: 2px solid white;
+    border-radius:5px;
+    padding:7px 85px;
+    font-weight:700;
+}
+.sidepadd{
+    padding-left: 0;
+    padding-right:60px;
+}
+.textarea {
+    height:100px;
+    min-height:38px;
+    max-height:100px;
+}

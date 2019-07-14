@@ -16,32 +16,32 @@
     transition: 0.5s;
 }
 .menu:hover{
-    color:orange;
+    color:#1B6284;
     -webkit-transition: 0.5s;
     transition: 0.5s;
 }
 /* navbar buttons */
 .requestdemo{
     color:white;
-    background-color: orange;
+    background-color: #1B6284;
     font-weight:bold;
     border-radius: 5px;
     font-size:12px;
     margin-right:10px;
-    border:1px solid orange;
+    border:1px solid #1B6284;
 }
 .login{
-    color:orange;
+    color:#1B6284;
     font-weight:bold;
     border-radius: 5px;
     font-size:12px;
     margin-right:10px;
-    border:1px solid orange;
+    border:1px solid #1B6284;
     -webkit-transition: 0.5s;
     transition: 0.5s;
 }
 .login:hover{
-    background-color:orange;
+    background-color:#1B6284;
     color:white;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -74,7 +74,7 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: Orange;
+    color: #1B6284;
     display: block;
     transition: 0.3s;
   }
@@ -141,23 +141,23 @@
 }
 /* pricing/feature button */
 .btnpricing{
-    background-color: orange;
+    background-color: #1B6284;
     color: white;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 1px;
     padding: 5px 60px;
-    border: 2px solid orange;
+    border: 2px solid #1B6284;
 }
 .btnfeature{
     margin-left: 16px;
     background-color: white;
-    color: orange;
+    color: #1B6284;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 1px;
     padding: 5px 60px;
-    border: 2px solid orange;
+    border: 2px solid #1B6284;
 }
 /* main card form */
 .mat-card{
@@ -180,9 +180,9 @@
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
-    background-color: orange;
+    background-color: #1B6284;
     color:white;
-    border: 4px solid orange;
+    border: 4px solid #1B6284;
     margin-bottom: 10px;
 }
 /* slider */
@@ -220,7 +220,7 @@
 }
 .btnscheduledemo{
     color: white;
-    background-color: orange;
+    background-color: #1B6284;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -242,7 +242,7 @@
     font-size: 32px;
     line-height: 40px;
     letter-spacing: 1px;
-    color: orange;
+    color: #1B6284;
 }
 .featurecol{
     margin-top: 60px;
@@ -261,7 +261,7 @@
 }
 .featureicon{
     font-size: 46px;
-    color: orange;
+    color: #1B6284;
 }
 .paddingbottom{
     padding: 70px;
@@ -270,7 +270,7 @@
     font-size: 30px;
     line-height: 40px;
     letter-spacing: 1px;
-    color: orange;
+    color: #1B6284;
 }
 .featureimg{
     height: 80%;
@@ -280,8 +280,8 @@
 .box{
     width: 268.5px;
     height: 208px;
-    background-color: orange;
-    border: 1px solid orange;
+    background-color: #1B6284;
+    border: 1px solid #1B6284;
     color:white;
 }
 .boxtext{
