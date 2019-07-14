@@ -21,7 +21,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CoursePaymentComponent } from './components/course-payment/course-payment.component';
-
+import { MatTableModule } from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -51,7 +51,7 @@ import { CoursePaymentComponent } from './components/course-payment/course-payme
     MatFormFieldModule,
     MatSelectModule,
     MatExpansionModule,
-
+    MatTableModule,
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

@@ -7,10 +7,39 @@
     color:orange;
 }
 .learnmore{
-    font-size:16px;
+    font-size:12px;
     font-weight:600;
-    letter-spacing: 1px
+    letter-spacing: 1px;
+    position: absolute;
+    right:14px;
+    bottom:2px;
 }
 .learnmore:hover{
     color:orange;
+}
+.card{
+    background-color:gray;
+    color:white;
+    /* #F9F9F9 */
+}
+.whatlearn{
+    font-weight: 800;
+    font-size:20px;
+    text-align: center;
+    padding-bottom: 15px;
+}
+table {
+    width: 100%;
+  }
+.requirement{
+    font-size:20px;
+    font-weight:700;
+}  
+.required{
+    font-size:16px;
+    font-weight:500;
+}
+.Enroll{
+    text-align: right;
+    
 }
