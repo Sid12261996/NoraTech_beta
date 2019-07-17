@@ -1,6 +1,5 @@
 import {CourseChargeSheet} from './course-charge-sheet';
 
-
 export enum Courses {
   Angular = 'Angular',
   dotNet = '.NET',
@@ -10,9 +9,7 @@ export enum Courses {
   db = 'DataBase',
   CEH = 'Certified Ethical Hacker',
   Testing = 'Software Testing'
-
 }
-
 
 const AboutCourse = {
 
@@ -29,11 +26,11 @@ Visual Basic is an approachable language with a simple syntax for building type-
   WebDev: 'Web Development is a good course',
   // tslint:disable-next-line:max-line-length
   js: 'JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.',
-  NodeJs: `As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.For More Read <a href="https://nodejs.org/></a>"`,
+  // language=HTML
+  NodeJs: `As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.For More Read <a href="https://nodejs.org/></a>`,
   db: 'DataBase is a good course',
   CEH: 'Certified Ethical Hacker',
   Testing: 'Software Testing is a good course'
-
 };
 
 const CourseDuration = {
