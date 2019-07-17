@@ -14,35 +14,36 @@
     margin-right:20px;
     color:white;
     -webkit-transition: 0.5s;
+  text-decoration: none;
     transition: 0.5s;
 }
 .menu:hover{
-    color:orange;
+    color:#1B6284;
     -webkit-transition: 0.5s;
     transition: 0.5s;
 }
 /* navbar buttons */
 .requestdemo{
     color:white;
-    background-color: orange;
+    background-color: #1B6284;
     font-weight:bold;
     border-radius: 5px;
     font-size:12px;
     margin-right:10px;
-    border:1px solid orange;
+    border:1px solid #1B6284;
 }
 .login{
-    color:orange;
+    color:#1B6284;
     font-weight:bold;
     border-radius: 5px;
     font-size:12px;
     margin-right:10px;
-    border:1px solid orange;
+    border:1px solid #1B6284;
     -webkit-transition: 0.5s;
     transition: 0.5s;
 }
 .login:hover{
-    background-color:orange;
+    background-color:#1B6284;
     color:white;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -75,7 +76,7 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: Orange;
+    color: #1B6284;
     display: block;
     transition: 0.3s;
   }

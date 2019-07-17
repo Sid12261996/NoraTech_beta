@@ -1,0 +1,105 @@
+<app-header></app-header>
+<div class="fill">
+  <!--  <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">-->
+  <!--    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}-->
+  <!--  </button>-->
+
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup" [optional]="true">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill your details</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="First name" formControlName="firstName" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Last name" formControlName="lastName" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Course Selected" formControlName="registeredFor" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="contactEmail" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Amount Paid" formControlName="amountPaid" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
+        </mat-form-field>
+        <br>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [editable]="false" [optional]="true">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Preview</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="just some fields" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Edit</button>
+          <button mat-button matStepperNext>Proceed</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Payment</ng-template>
+      <mat-label>Amount</mat-label>&nbsp;&nbsp;&nbsp;
+      <mat-label readonly>{{setPrice()}}</mat-label>
+
+      <div>
+        <button mat-button id="rzp-button1" (click)="openCheckout()">Pay</button>
+        <script type="text/javascript" src="https://checkout.razorpay.com/v1/razorpay.js"></script>
+        <script type="text/javascript" src="../../../../razor.js"></script>
+        <script>
+          // var options = {
+          //   "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
+          //   "amount": "29935", // Amount is in currency subunits. Default currency is INR. Hence, 29935 refers to 29935 paise or INR 299.35.
+          //   "currency": "INR",
+          //   "name": "Acme Corp",
+          //   "description": "A Wild Sheep Chase is the third novel by Japanese author  Haruki Murakami",
+          //   "image": "https://example.com/your_logo",
+          //   "order_id": "order_9A33XWu170gUtm",//Order ID is generated as Orders API has been implemented. Refer the Checkout form table given below
+          //   "handler": function (response){
+          //     alert(response.razorpay_payment_id);
+          //   },
+          //   "prefill": {
+          //     "name": "Gaurav Kumar",
+          //     "email": "gaurav.kumar@example.com"
+          //   },
+          //   "notes": {
+          //     "address": "note value"
+          //   },
+          //   "theme": {
+          //     "color": "#F37254"
+          //   }
+          // };
+          // var rzp1 = new Razorpay(options);
+          // document.getElementById('rzp-button1').onclick = function(e){
+          //   console.log('I am called')
+          //   rzp1.open();
+          //   e.preventDefault();
+          // }
+        </script>
+
+          <button mat-button matStepperPrevious (click)="stepper.previous()">Decline</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+</div>

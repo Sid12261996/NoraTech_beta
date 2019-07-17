@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HeaderServiceService} from '../../../Services/header-service.service';
 
 @Component({
   selector: 'app-body',
@@ -7,15 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private hdr: HeaderServiceService) {
+
+  }
 
   ngOnInit() {
   }
-  openNav(){
-    document.getElementById("mySidenav").style.width = "250px";
+
+  openNav() {
+    document.getElementById('mySidenav').style.width = '250px';
   }
-  closeNav(){
-    document.getElementById("mySidenav").style.width = "0";
+
+  closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
   }
 
 }
