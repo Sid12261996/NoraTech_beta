@@ -1,0 +1,9 @@
+{
+  "env":{
+    "MongoUrl":"mongodb+srv://dev1:dev123@cluster0-5zaen.mongodb.net/norasite?retryWrites=true&w=majority",
+    "jwtKey":"wejghcdhbxilhbhfenjdmkfc;x45gy3wegehxoufcrdbsuh3nyr8475g",
+    "razor-key-id": "rzp_test_a0yDNvv3dMMij8",
+    "razor-secret-key": "D7uX31xBU11GKs8ylYecvdNz",
+    "account-id": "acc_CuJddEDuUWUAqe"
+  }
+}
