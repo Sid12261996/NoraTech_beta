@@ -8,12 +8,20 @@
               <mat-toolbar-row>
                 <span class="brand">Nora Tech</span>
                 <span class="example-spacer"></span>
+
                 <span class="menu">COMPANY</span>
                 <span class="menu">SERVICES</span>
                 <span class="menu">PRODUCTS</span>
                 <span class="menu" routerLink="/course">TRAINING</span>
                 <span class="menu" routerLink="/contact">CONTACT US</span>
                 <span class="menu">CAREER</span>
+
+                <span class="menu">FEATURES</span>
+                <span class="menu">SOLUTIONS</span>
+                <a class="menu">SUCCESS STORIES</a>
+                  <a class="menu" routerLink="/contact">CONTACT US</a>
+                <a class="menu" routerLink="/course">COURSES</a>
+
                 <button mat-flat-button class="requestdemo">REQUEST DEMO</button>
                 <button mat-flat-button class="login" routerLink="/login">LOGIN</button>
               </mat-toolbar-row>
@@ -21,13 +29,22 @@
             <!-- for mobile side navbar -->
             <div id="mySidenav" class="sidenav">
               <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+
               <a href="#">Company</a>
               <a href="#">Services</a>
               <a href="#">Products</a>
               <a href="#">Trainings</a>
               <a href="#">Career</a>
               <a class="login" routerLink="/contact">Contact Us</a>
+
+              <span >FEATURES</span>
+              <span >SOLUTIONS</span>
+              <a >SUCCESS STORIES</a>
+              <a  routerLink="/contact">CONTACT US</a>
+              <a  routerLink="/course">COURSES</a>
+
             </div>
+
             <div class="row togglebtn m-0 pt-2 pb-2">
               <span class="pl-4 col-sm-1 col-1" style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
               <span class="brand pl-5 col-sm-8 col-6">Company Log</span>
