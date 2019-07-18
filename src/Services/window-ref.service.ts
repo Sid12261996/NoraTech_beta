@@ -14,7 +14,7 @@ export class WindowRefService {
   constructor() {
   }
 
-  get nativeWindow(): any {
+  static get nativeWindow(): any {
     return _window();
   }
 }

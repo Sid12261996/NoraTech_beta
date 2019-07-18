@@ -60,7 +60,7 @@ export class EnrollStudentComponent implements OnInit {
       name: 'sidd',
       description: 'A Wild Sheep Chase is the third novel by Japanese author  Haruki Murakami',
       image: 'https://example.com/your_logo',
-      order_id: 'order_CuJHBkLZqAst98',
+      order_id: 'order_CuJ54NTI5sYaI0',
       handler(response) {
         alert(response.razorpay_payment_id);
       },
@@ -75,8 +75,8 @@ export class EnrollStudentComponent implements OnInit {
         color: '#F37254'
       }
     };
-    this.rzp1 = this.winref.nativeWindow.Razorpay(options);
-    console.log(this.rzp1,this.winref.nativeWindow);
+    this.rzp1 = WindowRefService.nativeWindow.Razorpay(options);
+    console.log(this.rzp1, WindowRefService.nativeWindow.Razorpay(options));
     this.rzp1.open();
 
     // const rzp1 = new Razorpay(options);
