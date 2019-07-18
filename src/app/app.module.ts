@@ -34,6 +34,7 @@ import {MatTableModule} from '@angular/material';
 import {EnrollStudentComponent} from './components/course-payment/enroll-student/enroll-student.component';
 import {WindowRefService} from '../Services/window-ref.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
