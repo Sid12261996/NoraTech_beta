@@ -9,9 +9,8 @@ export class CourseChargeSheet {
   static CalculateChargeforAll(courses: string[] | string, days?: number): number {
     // console.log(this.CalculateChargeSingleton(charges[course]));
     let totalcharges = 0;
-   if (typeof courses == 'string') {
-      totalcharges = CourseChargeSheet.CalculateChargeSingleton(charges[courses]);
-      return totalcharges;
+    if (typeof courses == 'string') {
+      return CourseChargeSheet.CalculateChargeSingleton(charges[courses]);
     }
 
 

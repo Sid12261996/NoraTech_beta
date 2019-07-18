@@ -1,15 +1,18 @@
+<app-header></app-header><br>
 <div class="row m-0 mb-4">
   <div class="col-md-12">
  
-  <mat-accordion class="example-headers-align">
-    <div *ngFor="let c of courses|keyvalue; let i = start;">
-      <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+  <mat-accordion class="example-headers-align" >
+    <div *ngFor="let c of courses|keyvalue; let first = first;let i = step">
+      <mat-expansion-panel [expanded]="step === first" (opened)="setStep(i)" hideToggle open>
         <mat-expansion-panel-header class="row m-0">
           <mat-panel-title class="col-md-4 coursename">
            {{c.value['name']}}
           </mat-panel-title>
           <mat-panel-description class="col-md-8">
-            Course  decription   <span class="learnmore"> Learn more...</span>
+            Course  decription   <span class="learnmore"> <i class="material-icons">
+expand_more
+</i></span>
           </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="row m-0">
@@ -18,6 +21,9 @@
             <mat-panel-title class="col-md-2" ><i style='font-size:16px' class='fas'>&#xf005;</i> &nbsp; &nbsp; 4.5 Rating </mat-panel-title>
             <mat-panel-title class="col-md-2" >Language: English</mat-panel-title>
             <mat-panel-title class="col-md-2" style="font-family: open sans"> Rs: {{c.value['price']}}</mat-panel-title>
+          <div class="Enroll">
+            <button class="btn btn-primary" [routerLink]="['/enrollStudent',c.value['name']]">Enroll{{c.key['name']}}</button>
+          </div>
         </div>
         <div class="row m-0">
             <mat-action-row  class="col-md-6">
@@ -42,7 +48,7 @@
                     <p class="m-0"><i style='font-size:24px' class='fas'>&#xf00c;</i></p>
                   </div>
                   <div class="col-md-11">
-                    <p class="m-0">Learn to use Angular professionally, learning both Angular 7 and Angular 8!  and many more for third sentence !</p>
+                    <p class="m-0">{{c.value['about']}}</p>
                   </div>
                 </div>
               </mat-card>
@@ -80,9 +86,7 @@
                   </div>
               </div>
             </div>
-            <div class="col-md-6 Enroll"> 
-              <button class="btn btn-primary">Enroll</button>
-            </div>
+
         </div>
       </mat-expansion-panel>
     </div>

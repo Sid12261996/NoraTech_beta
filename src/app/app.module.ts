@@ -1,12 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { BodyComponent } from './components/body/body.component';
-import { FooterComponent } from './components/footer/footer.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './components/header/header.component';
+import {BodyComponent} from './components/body/body.component';
+import {FooterComponent} from './components/footer/footer.component';
 
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -14,14 +14,25 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {ContactUsComponent} from './components/ContactUs/contact-us.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule, MatStepperModule,
+  MatTabsModule
+} from '@angular/material';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { CoursePaymentComponent } from './components/course-payment/course-payment.component';
-import { MatTableModule } from '@angular/material'
+import {LoginComponent} from './components/login/login.component';
+import {RegisterComponent} from './components/register/register.component';
+import {CoursePaymentComponent} from './components/course-payment/course-payment.component';
+import {MatTableModule} from '@angular/material';
+
+import {EnrollStudentComponent} from './components/course-payment/enroll-student/enroll-student.component';
+import {WindowRefService} from '../Services/window-ref.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +43,8 @@ import { MatTableModule } from '@angular/material'
     ContactUsComponent,
     LoginComponent,
     RegisterComponent,
-    CoursePaymentComponent
+    CoursePaymentComponent,
+    EnrollStudentComponent
   ],
   imports: [
     BrowserModule,
@@ -52,8 +64,11 @@ import { MatTableModule } from '@angular/material'
     MatSelectModule,
     MatExpansionModule,
     MatTableModule,
+    MatTabsModule,
+    MatStepperModule,
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, WindowRefService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
