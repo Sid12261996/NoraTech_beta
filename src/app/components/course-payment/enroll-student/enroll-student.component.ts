@@ -1,17 +1,27 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CourseChargeSheet} from '../../../../Models/course-charge-sheet';
+
 import {ActivatedRoute} from '@angular/router';
-import {Course} from '../../../../Models/courses';
+import {Course, CourseChargeSheet} from '../../../../Models/courses';
 import {WindowRefService} from '../../../../Services/window-ref.service';
 
+interface createOrder {
+  receipt: string;
+  amount: number;
+  notes: string;
+}
 
 @Component({
   selector: 'app-enroll-student',
   templateUrl: './enroll-student.component.html',
   styleUrls: ['./enroll-student.component.css']
 })
-export class EnrollStudentComponent implements OnInit {
+
+
+export class EnrollStudentComponent implements OnInit , createOrder{
+  receipt: string;
+    amount: number;
+    notes: string;
 
   isLinear = true;
   firstFormGroup: FormGroup;
@@ -41,9 +51,12 @@ export class EnrollStudentComponent implements OnInit {
     });
   }
 
+  get firstForm() {
+    return this.firstForm.values;
+  }
+
   setPrice(): number {
     const courseId = Course.stringToEnum(this.courseName);
-    //console.log(CourseChargeSheet.CalculateChargeforAll(courseId));
     return CourseChargeSheet.CalculateChargeforAll(courseId);
 
 
@@ -60,7 +73,7 @@ export class EnrollStudentComponent implements OnInit {
       name: 'sidd',
       description: 'A Wild Sheep Chase is the third novel by Japanese author  Haruki Murakami',
       image: 'https://example.com/your_logo',
-      order_id: 'order_CuJ54NTI5sYaI0',
+      order_id: 'order_Cv7jEAhLRmOidf',
       handler(response) {
         alert(response.razorpay_payment_id);
       },
@@ -76,10 +89,14 @@ export class EnrollStudentComponent implements OnInit {
       }
     };
     this.rzp1 = WindowRefService.nativeWindow.Razorpay(options);
-    console.log(this.rzp1, WindowRefService.nativeWindow.Razorpay(options));
+    // console.log(this.rzp1, WindowRefService.nativeWindow);
     this.rzp1.open();
 
     // const rzp1 = new Razorpay(options);
     // rzp1.open();
+  }
+
+  getOrderId(): void {
+
   }
 }

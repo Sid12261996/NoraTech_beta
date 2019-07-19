@@ -1,4 +1,5 @@
-import {CourseChargeSheet} from './course-charge-sheet';
+
+import {charges} from './charges';
 
 export enum Courses {
   Angular = 'Angular',
@@ -80,5 +81,29 @@ export class Course {
         return singleCourse;
       }
     }
+  }
+}
+
+export class CourseChargeSheet {
+  private static CalculateChargeSingleton(amount: number, days = 1): number {
+    return amount * days;
+  }
+
+  static CalculateChargeforAll(courses: string[] | string, days?: number): number {
+    // console.log(this.CalculateChargeSingleton(charges[course]));
+    let totalcharges = 0;
+    if (typeof courses == 'string') {
+      return CourseChargeSheet.CalculateChargeSingleton(charges[courses]);
+    }
+
+
+    for (let singleCourse of courses) {
+      singleCourse = Course.stringToEnum(singleCourse);
+      totalcharges += CourseChargeSheet.CalculateChargeSingleton(charges[singleCourse]);
+      // console.log(charges[singleCourse],singleCourse);
+
+    }
+
+    return totalcharges;
   }
 }

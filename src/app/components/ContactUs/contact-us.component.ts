@@ -5,7 +5,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validator, ValidatorFn, Validat
 import {Course, Courses} from '../../../Models/courses';
 import {Location} from '@angular/common';
 import Swal from 'sweetalert2';
-import {CourseChargeSheet} from '../../../Models/course-charge-sheet';
+import {CourseChargeSheet} from '../../../Models/courses';
 
 
 @Component({

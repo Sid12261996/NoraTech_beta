@@ -10,6 +10,7 @@ function _window(): any {
 })
 
 export class WindowRefService {
+   nativeWindow: any;
 
   constructor() {
   }
