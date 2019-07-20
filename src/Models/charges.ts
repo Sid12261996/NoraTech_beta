@@ -11,3 +11,8 @@ export const charges = {
 
 };
 
+export class MoneyConversion{
+  static inPaisa(rupees): number {
+    return rupees * 100;
+  }
+}

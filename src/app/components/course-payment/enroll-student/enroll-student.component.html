@@ -5,7 +5,7 @@
   <!--  </button>-->
 
   <mat-horizontal-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup" [optional]="true">
+    <mat-step [stepControl]="firstFormGroup" >
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Fill your details</ng-template>
         <mat-form-field>
@@ -45,7 +45,7 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" [editable]="false" [optional]="true">
+    <mat-step [stepControl]="secondFormGroup" [editable]="false" >
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Preview</ng-template>
         <mat-form-field>
