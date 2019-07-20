@@ -6,15 +6,14 @@ const Razorpay = require('razorpay'),
 const instance = new Razorpay({
     key_id: razor["razor-key-id"],
     key_secret: razor["razor-secret-key"],
-    headers: {
-        "X-Razorpay-Account": razor["account-id"]
-    }
+    // headers: {
+    //     "X-Razorpay-Account": razor["account-id"]
+    // }
 });
 
 const currency = "INR";
-
-
-exports.create = async (amount, receipt, payment_capture, notes = "") => {
+const payment_capture = 1;
+exports.create = async (amount, receipt, notes = "") => {
 
     return instance.orders.create({amount, currency, receipt, payment_capture, notes}).then(result => {
 

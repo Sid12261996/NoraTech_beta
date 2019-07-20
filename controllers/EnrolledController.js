@@ -1,6 +1,7 @@
 const mongoose = require("mongoose"),
 
     EnrolledStudents = require("../models/EnrolledStudentsModel");
+const payment = require("./paymentController");
 
 
 exports.Enroll_Student = (req, res, next) => {
@@ -13,11 +14,14 @@ exports.Enroll_Student = (req, res, next) => {
         registeredFor: req.body.registeredFor,
         contactEmail: req.body.contactEmail,
         amountPaid: req.body.amountPaid,
-        contactNumber: req.body.contactNumber
+        contactNumber: req.body.contactNumber,
+        paymentId: req.body.paymentId,
+        orderId: req.body.orderId
     });
     students.save()
         .then(result => {
             console.log(result);
+            payment.createTransaction(req.body.orderId,req.body.paymentId,result._id,req.body.amountPaid);
             res.status(201).json({
                 message: "Student Enrolled",
                 createdStudent: {

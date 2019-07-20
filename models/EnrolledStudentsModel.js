@@ -9,7 +9,10 @@ const EnrolledStudents = new schema({
     registeredFor: {type: schema.Types.String, required: true},
     contactEmail: {type: schema.Types.String, required: true, minlength: 3, maxlength: 30},
     amountPaid: {type: schema.Types.Number, required: true},
-    contactNumber:{type:schema.Types.Number,required:true,minlength: 10}
+    contactNumber:{type:schema.Types.Number,required:true,minlength: 10},
+    paymentId :{type:schema.Types.String,required:true},
+    orderId :{type:schema.Types.String,required:true}
+
 });
 
 module.exports = mongo.model('EnrolledStudents', EnrolledStudents);

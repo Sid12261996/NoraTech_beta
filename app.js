@@ -8,7 +8,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     razorPay = require('./models/razorPay'),
     EnrolledRoute = require('./routes/EnrolledRoute'),
-    payment = require('./routes/payment')
+    payment = require('./routes/paymentRoute')
 
 ;
 app.use(cors());
