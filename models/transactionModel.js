@@ -12,4 +12,4 @@ const transactionModel = new schema({
     amountPaid:{type:schema.Types.Number,required:true}
 });
 
-module.exports = mongo.model('transaction',transactionModel)
+module.exports = mongo.model('transaction',transactionModel);
