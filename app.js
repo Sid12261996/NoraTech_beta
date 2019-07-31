@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 //Routes
 app.use('/mail', mailer);
 app.use('/enroll', EnrolledRoute);
-app.use('/payment',payment)
+app.use('/payment',payment);
 
 // start page for API
 app.get('/*', (req, res) => {
