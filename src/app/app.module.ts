@@ -19,9 +19,9 @@ import {
   MatCardModule,
   MatExpansionModule,
   MatFormFieldModule,
-  MatInputModule,
+  MatInputModule, MatRadioModule,
   MatSelectModule, MatStepperModule,
-  MatTabsModule
+  MatTabsModule, MatTreeModule
 } from '@angular/material';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
@@ -67,6 +67,8 @@ import {WindowRefService} from '../Services/window-ref.service';
     MatTableModule,
     MatTabsModule,
     MatStepperModule,
+    MatTreeModule,
+    MatRadioModule,
   ],
   providers: [HttpClient, WindowRefService],
   bootstrap: [AppComponent]

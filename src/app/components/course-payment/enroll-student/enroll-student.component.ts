@@ -1,27 +1,48 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {ActivatedRoute} from '@angular/router';
 import {Course, CourseChargeSheet} from '../../../../Models/courses';
 import {WindowRefService} from '../../../../Services/window-ref.service';
 import {CreateOrder} from '../../../../Models/razorpay';
 import {EnrollStudentService} from '../../../../Services/enrollStudent.service';
-import {MoneyConversion} from '../../../../Models/charges';
-import {EnrolledStudent} from '../../../../Models/EnrolledStudent';
+import {CovenienceCharges, MoneyConversion, paymentMethods} from '../../../../Models/charges';
+import {EnrolledStudent} from '../../../../Models/enrolledStudent';
+import {environment} from '../../../../environments/environment';
+import {NestedTreeControl} from '@angular/cdk/tree';
+import {MatTreeNestedDataSource} from '@angular/material/tree';
 
+
+export interface PaymentNode {
+  name: string;
+  children?: PaymentNode[];
+}
+
+export const PAYMENT_SOURCE = [{
+  name: 'Cards',
+  children: [
+    {name: 'National -- Credit Card or Debit Card'},
+    {name: 'International', children: [{name: 'American Express'}, {name: 'Diner\'s'}]}
+  ]
+},
+  {name: 'Net Banking', children: [{name: 'National'}, {name: 'International'}]},
+  {name: 'UPI'},
+  {name: 'EMI'}
+];
 
 @Component({
   selector: 'app-enroll-student',
   templateUrl: './enroll-student.component.html',
   styleUrls: ['./enroll-student.component.css']
 })
-
-
 export class EnrollStudentComponent implements OnInit {
+  treeControl = new NestedTreeControl<PaymentNode>(node => node.children);
+  dataSource = new MatTreeNestedDataSource<PaymentNode>();
 
-  // tslint:disable-next-line:variable-name
+
   constructor(private _formBuilder: FormBuilder, private router: ActivatedRoute, private winref: WindowRefService,
               private razorPay: EnrollStudentService) {
+    this.dataSource.data = PAYMENT_SOURCE;
   }
 
   get firstForm() {
@@ -31,14 +52,18 @@ export class EnrollStudentComponent implements OnInit {
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  paymentMethodsFormGroup: FormGroup;
   private courseName: string;
 
   rzp1: any;
-
+  allPaymentOptions = paymentMethods;
   order: CreateOrder;
   private callBackUrl = `http:/localhost:4200/enrollstudent/${this.courseName}/`;
+  paymentModeCheckbox: FormControl;
+  hasChild = (_: number, node: PaymentNode) => !!node.children && node.children.length > 0;
 
   ngOnInit() {
+    console.log(CovenienceCharges.findPercentage('card', ['national', 'dinersCard']));
     this.firstFormGroup = this._formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -51,9 +76,17 @@ export class EnrollStudentComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    this.paymentModeCheckbox = new FormControl();
+
     this.router.paramMap.subscribe(params => {
       // console.log(params.get('course'));
       this.courseName = params.get('course');
+    });
+
+    this.paymentMethodsFormGroup = this._formBuilder.group({
+      courseSelected: this.courseName,
+      amountToBePaid: this.setPrice(),
+
     });
   }
 
@@ -65,19 +98,11 @@ export class EnrollStudentComponent implements OnInit {
   }
 
   openCheckout(): void {
-    this.rzp1.open();
-  }
 
-  razorInstance(options) {
-
-    this.rzp1 = WindowRefService.nativeWindow.Razorpay(options);
-  }
-
-  getOrderId(): void {
     const order = new CreateOrder();
     order.amount = MoneyConversion.inPaisa(this.setPrice());
     order.notes = {
-      enrolledStudent: this.firstForm.firstName + this.firstForm.lastName, emailId: this.firstForm.contactEmail,
+      enrollThisStudent: this.firstForm.firstName + this.firstForm.lastName, emailId: this.firstForm.contactEmail,
       phoneNumber: this.firstForm.contactNumber
     };
     order.receipt = 'receipt' + this.firstForm.email;
@@ -86,12 +111,12 @@ export class EnrollStudentComponent implements OnInit {
     this.razorPay.createOrder(order).subscribe(res => {
       console.log(res);
       const options = {
-        key: 'rzp_test_a0yDNvv3dMMij8',
+        key: environment['razor-key-id'],
         amount: MoneyConversion.inPaisa(res.amount),
-        currency: 'INR',
+        currency: environment.currency,
         name: this.firstForm.firstName,
         description: 'A Wild Sheep Chase is the third novel by Japanese author  Haruki Murakami',
-        image: 'assets/logo.png',
+        image: environment['company-logo'],
         order_id: res.id,
         handler: (response) => {
           console.log(response);
@@ -107,32 +132,50 @@ export class EnrollStudentComponent implements OnInit {
         theme: {
           color: '#F37254'
         },
+        method: 'upi',
         callback_url: this.callBackUrl
       };
       this.razorInstance(options);
     }, error1 => console.error(error1));
+
+
+  }
+
+  razorInstance(options) {
+
+    this.rzp1 = WindowRefService.nativeWindow.Razorpay(options);
+    this.rzp1.open();
+  }
+
+  getOrderId(): void {
+    return;
   }
 
   private enrollStudent(response: any) {
     console.log(response);
-    const enrolledStudent = new EnrolledStudent();
-    enrolledStudent.amountPaid = this.setPrice();
-    enrolledStudent.contactEmail = this.firstForm.contactEmail;
-    enrolledStudent.contactNumber = this.firstForm.contactNumber;
-    enrolledStudent.firstName = this.firstForm.firstName;
-    enrolledStudent.lastName = this.firstForm.lastName;
-    enrolledStudent.registeredFor = this.firstForm.registeredFor;
-    enrolledStudent.paymentId = response.razorpay_payment_id;
-    enrolledStudent.orderId = response.razorpay_order_id;
+    const enrollThisStudent = new EnrolledStudent();
+    enrollThisStudent.amountPaid = this.setPrice();
+    enrollThisStudent.contactEmail = this.firstForm.contactEmail;
+    enrollThisStudent.contactNumber = this.firstForm.contactNumber;
+    enrollThisStudent.firstName = this.firstForm.firstName;
+    enrollThisStudent.lastName = this.firstForm.lastName;
+    enrollThisStudent.registeredFor = this.firstForm.registeredFor;
+    enrollThisStudent.paymentId = response.razorpay_payment_id;
+    enrollThisStudent.orderId = response.razorpay_order_id;
 
-    this.razorPay.enrollTheStudent(enrolledStudent).subscribe(data => {
+    this.razorPay.enrollTheStudent(enrollThisStudent).subscribe(data => {
         console.log(data);
       }, error1 =>
         console.error(error1)
     );
   }
 
-  private createTransaction(paymentId,orderId,enrolledStudentId,){
+  decline() {
+    console.log(this.paymentModeCheckbox.value);
+  }
 
+  knowThePaymentMode(node: any) {
+    console.log(CovenienceCharges.findPercentage('card', ['national', 'dinersCard']));
+    console.log(this.paymentModeCheckbox.value);
   }
 }
