@@ -186,6 +186,9 @@
     border: 4px solid #1B6284;
     margin-bottom: 10px;
 }
+matInput{
+    height:36px;
+}
 /* slider */
 .slidercol{
     margin-top: 60px;
