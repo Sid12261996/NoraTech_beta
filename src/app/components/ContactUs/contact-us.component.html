@@ -1,148 +1,142 @@
 <app-header></app-header>
-<div class="row m-0 backcolor">
-  <div class="col-md-12 text-center contactus">
-      <b>CONTACT US</b>
-  </div>
-  <div class="col-md-12">
-      <form [formGroup]="formControl">
-        <div class="row m-0" style="padding-top:30px;">
-          <div class="col-md-6 col-sm-6 text-right">
-            <div class="row m-0">
-              <div class="col-md-12">
-                <label style="color:white"><small><b>Name</b></small></label>
-              </div>
-              <div class="col-md-12">
-                <label>
-                  <input type="text" class="form-control input" formControlName="name">
-                  <mat-error *ngIf="formControl.controls['name'].hasError('required') && formControl.controls['name'].dirty">Please
-                  fill this field
-                  </mat-error>
-                </label>
-              </div>
+<div class="row m-0">
+  <div class="col-lg-12 p-0" style="background-color:rgb(235, 236, 234)">
+    <div class="container p-0 mt-4 mb-4" style="background-color:white">
+      <div class="row m-0 pt-3 pb-3">
+        <div class="col-lg-8 col_side_border">
+          <div class="row m-0 backcolor">
+            <div class="col-md-12 contactus">
+                <b>CONTACT US</b>
             </div>
-          </div>
-          <div class="col-md-6 col-sm-6">
-            <div class="row m-0">
-              <div class="col-md-12">
-                <label style="color:white"><small><b>Contact Email </b></small></label>
-              </div>
-              <div class="col-md-12">
-                <label>
-                  <input type="email" class="form-control input" formControlName="email">
-                  <mat-error *ngIf="formControl.controls['email'].hasError('required') && formControl.controls['email'].dirty">Please
-                  fill this field
-                  </mat-error>
-                  <mat-error *ngIf="formControl.controls['email'].hasError('email') && formControl.controls['email'].dirty">Try again
-                  with a valid format
-                  </mat-error>
-                </label>
-              </div>
+            <div class="col-md-12">
+                <form [formGroup]="formControl">
+                  <div class="row m-0" style="padding-top:30px;">
+                    <div class="col-md-6 col-sm-6">
+                      <div class="row m-0">
+                        <label class="col-md-12"><small><b>Name</b></small></label>
+                        <label class="col-md-12">
+                          <input type="text" class="form-control input" formControlName="name">
+                          <mat-error *ngIf="formControl.controls['name'].hasError('required') && formControl.controls['name'].dirty">Please
+                          fill this field
+                          </mat-error>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                      <div class="row m-0">
+                        <label class="col-md-12"><small><b>Contact Email </b></small></label>
+                        <label class="col-md-12">
+                          <input type="email" class="form-control input" formControlName="email">
+                          <mat-error *ngIf="formControl.controls['email'].hasError('required') && formControl.controls['email'].dirty">Please
+                          fill this field
+                          </mat-error>
+                          <mat-error *ngIf="formControl.controls['email'].hasError('email') && formControl.controls['email'].dirty">Try again
+                          with a valid format
+                          </mat-error>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row m-0" style="padding-top: 20px;">
+                    <div class="col-md-6 col-sm-6">
+                      <div class="row m-0">
+                        <label class="col-md-12"><small><b>Contact Number</b></small></label>
+                        <label class="col-md-12">
+                          <input type="tel" class="form-control input" formControlName="phNum">
+                          <mat-error *ngIf="formControl.controls['phNum'].hasError('phoneNumber') && formControl.controls['phNum'].touched">
+                          Please Enter valid mobile Number (should be 10 numbers)
+                          </mat-error>
+                          <mat-error *ngIf="formControl.controls['phNum'].hasError('required') && formControl.controls['phNum'].touched">
+                          Mobile Number is required
+                          </mat-error>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                      <div class="row m-0">
+                        <label class="col-md-12"><small><b>Courses</b></small></label>
+                        <mat-form-field class="col-md-12">
+                          <mat-select class="form-control input" formControlName="course" multiple>
+                            <mat-option *ngFor="let key of keys" [value]="course[key]" (click)="setPrice()">{{course[key]}}</mat-option>
+                          </mat-select>
+                          <mat-error
+                            *ngIf="formControl.controls['course'].hasError('required')  && formControl.controls['course'].touched">
+                            Please fill this field
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row m-0" style="padding-top: 20px;">
+                    <div class="col-md-6 col-sm-6">
+                      <div class="row m-0">
+                        <label class="col-md-12"><small><b>College</b></small></label>
+                        <label class="col-md-12">
+                          <input type="text" class="form-control input" formControlName="college">
+                          <mat-error *ngIf="formControl.controls['college'].hasError('required') && formControl.controls['college'].touched">
+                            Please fill this field
+                          </mat-error>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                      <div class="row m-0">
+                        <label class="col-md-12"><small><b>Semester</b></small></label>
+                        <label class="col-md-12">
+                          <input type="text" class="form-control input" formControlName="semester">
+                          <mat-error *ngIf="formControl.controls['semester'].hasError('required') && formControl.controls['semester'].touched">
+                            Please fill this field
+                          </mat-error>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row m-0" style="padding-top: 20px;">
+                      <div class="col-md-6 col-sm-6">
+                        <div class="row m-0">
+                          <label class="col-md-12"><small><b>Price</b></small></label>
+                          <label class="col-md-12">
+                            <input type="text" class="form-control input" formControlName="price" readonly>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="row m-0">
+                          <label class="col-md-12"><small><b>Queries (if any)</b></small></label>
+                          <label class="col-md-12">
+                            <textarea name="" formControlName="queries" class="form-control input textarea" maxlength="140" rows="1"></textarea>
+                          </label>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="row m-0 mb-4 mt-3">
+                    <div class="col-md-12 text-center sidepadd">
+                      <button type="button" class="btnsend" [disabled]="formControl.invalid" style="margin-left:58px;" (click)="sendMail()">
+                        Send
+                      </button>
+                    </div>
+                  </div>
+                </form>  
             </div>
           </div>
         </div>
-        <div class="row m-0" style="padding-top: 20px;">
-          <div class="col-md-6 col-sm-6 text-right">
-            <div class="row m-0">
-              <div class="col-md-12">
-                <label style="color:white"><small><b>Contact Number</b></small></label>
-              </div>
-              <div class="col-md-12">
-                <label>
-                  <input type="tel" class="form-control input" formControlName="phNum">
-                  <mat-error *ngIf="formControl.controls['phNum'].hasError('phoneNumber') && formControl.controls['phNum'].touched">
-                  Please Enter valid mobile Number (should be 10 numbers)
-                  </mat-error>
-                  <mat-error *ngIf="formControl.controls['phNum'].hasError('required') && formControl.controls['phNum'].touched">
-                  Mobile Number is required
-                  </mat-error>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-6">
-            <div class="row m-0">
-              <div class="col-md-12">
-                <label style="color:white"><small><b>Courses</b></small></label>
-              </div>
-              <div class="col-md-12">
-                <mat-form-field class="">
-                  <mat-select class="form-control " formControlName="course" multiple>
-                    <mat-option *ngFor="let key of keys" [value]="course[key]" (click)="setPrice()">{{course[key]}}</mat-option>
-                  </mat-select>
-                  <mat-error
-                    *ngIf="formControl.controls['course'].hasError('required')  && formControl.controls['course'].touched">
-                    Please fill this field
-                  </mat-error>
-                </mat-form-field>
-              </div>
+        <div class="col-lg-4 col_vertical_padd">
+          <div class="row">
+            <div class="col-md-12 pl-5 pr-5">
+              <p class="m-0 contact_para_type1">Email</p>
+              <p class="contact_para_type2">noreTech@gmail.com</p>
+              <p class="m-0 contact_para_type1">Telephone</p>
+              <p class="contact_para_type2">+914988648</p>
+              <p class="m-0 contact_para_type1">Skype</p>
+              <p class="contact_para_type2">skype id</p>
+              <p class="m-0 contact_para_type1">Address</p>
+              <p class="contact_para_type2">307-A Someone, Somewhere pincode</p>
+              <p class="m-0 contact_para_type1">other field</p>
+              <p class="contact_para_type2">field info</p>
             </div>
           </div>
         </div>
-        <div class="row m-0" style="padding-top: 20px;">
-          <div class="col-md-6 col-sm-6 text-right">
-            <div class="row m-0">
-              <div class="col-md-12">
-                <label style="color:white"><small><b>College</b></small></label>
-              </div>
-              <div class="col-md-12">
-                <label>
-                  <input type="text" class="form-control input" formControlName="college">
-                  <mat-error *ngIf="formControl.controls['college'].hasError('required') && formControl.controls['college'].touched">
-                    Please fill this field
-                  </mat-error>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-6">
-            <div class="row m-0">
-              <div class="col-md-12">
-                <label style="color:white"><small><b>Semester</b></small></label>
-              </div>
-              <div class="col-md-12">
-                <label>
-                  <input type="text" class="form-control input" formControlName="semester">
-                  <mat-error *ngIf="formControl.controls['semester'].hasError('required') && formControl.controls['semester'].touched">
-                    Please fill this field
-                  </mat-error>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row m-0" style="padding-top: 20px;">
-            <div class="col-md-6 col-sm-6 text-right">
-              <div class="row m-0">
-                <div class="col-md-12">
-                  <label style="color:white"><small><b>Price</b></small></label>
-                </div>
-                <div class="col-md-12">
-                  <label>
-                    <input type="text" class="form-control input" formControlName="price" readonly>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <div class="row m-0">
-                <div class="col-md-12">
-                  <label style="color:white"><small><b>Queries (if any)</b></small></label>
-                </div>
-                <div class="col-md-12">
-                  <label>
-                    <textarea name="" formControlName="queries" class="form-control input textarea" cols="30" maxlength="140" rows="1"></textarea>
-                  </label>
-                </div>
-              </div>
-            </div>
-        </div>
-        <div class="row m-0 mb-4 mt-3">
-          <div class="col-md-12 text-center sidepadd">
-            <button type="button" class="btnsend" [disabled]="formControl.invalid" style="margin-left:58px;" (click)="sendMail()">
-              Send
-            </button>
-          </div>
-        </div>
-      </form>  
+      </div>
+    </div>
   </div>
 </div>
