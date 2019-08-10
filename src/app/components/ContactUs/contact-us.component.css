@@ -20,13 +20,13 @@
 }
 .btnsend{
     color:white;
-    border: 2px solid #4886B0;
+    border: 2px solid #1B6284;
     border-radius:5px;
     padding:7px 85px;
     font-weight:700;
-    background: #4886B0;
+    background: #1B6284;
     /* Old browsers */
-    background: linear-gradient(to right, white 50%, #4886B0 50%);
+    background: linear-gradient(to right, white 50%, #1B6284 50%);
     background-size: 200% 100%;
     background-position:right bottom;
     transition:all 2s ease;
