@@ -31,18 +31,4 @@ export class CoursePaymentComponent implements OnInit {
   prevStep() {
     this.step--;
   }
-
-}
-export interface CourseDetails {
-  name: string;
-  position: number;
-}
-const ELEMENT_DATA: CourseDetails[] = [
-  {position: 1, name: 'Hydrogen'},
-  {position: 2, name: 'Helium'},
-  {position: 3, name: 'Lithium'},
-];
-export class TableBasicExample {
-  displayedColumns: string[] = ['position', 'name'];
-  dataSource = ELEMENT_DATA;
 }
