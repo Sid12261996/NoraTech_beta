@@ -3,13 +3,13 @@
   <div class="row m-0">
     <div class="col-lg-6 mt-2 mb-2" *ngFor="let c of courses|keyvalue; let first = first;let i = step">
       <mat-expansion-panel>
-        <mat-expansion-panel-header [collapsedHeight]="'350px'" [expandedHeight]="'400px'">
+        <mat-expansion-panel-header collapsedHeight="*" expandedHeight="*">
           <div class="row m-0">
             <div class="col-lg-3">
               <img src="../../../assets/courses/Angular_full_color_logo.svg.png" alt="" class="courseimg" >
             </div>
             <div class="col-lg-6 pt-3 pb-3">
-              <p class="coursename">{{c.value['name']}}</p>
+              <p class="coursename" shadow='Angular!'>{{c.value['name']}}</p>
               <p class="whatlearn">What you'll learn</p>
               <div class="row m-0">
                 <div class="col-1 p-0">
