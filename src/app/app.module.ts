@@ -31,8 +31,8 @@ import {RegisterComponent} from './components/register/register.component';
 import {CoursePaymentComponent} from './components/course-payment/course-payment.component';
 import {MatTableModule} from '@angular/material';
 
-import {EnrollStudentComponent} from './components/course-payment/enroll-student/enroll-student.component';
 import {WindowRefService} from '../Services/window-ref.service';
+import {EnrollStudentComponent} from './components/course-payment/enroll-student/enroll-student.component';
 
 
 @NgModule({
@@ -70,6 +70,7 @@ import {WindowRefService} from '../Services/window-ref.service';
     MatTreeModule,
     MatRadioModule,
   ],
+
   providers: [HttpClient, WindowRefService],
   bootstrap: [AppComponent]
 })

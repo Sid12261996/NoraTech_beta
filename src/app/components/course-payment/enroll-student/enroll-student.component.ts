@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {ActivatedRoute} from '@angular/router';
@@ -6,29 +6,93 @@ import {Course, CourseChargeSheet} from '../../../../Models/courses';
 import {WindowRefService} from '../../../../Services/window-ref.service';
 import {CreateOrder} from '../../../../Models/razorpay';
 import {EnrollStudentService} from '../../../../Services/enrollStudent.service';
-import {CovenienceCharges, MoneyConversion, paymentMethods} from '../../../../Models/charges';
+import {charges, CovenienceCharges, MoneyConversion, paymentMethods} from '../../../../Models/charges';
 import {EnrolledStudent} from '../../../../Models/enrolledStudent';
 import {environment} from '../../../../environments/environment';
-import {NestedTreeControl} from '@angular/cdk/tree';
-import {MatTreeNestedDataSource} from '@angular/material/tree';
 
 
-export interface PaymentNode {
-  name: string;
-  children?: PaymentNode[];
-}
+// export class TodoItemNode {
+//   children: TodoItemNode[];
+//   item: string;
+//   display: string;
+//   percentage: number;
+// }
+//
+// /** Flat to-do item node with expandable and level information */
+// export class TodoItemFlatNode {
+//   item: string;
+//   level: number;
+//   expandable: boolean;
+// }
 
-export const PAYMENT_SOURCE = [{
-  name: 'Cards',
-  children: [
-    {name: 'National -- Credit Card or Debit Card'},
-    {name: 'International', children: [{name: 'American Express'}, {name: 'Diner\'s'}]}
-  ]
-},
-  {name: 'Net Banking', children: [{name: 'National'}, {name: 'International'}]},
-  {name: 'UPI'},
-  {name: 'EMI'}
-];
+// export const PAYMENT_SOURCE = {
+//   card: {national: 2, international: {dinersCard: 3, amexCard: 3}},
+//   netbanking: {national: 2, international: 3},
+//   wallet: 2,
+//   emi: 3,
+//   upi: 2
+// };
+
+// @Injectable()
+// export class ChecklistDatabase {
+//   dataChange = new BehaviorSubject<TodoItemNode[]>([]);
+//
+//   get data(): TodoItemNode[] {
+//     return this.dataChange.value;
+//   }
+//
+//   constructor() {
+//     this.initialize();
+//   }
+//
+//   initialize() {
+//     // Build the tree nodes from Json object. The result is a list of `TodoItemNode` with nested
+//     //     file node as children.
+//     const data = this.buildFileTree(PAYMENT_SOURCE, 0);
+//
+//     // Notify the change.
+//     this.dataChange.next(data);
+//   }
+//
+//   /**
+//    * Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
+//    * The return value is the list of `TodoItemNode`.
+//    */
+//   buildFileTree(obj: { [key: string]: any }, level: number): TodoItemNode[] {
+//     return Object.keys(obj).reduce<TodoItemNode[]>((accumulator, key) => {
+//       const value = obj[key];
+//       const node = new TodoItemNode();
+//       node.item = key;
+//       node.display = key;
+//       node.percentage = obj[key];
+//
+//       if (value != null) {
+//         if (typeof value === 'object') {
+//           node.children = this.buildFileTree(value, level + 1);
+//         } else {
+//           node.item = value;
+//           node.display = value;
+//           node.percentage = obj[value];
+//         }
+//       }
+//
+//       return accumulator.concat(node);
+//     }, []);
+//   }
+//
+//   /** Add an item to to-do list */
+//   insertItem(parent: TodoItemNode, name: string) {
+//     if (parent.children) {
+//       parent.children.push({item: name} as TodoItemNode);
+//       this.dataChange.next(this.data);
+//     }
+//   }
+//
+//   updateItem(node: TodoItemNode, name: string) {
+//     node.item = name;
+//     this.dataChange.next(this.data);
+//   }
+// }
 
 @Component({
   selector: 'app-enroll-student',
@@ -36,19 +100,21 @@ export const PAYMENT_SOURCE = [{
   styleUrls: ['./enroll-student.component.css']
 })
 export class EnrollStudentComponent implements OnInit {
-  treeControl = new NestedTreeControl<PaymentNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<PaymentNode>();
 
 
   constructor(private _formBuilder: FormBuilder, private router: ActivatedRoute, private winref: WindowRefService,
               private razorPay: EnrollStudentService) {
-    this.dataSource.data = PAYMENT_SOURCE;
+
+
   }
+
 
   get firstForm() {
     return this.firstFormGroup.value;
   }
 
+  amountSummingConenienceFees = 0;
+  convenienceCharges = 0;
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -60,7 +126,7 @@ export class EnrollStudentComponent implements OnInit {
   order: CreateOrder;
   private callBackUrl = `http:/localhost:4200/enrollstudent/${this.courseName}/`;
   paymentModeCheckbox: FormControl;
-  hasChild = (_: number, node: PaymentNode) => !!node.children && node.children.length > 0;
+
 
   ngOnInit() {
     console.log(CovenienceCharges.findPercentage('card', ['national', 'dinersCard']));
@@ -88,6 +154,8 @@ export class EnrollStudentComponent implements OnInit {
       amountToBePaid: this.setPrice(),
 
     });
+
+    this.amountSummingConenienceFees = this.setPrice();
   }
 
   setPrice(): number {
@@ -172,6 +240,17 @@ export class EnrollStudentComponent implements OnInit {
 
   decline() {
     console.log(this.paymentModeCheckbox.value);
+    this.calculateConvenienceCharges();
+  }
+
+  calculateConvenienceCharges() {
+    this.amountSummingConenienceFees = CovenienceCharges.summingConvenienceCharges(this.setPrice(), this.paymentModeCheckbox.value);
+    this.convenienceCharges = this.total();
+
+  }
+
+   total(): number {
+    return CovenienceCharges.convenienceCharges(this.setPrice(), this.paymentModeCheckbox.value);
   }
 
   knowThePaymentMode(node: any) {

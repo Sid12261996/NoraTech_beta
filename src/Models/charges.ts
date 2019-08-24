@@ -19,7 +19,7 @@ export class MoneyConversion {
 }
 
 export const paymentMethods = {
-  card: {percentage: {national: 3, international: {dinersCard: 3, amexCard: 3}}, name: 'card'},
+  card: {percentage: {national: 2, international: {dinersCard: 3, amexCard: 3}}, name: 'card'},
   netbanking: {percentage: {national: 2, international: 3}, name: 'netbanking'},
   wallet: {percentage: 2, name: 'wallet'},
   emi: {percentage: 3, name: 'emi'},
@@ -27,7 +27,7 @@ export const paymentMethods = {
 };
 
 export class CovenienceCharges {
-  private static GST: 0;
+  private static GST = 0;
   category1: 2; // Indian Credit Cards, Indian Debit Cards, Net Banking from 58 Banks, UPI, Wallets including Freecharge, Mobikwik etc.
   category2: 3; // Diners and Amex Cards, International Cards, EMI
 
@@ -37,7 +37,8 @@ export class CovenienceCharges {
 
   static summingConvenienceCharges(amount: number, percentage: number): number {
     amount = this.addGST(amount);
-    return amount + this.convenienceCharges(amount, percentage);
+    const convenienceCharge = this.convenienceCharges(amount, percentage);
+    return amount + convenienceCharge;
   }
 
   static findPercentage(pymtMethod: string, othrParams?: string[]): number {
@@ -56,6 +57,6 @@ export class CovenienceCharges {
   }
 
   static addGST(amount: number): number {
-    return amount + (amount * (this.GST / 100));
+      return amount * (this.GST / 100) + amount;
   }
 }
