@@ -7,8 +7,8 @@ import {WindowRefService} from '../../../../Services/window-ref.service';
 import {CreateOrder} from '../../../../Models/razorpay';
 import {EnrollStudentService} from '../../../../Services/enrollStudent.service';
 import {charges, CovenienceCharges, MoneyConversion, paymentMethods} from '../../../../Models/charges';
-import {EnrolledStudent} from '../../../../Models/enrolledStudent';
 import {environment} from '../../../../environments/environment';
+import {EnrolledStudent} from '../../../../Models/EnrolledStudent';
 
 
 // export class TodoItemNode {
