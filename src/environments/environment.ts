@@ -3,10 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  'razor-key-id': 'rzp_test_a0yDNvv3dMMij8',
+  currency: 'INR',
+  'company-logo': 'assets/company-logo'
 };
-// export const API_URL = 'https://noraapi.herokuapp.com/';
- export const API_URL = 'http://localhost:3000/';
+export const API_URL = 'https://noraapi.herokuapp.com/';
+// export const API_URL = 'http://localhost:3000/';
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

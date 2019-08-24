@@ -9,6 +9,7 @@ import {Course} from '../../../Models/courses';
 export class CoursePaymentComponent implements OnInit {
 
   constructor() {
+    this.courses = Object.values(Course.CourseView());
   }
   courses = Object.values(Course.CourseView());
 
@@ -16,8 +17,8 @@ export class CoursePaymentComponent implements OnInit {
   start = 0;
 
   ngOnInit() {
-
-    console.log(this.courses);
+    this.courses = Object.values(Course.CourseView());
+    // console.log(this.courses);
   }
 
   setStep(index: number) {
