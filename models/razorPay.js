@@ -5,7 +5,7 @@ const Razorpay = require('razorpay'),
 
 const instance = new Razorpay({
     key_id: razor["razor-key-id"],
-    key_secret: razor["razor-secret-key"],
+        key_secret: razor["razor-secret-key"],
     // headers: {
     //     "X-Razorpay-Account": razor["account-id"]
     // }

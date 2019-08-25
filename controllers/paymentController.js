@@ -1,24 +1,27 @@
 const mongoose = require("mongoose"),
 
     transactionModel = require("../models/transactionModel"),
-    razorPay = require('../models/razorPay')
+    razorPay = require('../models/razorPay'),
+    razor = require('../environment').env,
+    mail = require('../routes/mailer.js')
 ;
 
+const mySecret = razor["razor-secret-key"];
 
-exports.createTransaction = (orderId, paymentId,enrolledStudentId,amountPaid) => {
+exports.createTransaction = (orderId, paymentId, enrolledStudentId, amountPaid) => {
     const transaction = new transactionModel({
-        _id:mongoose.Types.ObjectId(),
-        orderId:orderId ,
+        _id: mongoose.Types.ObjectId(),
+        orderId: orderId,
         paymentId: paymentId,
         enrolledStudentId: enrolledStudentId,
-        paymentStatus:'Success' ,
+        paymentStatus: 'Success',
         paymentDate: new Date(),
         amountPaid: amountPaid
     });
 
     transaction.save().then(
         result => {
-        return result;
+            return result;
         },
         err => console.error(err));
 };
@@ -31,5 +34,25 @@ exports.createOrder = (req, res) => {
         res.status(200).json(doc);
     }).catch(err => {
         console.error(err)
+    });
+};
+
+exports.webhooks = (req, res) => {
+    let reqBody = "",
+        signature = req.headers["x-razorpay-signature"];
+    req.on("data", (data) => {
+
+        reqBody += data;
+    });
+    req.on("end", (data) => {
+        console.log(data,reqBody);
+        mail.sendMail('Webhook',`data:${data}
+        
+        reqBody:${reqBody}`).then(success=>{
+            res.status(200).send();
+        }).catch(onmessageerror=>console.error(onmessageerror));
+
+
+        // console.log(razorPay.validateWebhookSignature(reqBody, signature, mySecret));
     });
 };
