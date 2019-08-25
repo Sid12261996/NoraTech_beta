@@ -3,7 +3,7 @@ const mongoose = require("mongoose"),
     transactionModel = require("../models/transactionModel"),
     razorPay = require('../models/razorPay'),
     razor = require('../environment').env,
-    mail = require('../routes/mailer.js')
+    mail = require('../models/mailerModel')
 ;
 
 const mySecret = razor["razor-secret-key"];
@@ -48,7 +48,7 @@ exports.webhooks = (req, res) => {
         console.log(data,reqBody);
         mail.sendMail('Webhook',`data:${data}
         
-        reqBody:${reqBody}`).then(success=>{
+        reqBody:${reqBody}`,res).then(success=>{
             res.status(200).send();
         }).catch(onmessageerror=>console.error(onmessageerror));
 

@@ -1,36 +1,17 @@
-var Router = require('express').Router(),
-    nodemailer = require('nodemailer');
+const Router = require('express').Router(),
+    mailer = require('../models/mailerModel.js');
 
 
-const testAccount = {
-    user: 'noratechsolutionspvtltd@gmail.com',
-    pass: 'noraAsdf@123'
-};
+Router.post('',  (req, res) => {
+   mailer.sendMail(req.body.subject, req.body.body).then(response=>{
+        if(response){
+            res.status(200).json({message: 'Successfully sent the mail!!'})
+        }
+        else {
 
-exports.sendMail = async function sendMail(subject, body, res) {
-    let info = await transporter.sendMail({
-        from: 'noratechsolutionspvtltd@gmail.com', // sender address
-        to: "sidharthrkc@gmail.com;info@noratechnologies.com", // list of receivers
-        subject: subject, // Subject line
-        text: body, // plain text body
-
+            res.status(500).json({message: 'Could not send the mail!!'})
+        }
     });
-    if (info.accepted !== null && info.accepted !== []) {
-        res.status(200).json({message: 'Successfully sent the mail!!'})
-    }
-
-};
-const transporter = nodemailer.createTransport({
-    auth: {
-        user: testAccount.user, // generated ethereal user
-        pass: testAccount.pass // generated ethereal password
-    },
-
-    service: 'gmail'
-});
-
-Router.post('', async (req, res) => {
-    await sendMail(req.body.subject, req.body.body, res);
 
 });
 
