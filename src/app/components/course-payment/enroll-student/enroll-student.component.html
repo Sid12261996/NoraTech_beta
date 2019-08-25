@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="fill">
+<div class="fill container">
   <!--  <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">-->
   <!--    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}-->
   <!--  </button>-->
@@ -8,40 +8,53 @@
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Fill your details</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="First name" formControlName="firstName" required>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput placeholder="Last name" formControlName="lastName" required>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput placeholder="Course Selected" formControlName="registeredFor" required>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput placeholder="Email" formControlName="contactEmail" required>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
+
+        <div class="d-flex justify-content-start label-1">
+          <label><h4>Fill Details:</h4></label>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+          <mat-form-field class="col-md-4">
+            <input matInput placeholder="First name" formControlName="firstName" required>
+          </mat-form-field>
+
+          <mat-form-field class="col-md-4">
+            <input matInput placeholder="Last name" formControlName="lastName" required>
+          </mat-form-field> 
+        </div>
+
+        <div class="row d-flex justify-content-center">
+          <mat-form-field class="col-md-4">
+            <input matInput placeholder="Course Selected" formControlName="registeredFor" required>
+          </mat-form-field>
+
+          <mat-form-field class="col-md-4">
+            <input matInput placeholder="Email" formControlName="contactEmail" required>
+          </mat-form-field>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+        <mat-form-field class="col-md-4">
           <input matInput placeholder="Amount Paid" formControlName="amountPaid" required>
         </mat-form-field>
-        <br>
-        <mat-form-field>
+        
+        <mat-form-field class="col-md-4">
           <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
         </mat-form-field>
-        <br>
-        <mat-form-field>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+        <mat-form-field class="col-md-4">
           <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
         </mat-form-field>
-        <br>
-        <mat-form-field>
+        
+        <mat-form-field class="col-md-4">
           <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
         </mat-form-field>
-        <br>
-        <div>
-          <button mat-button matStepperNext (click)="getOrderId()">Next</button>
+        </div>
+
+        <div class="d-flex justify-content-end frm-btn">
+          <button matStepperNext (click)="getOrderId()" class="d-flex justify-content-center"><i class="material-icons">send</i></button>
         </div>
       </form>
     </mat-step>
@@ -59,14 +72,40 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Payment</ng-template>
-      <mat-label>Amount</mat-label>&nbsp;&nbsp;&nbsp;
-      <mat-label readonly>{{setPrice()}}</mat-label>&nbsp;<br>
-      <mat-label>Covenience Charges</mat-label>&nbsp;&nbsp;&nbsp;
-            <mat-label readonly>{{convenienceCharges}}</mat-label>&nbsp;<br>
-      <mat-label>Total Amount to be Paid</mat-label>&nbsp;&nbsp;&nbsp;&nbsp;
-            <mat-label readonly>{{amountSummingConenienceFees}}</mat-label>
-      <div>
-        <h1>Choose Payment Mode</h1>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h4 class="page-head">Payment Details:</h4>
+        <table>
+          <tr>
+            <th>
+              <mat-label>Amount</mat-label>
+            </th>
+            <td>
+              <mat-label readonly>Rs. {{setPrice()}}</mat-label>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <mat-label>Covenience Charges</mat-label>
+            </th>
+            <td>
+              <mat-label readonly>Rs. {{convenienceCharges}}</mat-label>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <mat-label>Total Amount to be Paid</mat-label>
+            </th>
+            <td>
+              <mat-label readonly>Rs. {{amountSummingConenienceFees}}</mat-label>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="CPM col-md-6">
+        <h4 class="page-head">Choose Payment Mode:</h4>
         <!--        <p *ngFor="let paymentOption of allPaymentOptions|keyvalue">-->
         <!--          <mat-checkbox>{{paymentOption.key}}-->
 
@@ -143,40 +182,48 @@
         <!--          </mat-tree-node>-->
         <!--        </mat-tree>-->
         <mat-radio-group [formControl]='paymentModeCheckbox'>
+
           <ul>
-            <li>
-              Cards: &nbsp;&nbsp;&nbsp;
-              <mat-radio-button value="2">National</mat-radio-button>&nbsp;&nbsp;
-              <mat-radio-button value="3">International</mat-radio-button>
-            </li>
-            <li>Net Banking &nbsp;&nbsp;&nbsp;
 
-              <mat-radio-button value="2">National</mat-radio-button>&nbsp;&nbsp;
-              <mat-radio-button value="3">International</mat-radio-button>
+            <li>
+              <div class="head">
+              <strong>Cards:</strong><br>
+              <mat-radio-button color="primary" value="2">National</mat-radio-button>
+              <mat-radio-button color="primary" value="3">International</mat-radio-button>
+              </div>
             </li>
 
+            <li>
+              <div class="head">
+              <strong>Net Banking:</strong><br>
+              <mat-radio-button color="primary" value="2">National</mat-radio-button>
+              <mat-radio-button color="primary" value="3">International</mat-radio-button>
+              </div>
+            </li>
 
-            <!--        <mat-radio-group >-->
+            <!--<mat-radio-group >-->
             <li>
-              <mat-radio-button value="3">EMI</mat-radio-button>
+              <mat-radio-button color="primary" value="3">EMI</mat-radio-button>
             </li>
+
             <li>
-              <mat-radio-button value="2">UPI</mat-radio-button>
+              <mat-radio-button color="primary" value="2">UPI</mat-radio-button>
             </li>
-            <!--        </mat-radio-group>-->
+            <!--</mat-radio-group>-->
           </ul>
         </mat-radio-group>
       </div>
-      <div>
-        <button mat-button id="rzp-button1" (click)="openCheckout()">Pay</button>
+      </div>
+
+      <div class="form3btn">
+        <button mat-raised-button routerLink="." id="rzp-button1" (click)="openCheckout()">Pay</button>
+
         <script type="text/javascript" src="https://checkout.razorpay.com/v1/razorpay.js"></script>
         <script type="text/javascript" src="../../../../razor.js"></script>
 
-
-        <button mat-button matStepperPrevious (click)="decline()">Decline</button>
+        <button mat-raised-button color="warn" matStepperPrevious (click)="decline()">Decline</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>
 
 </div>
-
