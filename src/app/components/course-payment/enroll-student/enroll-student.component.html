@@ -61,45 +61,45 @@
     <mat-step [stepControl]="secondFormGroup" [editable]="false">
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Preview</ng-template>
-        <mat-form-field>
+        <!-- <mat-form-field>
           <input matInput placeholder="just some fields" formControlName="secondCtrl" required>
-        </mat-form-field>
+        </mat-form-field> -->
         <div class="row">
           <div class="col-lg-3 detailsType">
             First Name :
           </div>
           <div class="col-lg-3 detailsValue">
-            shekhar
+            {{firstForm.firstName}}
           </div>
           <div class="col-lg-3 detailsType">
             Last Name :
           </div>
           <div class="col-lg-3 detailsValue">
-            saini
+            {{firstForm.lastName}}
           </div>
           <div class="col-lg-3 detailsType">
             Course Selected :
           </div>
           <div class="col-lg-3 detailsValue">
-            Angular
+            {{firstForm.lastName}}
           </div>
           <div class="col-lg-3 detailsType">
             Email :
           </div>
           <div class="col-lg-3 detailsValue">
-            email@gmail.com
+            {{firstForm.contactEmail}}
           </div>
           <div class="col-lg-3 detailsType">
             Amount Paid :
           </div>
-          <div class="col-lg-3 detailsValue">
-            INR 10
+          <div class="col-lg-3 detailsValue" >
+            {{firstForm.amountPaid}}
           </div>
           <div class="col-lg-3 detailsType">
             Contact no :
           </div>
           <div class="col-lg-3 detailsValue">
-            100
+            {{firstForm.contactNumber}}
           </div>
         </div>
         <div class="row mt-5">
