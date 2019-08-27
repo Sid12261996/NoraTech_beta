@@ -1,6 +1,6 @@
 export const charges = {
   Angular: 8000,
-  dotNet: 8000,
+  dotNet: 10000,
   WebDev: 12000,
   js: 5000,
   NodeJs: 7000,

@@ -9,7 +9,7 @@ import {EnrollStudentService} from '../../../../Services/enrollStudent.service';
 import {charges, CovenienceCharges, MoneyConversion, paymentMethods} from '../../../../Models/charges';
 import {environment} from '../../../../environments/environment';
 import {EnrolledStudent} from '../../../../Models/EnrolledStudent';
-
+import Swal from 'sweetalert2';
 
 // export class TodoItemNode {
 //   children: TodoItemNode[];
@@ -126,22 +126,30 @@ export class EnrollStudentComponent implements OnInit {
   order: CreateOrder;
   private callBackUrl = `http:/localhost:4200/enrollstudent/${this.courseName}/`;
   paymentModeCheckbox: FormControl;
+  modeSelected = false;
 
 
   ngOnInit() {
-    console.log(CovenienceCharges.findPercentage('card', ['national', 'dinersCard']));
+
+    // console.log(CovenienceCharges.findPercentage('card', ['national', 'dinersCard']));
+
     this.router.paramMap.subscribe(params => {
       // console.log(params.get('course'));
       this.courseName = params.get('course');
+
     });
+
+
     this.firstFormGroup = this._formBuilder.group({
 
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       contactEmail: ['', Validators.required],
       contactNumber: ['', Validators.required],
-      registeredFor: ['', Validators.required],
-      amountPaid: ['0', Validators.required]
+
+      registeredFor: [this.courseName, Validators.required],
+      amountPaid: [this.setPrice(), Validators.required]
+
 
     });
     this.secondFormGroup = this._formBuilder.group({
@@ -149,7 +157,7 @@ export class EnrollStudentComponent implements OnInit {
     });
     this.paymentModeCheckbox = new FormControl();
 
-    
+
 
     this.paymentMethodsFormGroup = this._formBuilder.group({
       courseSelected: this.courseName,
@@ -168,9 +176,11 @@ export class EnrollStudentComponent implements OnInit {
   }
 
   openCheckout(): void {
+    if (this.paymentModeCheckbox.value == null || this.paymentMethodsFormGroup.value == undefined) {
 
+    }
     const order = new CreateOrder();
-    order.amount = MoneyConversion.inPaisa(this.setPrice());
+    order.amount = MoneyConversion.inPaisa(this.total());
     order.notes = {
       enrollThisStudent: this.firstForm.firstName + this.firstForm.lastName, emailId: this.firstForm.contactEmail,
       phoneNumber: this.firstForm.contactNumber
@@ -180,6 +190,7 @@ export class EnrollStudentComponent implements OnInit {
 
     this.razorPay.createOrder(order).subscribe(res => {
       console.log(res);
+      Swal.showLoading();
       const options = {
         key: environment['razor-key-id'],
         amount: MoneyConversion.inPaisa(res.amount),
@@ -246,13 +257,13 @@ export class EnrollStudentComponent implements OnInit {
   }
 
   calculateConvenienceCharges() {
-    this.amountSummingConenienceFees = CovenienceCharges.summingConvenienceCharges(this.setPrice(), this.paymentModeCheckbox.value);
-    this.convenienceCharges = this.total();
+    this.amountSummingConenienceFees = this.total();
+    this.convenienceCharges = CovenienceCharges.convenienceCharges(this.setPrice(), this.paymentModeCheckbox.value);
 
   }
 
-   total(): number {
-    return CovenienceCharges.convenienceCharges(this.setPrice(), this.paymentModeCheckbox.value);
+  total(): number {
+    return CovenienceCharges.summingConvenienceCharges(this.setPrice(), this.paymentModeCheckbox.value);
   }
 
   knowThePaymentMode(node: any) {
