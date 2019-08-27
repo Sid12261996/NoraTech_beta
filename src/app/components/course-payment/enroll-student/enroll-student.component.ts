@@ -130,6 +130,7 @@ export class EnrollStudentComponent implements OnInit {
 
 
   ngOnInit() {
+
     // console.log(CovenienceCharges.findPercentage('card', ['national', 'dinersCard']));
 
     this.router.paramMap.subscribe(params => {
@@ -138,19 +139,24 @@ export class EnrollStudentComponent implements OnInit {
 
     });
 
+
     this.firstFormGroup = this._formBuilder.group({
+
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       contactEmail: ['', Validators.required],
       contactNumber: ['', Validators.required],
+
       registeredFor: [this.courseName, Validators.required],
       amountPaid: [this.setPrice(), Validators.required]
+
 
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
     this.paymentModeCheckbox = new FormControl();
+
 
 
     this.paymentMethodsFormGroup = this._formBuilder.group({
