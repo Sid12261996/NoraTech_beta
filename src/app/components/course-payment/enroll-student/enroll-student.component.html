@@ -73,38 +73,44 @@
     <mat-step>
       <ng-template matStepLabel>Payment</ng-template>
 
-    <div class="row">
-      <div class="col-md-6">
-        <h4 class="page-head">Payment Details:</h4>
-        <table>
-          <tr>
-            <th>
-              <mat-label>Amount</mat-label>
-            </th>
-            <td>
-              <mat-label readonly>Rs. {{setPrice()}}</mat-label>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <mat-label>Covenience Charges</mat-label>
-            </th>
-            <td>
-              <mat-label readonly>Rs. {{convenienceCharges}}</mat-label>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <mat-label>Total Amount to be Paid</mat-label>
-            </th>
-            <td>
-              <mat-label readonly>Rs. {{amountSummingConenienceFees}}</mat-label>
-            </td>
-          </tr>
-        </table>
+    <div class="boxes">
+      <div class="box">
+
+        <div class="paybox">
+          <h4 class="page-head">Payment Details:</h4>
+          <table>
+            <tr>
+              <th>
+                <mat-label>Amount</mat-label>
+              </th>
+              <td>
+                <mat-label readonly>Rs. {{setPrice()}}</mat-label>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <mat-label>Covenience Charges</mat-label>
+              </th>
+              <td>
+                <mat-label readonly>Rs. {{convenienceCharges}}</mat-label>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <mat-label>Total Amount to be Paid</mat-label>
+              </th>
+              <td>
+                <mat-label readonly>Rs. {{amountSummingConenienceFees}}</mat-label>
+              </td>
+            </tr>
+          </table>
+        </div>
+
       </div>
 
-      <div class="CPM col-md-6">
+      <div class="CPM box">
+
+        <div class="paybox">
         <h4 class="page-head">Choose Payment Mode:</h4>
         <!--        <p *ngFor="let paymentOption of allPaymentOptions|keyvalue">-->
         <!--          <mat-checkbox>{{paymentOption.key}}-->
@@ -183,7 +189,7 @@
         <!--        </mat-tree>-->
         <mat-radio-group [formControl]='paymentModeCheckbox'>
 
-          <ul>
+          <ul class="ul-list">
 
             <li>
               <div class="head">
@@ -212,6 +218,8 @@
             <!--</mat-radio-group>-->
           </ul>
         </mat-radio-group>
+        </div>
+        
       </div>
       </div>
 
