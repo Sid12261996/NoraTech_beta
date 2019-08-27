@@ -26,5 +26,32 @@ table tr th { padding-right: 20px;}
 .form3btn button {margin-right: 20px; padding: 5px 15px; font-size: 18px;}
 .form3btn button:nth-child(1):hover {background-color: #CDCDCD; color: black; }
 .form3btn button:nth-child(2):hover {background-color: #C80000;}
+
 .ul-list li { margin: 5px 0px; }
 .head mat-radio-button {padding-top: 5px;}
+
+
+.detailsType{
+ 
+    font-weight:600;
+    padding:10px 50px;
+
+}
+.detailsValue{
+    text-align:center;
+    font-size:22px;
+    border-bottom:1px solid gray;
+    padding:10px 50px;
+}
+.editbtnalign{
+    text-align:right;
+}
+.editbtn, .proceedbtn{
+    background-color:#1B6284;
+    padding:5px 20px;
+    color:white;
+    font-weight:800 ;
+    font-size:14px;
+    width:100px;
+}
+

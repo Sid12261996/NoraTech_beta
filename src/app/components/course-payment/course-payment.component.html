@@ -69,101 +69,94 @@
           </tbody>
         </table>
         <!-- table end -->
-          <button class="btn btn-primary ml-auto" [routerLink]="['/enrollStudent',c.value['name']]">Enroll For {{c.value['name']}}</button>
+          <button class="btn btn-primary ml-auto" [routerLink]="['/enrollStudent',c.value['name']]">Enroll{{c.key['name']}}</button>
       </mat-expansion-panel>
     </div>
   </div>
 </mat-accordion>
-
-
-
-<!-- <div class="row m-0 mb-4">
-  <div class="col-md-12">
-   <mat-accordion class="example-headers-align">
-    <div *ngFor="let c of courses|keyvalue; let first = first;let i = step">
-      <mat-expansion-panel [expanded]="step === first" (opened)="setStep(i)" hideToggle open>
-        <mat-expansion-panel-header class="row m-0">
-          <mat-panel-title class="col-md-4 coursename">
-           {{c.value['name']}}
-          </mat-panel-title>
-          <mat-panel-description class="col-md-8">Course  decription   <span class="learnmore"> <i class="material-icons">expand_more</i></span>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
+<!-- New Type -->
+<div class="row m-0 mt-2 mb-2">
+  <div class="col-3">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active coursename" id="v-pills-home-tab" data-toggle="pill" href="#angular" role="tab" aria-controls="v-pills-home" aria-selected="true">
+        Angular
+      </a>
+      <a class="nav-link coursename" id="v-pills-home-tab" data-toggle="pill" href="#React" role="tab" aria-controls="v-pills-home" aria-selected="true">
+        React
+      </a>
+    </div>
+  </div>
+  <div class="col-9 border-left border-primary">
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="angular" role="tabpanel" aria-labelledby="v-pills-home-tab">
         <div class="row m-0">
-            <mat-panel-title class="col-md-2" style="font-family: open sans"><i style='font-size:16px' class='fas'>&#xf144;</i> &nbsp; &nbsp; 140 lectures</mat-panel-title>
-            <mat-panel-title class="col-md-2" style="font-family: open sans"><i style='font-size:16px' class='far'>&#xf017;</i> &nbsp; &nbsp; 42 Hours </mat-panel-title>
-            <mat-panel-title class="col-md-2" ><i style='font-size:16px' class='fas'>&#xf005;</i> &nbsp; &nbsp; 4.5 Rating </mat-panel-title>
-            <mat-panel-title class="col-md-2" >Language: English</mat-panel-title>
-            <mat-panel-title class="col-md-2" style="font-family: open sans"> Rs: {{c.value['price']}}</mat-panel-title>
-          <div class="Enroll">
-            <button class="btn btn-primary" [routerLink]="['/enrollStudent',c.value['name']]">Enroll{{c.key['name']}}</button>
+          <div class="col-lg-3">
+            <img src="../../../assets/courses/Angular_full_color_logo.svg.png" alt="" class="courseimg" >
           </div>
-        </div>
-        <div class="row m-0">
-            <mat-action-row  class="col-md-6">
-              <mat-card class="card">
-                <div class="row m-0">
-                  <div class="col-md-12">
-                     <p class="m-0 whatlearn">What you'll learn</p>
-                  </div>
-                  <div class="col-md-1">
-                    <p class="m-0"><i style='font-size:24px' class='fas'>&#xf00c;</i></p>
-                  </div>
-                  <div class="col-md-11">
-                    <p class="m-0">Learn to use Angular professionally, learning both Angular 7 and Angular 8!  and many more for first sentence !</p>
-                  </div>
-                  <div class="col-md-1">
-                    <p class="m-0"><i style='font-size:24px' class='fas'>&#xf00c;</i></p>
-                  </div>
-                  <div class="col-md-11">
-                    <p class="m-0">Learn to use Angular professionally, learning both Angular 7 and Angular 8!  and many more for second sentence !</p>
-                  </div>
-                  <div class="col-md-1">
-                    <p class="m-0"><i style='font-size:24px' class='fas'>&#xf00c;</i></p>
-                  </div>
-                  <div class="col-md-11">
-                    <p class="m-0">{{c.value['about']}}</p>
-                  </div>
-                </div>
-              </mat-card>
-            </mat-action-row>
-            <mat-action-row  class="col-md-6">
-              <mat-card  class="card">
-                <div class="row m-0">
-                  <div class="col-md-12">
-                       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                          <ng-container matColumnDef="position">
-                            <th mat-header-cell *matHeaderCellDef> No. </th>
-                            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                          </ng-container>
-                          <ng-container matColumnDef="name">
-                            <th mat-header-cell *matHeaderCellDef> Course Content </th>
-                            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                          </ng-container>
-                      </table >
-                  </div>
-                </div>
-              </mat-card>
-                {{c.value['about']}}
-            </mat-action-row>
-        </div>
-        <div class="row m-0">
-            <div class="col-md-6">
-              <div class="row m-0">
-                  <div class="col-md-6 requirement">Requirements</div>
-                  <div class="col-md-6">
-                      <ul class="row m-0 required">
-                        <li class="col-md-12">Basic Html</li>
-                        <li class="col-md-12">Basic CSS</li>
-                        <li class="col-md-12">Javascript</li>
-                      </ul>
-                  </div>
+          <div class="col-lg-6 pt-3 pb-3">
+            <p class="coursename" shadow='Angular!'>Angular</p>
+            <p class="whatlearn">What you'll learn</p>
+            <div class="row m-0">
+              <div class="col-1 p-0">
+                  <i style='font-size:24px' class='fas'>&#xf00c;</i>
+              </div>
+              <div class="col-11">
+                <p class="m-0">Learn to use Angular professionally, learning both Angular 7 and Angular 8!  and many more for first sentence !</p>
+              </div>
+              <div class="col-1 p-0 mt-2">
+                  <i style='font-size:24px' class='fas'>&#xf00c;</i>
+              </div>
+              <div class="col-11 mt-2">
+                <p class="m-0">Learn to use Angular professionally, learning both Angular 7 and Angular 8!  and many more for first sentence !</p>
               </div>
             </div>
-
+          </div>
+          <div class="col-lg-3 pt-3 pb-3 readmore_col">
+            <p><i class='fas'>&#xf144;</i> &nbsp; &nbsp; 140 lectures</p>
+            <p><i class='far'>&#xf017;</i> &nbsp; &nbsp; 42 Hours</p>
+            <p><i class='fas'>&#xf005;</i> &nbsp; &nbsp; 4.5 Rating</p>
+            <p>Language: English</p>
+            <p>price</p>
+            <button class="btn btn-primary" type="button">
+              Read More
+            </button>
+          </div>
         </div>
-      </mat-expansion-panel>
+          <!-- table start -->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+          <!-- table end -->
+        <button class="btn btn-primary ml-auto">Enroll</button>
+      </div>
+
+      <div class="tab-pane fade" id="React" role="tabpanel" aria-labelledby="v-pills-settings-tab">React</div>
     </div>
-  </mat-accordion>
   </div>
-</div> -->
+</div>
