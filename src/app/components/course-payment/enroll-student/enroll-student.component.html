@@ -43,7 +43,7 @@
         </mat-form-field>
         </div>
 
-        <div class="row d-flex justify-content-center">
+        <!-- <div class="row d-flex justify-content-center">
         <mat-form-field class="col-md-4">
           <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
         </mat-form-field>
@@ -51,7 +51,7 @@
         <mat-form-field class="col-md-4">
           <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
         </mat-form-field>
-        </div>
+        </div> -->
 
         <div class="d-flex justify-content-end frm-btn">
           <button matStepperNext (click)="getOrderId()" class="d-flex justify-content-center"><i class="material-icons">send</i></button>
@@ -61,12 +61,58 @@
     <mat-step [stepControl]="secondFormGroup" [editable]="false">
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Preview</ng-template>
-        <mat-form-field>
+        <!-- <mat-form-field>
           <input matInput placeholder="just some fields" formControlName="secondCtrl" required>
-        </mat-form-field>
+        </mat-form-field> -->
+        <div class="row">
+          <div class="col-lg-3 detailsType">
+            First Name :
+          </div>
+          <div class="col-lg-3 detailsValue">
+            {{firstForm.firstName}}
+          </div>
+          <div class="col-lg-3 detailsType">
+            Last Name :
+          </div>
+          <div class="col-lg-3 detailsValue">
+            {{firstForm.lastName}}
+          </div>
+          <div class="col-lg-3 detailsType">
+            Course Selected :
+          </div>
+          <div class="col-lg-3 detailsValue">
+            {{firstForm.lastName}}
+          </div>
+          <div class="col-lg-3 detailsType">
+            Email :
+          </div>
+          <div class="col-lg-3 detailsValue">
+            {{firstForm.contactEmail}}
+          </div>
+          <div class="col-lg-3 detailsType">
+            Amount Paid :
+          </div>
+          <div class="col-lg-3 detailsValue" >
+            {{firstForm.amountPaid}}
+          </div>
+          <div class="col-lg-3 detailsType">
+            Contact no :
+          </div>
+          <div class="col-lg-3 detailsValue">
+            {{firstForm.contactNumber}}
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-lg-6 editbtnalign">
+            <button mat-button matStepperPrevious class="editbtn">Edit</button>
+          </div>
+          <div class="col-lg-6">
+            <button mat-button matStepperNext class="proceedbtn">Proceed</button>
+          </div>
+        </div>
         <div>
-          <button mat-button matStepperPrevious>Edit</button>
-          <button mat-button matStepperNext>Proceed</button>
+          
+          
         </div>
       </form>
     </mat-step>
