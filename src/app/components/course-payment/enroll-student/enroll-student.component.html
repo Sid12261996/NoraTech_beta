@@ -18,14 +18,14 @@
           <mat-form-field class="col-md-4">
             <input matInput placeholder="First name" formControlName="firstName" required>
             <mat-error *ngIf="firstFormGroup.controls['firstName'].hasError('required') && firstFormGroup.controls['firstName'].touched">
-              Please fill this field
+              First name is required
             </mat-error>
           </mat-form-field>
 
           <mat-form-field class="col-md-4">
             <input matInput placeholder="Last name" formControlName="lastName" required>
             <mat-error *ngIf="firstFormGroup.controls['lastName'].hasError('required') && firstFormGroup.controls['lastName'].touched">
-              Please fill this field
+              Last name is required
             </mat-error>
           </mat-form-field>
         </div>
