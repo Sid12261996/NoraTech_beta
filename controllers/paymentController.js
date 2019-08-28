@@ -38,22 +38,24 @@ exports.createOrder = (req, res) => {
 };
 
 exports.webhooks = (req, res) => {
-    let reqBody = "",
-        signature = req.headers["x-razorpay-signature"];
-    req.on("data", (data) => {
-
-        reqBody += data;
-    });
-    req.on("end", (data) => {
-        console.log(data,reqBody);
-        // mail.sendMail('Webhook',`data:${data}
-        //
-        // reqBody:${reqBody}`,res).then(success=>{
-        //
-        // }).catch(onmessageerror=>console.error(onmessageerror));
-
-
-        // console.log(razorPay.validateWebhookSignature(reqBody, signature, mySecret));
-        res.status(200).send();
-    });
+    // let reqBody = "",
+    //     //     signature = req.headers["x-razorpay-signature"];
+    //     // req.on("data", (data) => {
+    //     //
+    //     //     reqBody += data;
+    //     // });
+    //     // req.on("end", (data) => {
+    //     //     console.log(data,reqBody);
+    //     //     // mail.sendMail('Webhook',`data:${data}
+    //     //     //
+    //     //     // reqBody:${reqBody}`,res).then(success=>{
+    //     //     //
+    //     //     // }).catch(onmessageerror=>console.error(onmessageerror));
+    //     //
+    //     //
+    //     //     // console.log(razorPay.validateWebhookSignature(reqBody, signature, mySecret));
+    //     //     res.status(200).send();
+    //     // });
+console.log(req.body);
+    res.status(200).send();
 };

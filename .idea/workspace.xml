@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="134a45b8-9ecf-4928-93bd-96a77a7ceca3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/models/mailerModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/paymentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/paymentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/mailer.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/mailer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +99,9 @@
       <workItem from="1565975425766" duration="1843000" />
       <workItem from="1566230545023" duration="1936000" />
       <workItem from="1566384329333" duration="757000" />
-      <workItem from="1566746105886" duration="3266000" />
+      <workItem from="1566746105886" duration="5283000" />
+      <workItem from="1566885897751" duration="1400000" />
+      <workItem from="1567007771606" duration="1956000" />
     </task>
     <task id="LOCAL-00001" summary="node comes to play!!">
       <created>1560883729262</created>
@@ -159,7 +159,21 @@
       <option name="project" value="LOCAL" />
       <updated>1566747683830</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="webhook will now send to mail rather than pushing in email">
+      <created>1566749431209</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1566749431209</updated>
+    </task>
+    <task id="LOCAL-00010" summary="webhook completed">
+      <created>1567009165270</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1567009165270</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -197,6 +211,8 @@
     <MESSAGE value="transactional model changes" />
     <MESSAGE value="changes on app.js" />
     <MESSAGE value="webhook enters the scene" />
-    <option name="LAST_COMMIT_MESSAGE" value="webhook enters the scene" />
+    <MESSAGE value="webhook will now send to mail rather than pushing in email" />
+    <MESSAGE value="webhook completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="webhook completed" />
   </component>
 </project>
