@@ -17,10 +17,16 @@
         <div class="row d-flex justify-content-center">
           <mat-form-field class="col-md-4">
             <input matInput placeholder="First name" formControlName="firstName" required>
+            <mat-error *ngIf="firstFormGroup.controls['firstName'].hasError('required') && firstFormGroup.controls['firstName'].touched">
+              Please fill this field
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field class="col-md-4">
             <input matInput placeholder="Last name" formControlName="lastName" required>
+            <mat-error *ngIf="firstFormGroup.controls['lastName'].hasError('required') && firstFormGroup.controls['lastName'].touched">
+              Please fill this field
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -31,6 +37,12 @@
 
           <mat-form-field class="col-md-4">
             <input matInput placeholder="Email" formControlName="contactEmail" required>
+            <mat-error *ngIf="firstFormGroup.controls['contactEmail'].dirty && firstFormGroup.controls['contactEmail'].touched">
+              Please enter a valid Email
+            </mat-error>
+            <mat-error *ngIf="firstFormGroup.controls['contactEmail'].hasError('required') && firstFormGroup.controls['contactEmail'].touched">
+              Please fill this field
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -41,7 +53,13 @@
         </mat-form-field>
 
         <mat-form-field class="col-md-4">
-          <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
+          <input matInput type="number" placeholder="Contact Number" formControlName="contactNumber" required>
+            <mat-error *ngIf="firstFormGroup.controls['contactNumber'].hasError('phoneNumber') && firstFormGroup.controls['contactNumber'].touched">
+              Please Enter valid mobile Number (should be 10 numbers)
+            </mat-error>
+            <mat-error *ngIf="firstFormGroup.controls['contactNumber'].hasError('required') && firstFormGroup.controls['contactNumber'].touched">
+              Mobile Number is required
+            </mat-error>
         </mat-form-field>
         </div>
 

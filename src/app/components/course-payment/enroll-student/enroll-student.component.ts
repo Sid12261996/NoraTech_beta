@@ -1,5 +1,5 @@
 import {Component, Injectable, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl,FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {ActivatedRoute} from '@angular/router';
 import {Course, CourseChargeSheet} from '../../../../Models/courses';
@@ -144,8 +144,8 @@ export class EnrollStudentComponent implements OnInit {
 
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      contactEmail: ['', Validators.required],
-      contactNumber: ['', Validators.required],
+      contactEmail: ['', [Validators.required, Validators.email]],
+      contactNumber: ['', [Validators.required, mobileNumberValidation]],
 
       registeredFor: [this.courseName, Validators.required],
       amountPaid: [this.setPrice(), Validators.required]
@@ -270,4 +270,28 @@ export class EnrollStudentComponent implements OnInit {
     console.log(CovenienceCharges.findPercentage('card', ['national', 'dinersCard']));
     console.log(this.paymentModeCheckbox.value);
   }
+
+  get phoneNumber() {
+    if (this.firstFormGroup.get('phNumber') != null) {
+      return this.firstFormGroup.get('phNumber').value;
+    }
+  }
 }
+
+export function mobileNumberValidation(control: AbstractControl) {
+  console.log('contactNumber', control);
+  if (control.value !== null) {
+    if (control.value.toString().length === 10) {
+      // console.log(' Valid', control.get('contactNumber'));
+      return null;
+    } else {
+      // console.log('Not Valid');
+      return { phoneNumber: true };
+    }
+  } else {
+    // console.log('Not Valid');
+    return { phoneNumber: true };
+  }
+
+}
+
