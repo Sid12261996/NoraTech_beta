@@ -101,7 +101,7 @@
       <workItem from="1566384329333" duration="757000" />
       <workItem from="1566746105886" duration="5283000" />
       <workItem from="1566885897751" duration="1400000" />
-      <workItem from="1567007771606" duration="2617000" />
+      <workItem from="1567007771606" duration="3496000" />
     </task>
     <task id="LOCAL-00001" summary="node comes to play!!">
       <created>1560883729262</created>
@@ -180,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567009754854</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="webhook sending mail">
+      <created>1567010614581</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1567010614581</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -221,6 +228,7 @@
     <MESSAGE value="webhook will now send to mail rather than pushing in email" />
     <MESSAGE value="webhook completed" />
     <MESSAGE value="webhook testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="webhook testing" />
+    <MESSAGE value="webhook sending mail" />
+    <option name="LAST_COMMIT_MESSAGE" value="webhook sending mail" />
   </component>
 </project>

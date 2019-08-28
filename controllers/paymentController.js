@@ -58,6 +58,7 @@ exports.webhooks = async (req, res) => {
     //     // });
     console.log(req.body);
     const payload = req.body;
-    await mail.sendMail(`Webhook ${payload.event}`, payload);
+    const str = JSON.stringify(payload);
+    await mail.sendMail(`Webhook ${payload.event}`, str).catch(err=>console.error(err));
     res.status(200).send();
 };
