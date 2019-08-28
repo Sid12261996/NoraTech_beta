@@ -15,6 +15,7 @@
 .frm-btn button:hover { background-color: #6CBDBD; }
 .frm-btn button .material-icons { color: white; }
 .label-1 { margin-top : 50px; margin-left: 150px;}
+mat-error {font-size: 16px;}
 
 /* Payment Tab */
 
