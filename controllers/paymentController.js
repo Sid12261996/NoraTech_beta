@@ -37,7 +37,7 @@ exports.createOrder = (req, res) => {
     });
 };
 
-exports.webhooks = (req, res) => {
+exports.webhooks = async (req, res) => {
     // let reqBody = "",
     //     //     signature = req.headers["x-razorpay-signature"];
     //     // req.on("data", (data) => {
@@ -56,6 +56,8 @@ exports.webhooks = (req, res) => {
     //     //     // console.log(razorPay.validateWebhookSignature(reqBody, signature, mySecret));
     //     //     res.status(200).send();
     //     // });
-console.log(req.body);
+    console.log(req.body);
+    const payload = req.body;
+    await mail.sendMail(`Webhook ${payload.event}`, payload);
     res.status(200).send();
 };
