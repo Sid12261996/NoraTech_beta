@@ -1,9 +1,9 @@
-const Razorpay = require('razorpay'),
+const razorpay = require('razorpay'),
     razor = require('../environment').env
 ;
 
 
-const instance = new Razorpay({
+const instance = new razorpay({
     key_id: razor["razor-key-id"],
         key_secret: razor["razor-secret-key"],
     // headers: {
@@ -19,4 +19,8 @@ exports.create = async (amount, receipt, notes = "") => {
 
         return result;
     });
+};
+
+exports.validate = (req,signature)=>{
+   console.log( razorpay.validateWebhookSignature(req,signature,razor.mySecret));
 };

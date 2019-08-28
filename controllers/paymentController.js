@@ -46,13 +46,14 @@ exports.webhooks = (req, res) => {
     });
     req.on("end", (data) => {
         console.log(data,reqBody);
-        mail.sendMail('Webhook',`data:${data}
-        
-        reqBody:${reqBody}`,res).then(success=>{
-            res.status(200).send();
-        }).catch(onmessageerror=>console.error(onmessageerror));
+        // mail.sendMail('Webhook',`data:${data}
+        //
+        // reqBody:${reqBody}`,res).then(success=>{
+        //
+        // }).catch(onmessageerror=>console.error(onmessageerror));
 
 
         // console.log(razorPay.validateWebhookSignature(reqBody, signature, mySecret));
+        res.status(200).send();
     });
 };

@@ -16,8 +16,7 @@ exports.sendMail = async function sendMail(subject, body) {
     });
     if (info.accepted !== null && info.accepted !== []) {
         return true;
-    }
-else return false;
+    } else return false;
 };
 const transporter = nodemailer.createTransport({
     auth: {

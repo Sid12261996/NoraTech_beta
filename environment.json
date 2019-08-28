@@ -4,6 +4,7 @@
     "jwtKey":"wejghcdhbxilhbhfenjdmkfc;x45gy3wegehxoufcrdbsuh3nyr8475g",
     "razor-key-id": "rzp_test_a0yDNvv3dMMij8",
     "razor-secret-key": "D7uX31xBU11GKs8ylYecvdNz",
-    "account-id": "acc_CuJddEDuUWUAqe"
+    "account-id": "acc_CuJddEDuUWUAqe",
+    "mySecret": "nora-123"
   }
 }
