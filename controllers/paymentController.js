@@ -3,7 +3,8 @@ const mongoose = require("mongoose"),
     transactionModel = require("../models/transactionModel"),
     razorPay = require('../models/razorPay'),
     razor = require('../environment').env,
-    mail = require('../models/mailerModel')
+    mail = require('../models/mailerModel'),
+    webhook = require('../models/webhook.js')
 ;
 
 const mySecret = razor["razor-secret-key"];
@@ -58,7 +59,16 @@ exports.webhooks = async (req, res) => {
     //     // });
     console.log(req.body);
     const payload = req.body;
-    const str = JSON.stringify(payload);
-    await mail.sendMail(`Webhook ${payload.event}`, str).catch(err=>console.error(err));
-    res.status(200).send();
+    const toSave = new webhook({
+        _id: mongoose.Types.ObjectId(),
+        payload: payload.payload,
+        account_id: payload.account_id,
+        createdAt: new Date(),
+        timeStamp: payload.created_at,
+        event: payload.event,
+    });
+    toSave.save().then(success => {
+        res.status(200).send();
+    }).catch(err => console.error(err))
+
 };
