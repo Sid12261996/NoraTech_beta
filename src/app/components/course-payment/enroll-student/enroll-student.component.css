@@ -11,25 +11,29 @@
 
 /* Fill in Details Tab */
 
-.frm-btn button { border: none; border-radius: 50%; padding: 10px; background-color: #29748E; margin : 25px 140px 25px 0; }
+.frm-btn button { border: none; border-radius: 50%; padding: 10px; background-color: #1B6284; margin : 25px 140px 25px 0; }
 .frm-btn button:hover { background-color: #6CBDBD; }
 .frm-btn button .material-icons { color: white; }
 .label-1 { margin-top : 50px; margin-left: 150px;}
 mat-error {font-size: 16px;}
 
+/* Middle Tab */
+.prev-title {display: flex; justify-content: center;}
+.form2btn {display: flex; justify-content: center; margin: 20px 0px;}
+.form2btn button {margin-right: 20px; padding: 5px 15px; font-size: 18px;}
+.editbtn, .proceedbtn{ background-color:#1B6284; padding:5px 20px; color:white; font-weight:800; font-size:14px; width:100px; }
+.form2btn button:nth-child(1):hover {background-color: #6CBDBD; color: white; }
+.form2btn button:nth-child(2):hover {background-color: #6CBDBD;}
+
 /* Payment Tab */
 
-table {margin: 15px 30px;}
-table tr { padding: 5px; }
-table tr th { padding-right: 20px;}
-.head mat-radio-button {padding-right: 30px;}
 .form3btn {display: flex; justify-content: center; margin: 20px 0px;}
 .form3btn button {margin-right: 20px; padding: 5px 15px; font-size: 18px;}
 .form3btn button:nth-child(1):hover {background-color: #CDCDCD; color: black; }
 .form3btn button:nth-child(2):hover {background-color: #C80000;}
-
 .ul-list li { margin: 5px 0px; }
-.head mat-radio-button {padding-top: 5px;}
+.head mat-radio-button {padding-top: 5px; padding-right: 20px;}
+.mat-card {height: 320px;}
 
 
 .detailsType{
@@ -47,12 +51,5 @@ table tr th { padding-right: 20px;}
 .editbtnalign{
     text-align:right;
 }
-.editbtn, .proceedbtn{
-    background-color:#1B6284;
-    padding:5px 20px;
-    color:white;
-    font-weight:800 ;
-    font-size:14px;
-    width:100px;
-}
+
 
