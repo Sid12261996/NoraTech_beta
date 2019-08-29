@@ -4,8 +4,8 @@
 
 
 
-  <mat-horizontal-stepper #stepper>
-    <mat-step [stepControl]="firstFormGroup">
+  <mat-horizontal-stepper #stepper linear="true">
+    <mat-step [stepControl]="firstFormGroup" >
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Fill your details</ng-template>
 
@@ -78,7 +78,7 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" [editable]="false">
+    <mat-step [editable]="false">
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Preview</ng-template>
         <!-- <mat-form-field>
@@ -238,26 +238,28 @@
             <li>
               <div class="head">
               <strong>Cards:</strong><br>
-              <mat-radio-button color="primary" value="2">National</mat-radio-button>
-              <mat-radio-button color="primary" value="3">International</mat-radio-button>
+              <mat-radio-button color="primary" checked value="Ncard" (click)="knowThePaymentMode('Ncard')">National</mat-radio-button>
+              <mat-radio-button color="primary" value="Icard" (click)="knowThePaymentMode('Icard')">International</mat-radio-button>
               </div>
             </li>
 
             <li>
               <div class="head">
               <strong>Net Banking:</strong><br>
-              <mat-radio-button color="primary" value="2">National</mat-radio-button>
-              <mat-radio-button color="primary" value="3">International</mat-radio-button>
+              <mat-radio-button color="primary" value="Nnet" (click)="knowThePaymentMode('Nnet')">National</mat-radio-button>
+              <mat-radio-button color="primary" value="Inet" (click)="knowThePaymentMode('Inet')">International</mat-radio-button>
               </div>
             </li>
-
-
             <li>
-              <mat-radio-button color="primary" value="3">EMI</mat-radio-button>
+              <mat-radio-button color="primary" value="wallet" (click)="knowThePaymentMode('wallet')">Wallet</mat-radio-button>
             </li>
 
             <li>
-              <mat-radio-button color="primary" value="2">UPI</mat-radio-button>
+              <mat-radio-button color="primary" value="emi" (click)="knowThePaymentMode('emi')">EMI</mat-radio-button>
+            </li>
+
+            <li>
+              <mat-radio-button color="primary" value="upi" (click)="knowThePaymentMode('upi')">UPI</mat-radio-button>
             </li>
 
           </ul>

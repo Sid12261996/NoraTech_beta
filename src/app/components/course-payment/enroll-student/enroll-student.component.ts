@@ -1,98 +1,16 @@
-import {Component, Injectable, OnInit} from '@angular/core';
-import {AbstractControl,FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {ActivatedRoute} from '@angular/router';
 import {Course, CourseChargeSheet} from '../../../../Models/courses';
 import {WindowRefService} from '../../../../Services/window-ref.service';
 import {CreateOrder} from '../../../../Models/razorpay';
 import {EnrollStudentService} from '../../../../Services/enrollStudent.service';
-import {charges, CovenienceCharges, MoneyConversion, paymentMethods} from '../../../../Models/charges';
+import {CovenienceCharges, MoneyConversion} from '../../../../Models/charges';
 import {environment} from '../../../../environments/environment';
 import {EnrolledStudent} from '../../../../Models/EnrolledStudent';
 import Swal from 'sweetalert2';
 
-// export class TodoItemNode {
-//   children: TodoItemNode[];
-//   item: string;
-//   display: string;
-//   percentage: number;
-// }
-//
-// /** Flat to-do item node with expandable and level information */
-// export class TodoItemFlatNode {
-//   item: string;
-//   level: number;
-//   expandable: boolean;
-// }
-
-// export const PAYMENT_SOURCE = {
-//   card: {national: 2, international: {dinersCard: 3, amexCard: 3}},
-//   netbanking: {national: 2, international: 3},
-//   wallet: 2,
-//   emi: 3,
-//   upi: 2
-// };
-
-// @Injectable()
-// export class ChecklistDatabase {
-//   dataChange = new BehaviorSubject<TodoItemNode[]>([]);
-//
-//   get data(): TodoItemNode[] {
-//     return this.dataChange.value;
-//   }
-//
-//   constructor() {
-//     this.initialize();
-//   }
-//
-//   initialize() {
-//     // Build the tree nodes from Json object. The result is a list of `TodoItemNode` with nested
-//     //     file node as children.
-//     const data = this.buildFileTree(PAYMENT_SOURCE, 0);
-//
-//     // Notify the change.
-//     this.dataChange.next(data);
-//   }
-//
-//   /**
-//    * Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
-//    * The return value is the list of `TodoItemNode`.
-//    */
-//   buildFileTree(obj: { [key: string]: any }, level: number): TodoItemNode[] {
-//     return Object.keys(obj).reduce<TodoItemNode[]>((accumulator, key) => {
-//       const value = obj[key];
-//       const node = new TodoItemNode();
-//       node.item = key;
-//       node.display = key;
-//       node.percentage = obj[key];
-//
-//       if (value != null) {
-//         if (typeof value === 'object') {
-//           node.children = this.buildFileTree(value, level + 1);
-//         } else {
-//           node.item = value;
-//           node.display = value;
-//           node.percentage = obj[value];
-//         }
-//       }
-//
-//       return accumulator.concat(node);
-//     }, []);
-//   }
-//
-//   /** Add an item to to-do list */
-//   insertItem(parent: TodoItemNode, name: string) {
-//     if (parent.children) {
-//       parent.children.push({item: name} as TodoItemNode);
-//       this.dataChange.next(this.data);
-//     }
-//   }
-//
-//   updateItem(node: TodoItemNode, name: string) {
-//     node.item = name;
-//     this.dataChange.next(this.data);
-//   }
-// }
 
 @Component({
   selector: 'app-enroll-student',
@@ -120,21 +38,16 @@ export class EnrollStudentComponent implements OnInit {
   secondFormGroup: FormGroup;
   paymentMethodsFormGroup: FormGroup;
   private courseName: string;
+  private paymentModeForRP: string;
 
   rzp1: any;
-  allPaymentOptions = paymentMethods;
-  order: CreateOrder;
   private callBackUrl = `http:/localhost:4200/enrollstudent/${this.courseName}/`;
   paymentModeCheckbox: FormControl;
-  modeSelected = false;
-
 
   ngOnInit() {
 
-    // console.log(CovenienceCharges.findPercentage('card', ['national', 'dinersCard']));
-
     this.router.paramMap.subscribe(params => {
-      // console.log(params.get('course'));
+
       this.courseName = params.get('course');
 
     });
@@ -158,14 +71,13 @@ export class EnrollStudentComponent implements OnInit {
     this.paymentModeCheckbox = new FormControl();
 
 
-
     this.paymentMethodsFormGroup = this._formBuilder.group({
       courseSelected: this.courseName,
       amountToBePaid: this.setPrice(),
 
     });
-
-    this.amountSummingConenienceFees = this.setPrice();
+    this.setPrice();
+    this.knowThePaymentMode('Ncard');
   }
 
   setPrice(): number {
@@ -176,8 +88,9 @@ export class EnrollStudentComponent implements OnInit {
   }
 
   openCheckout(): void {
-    if (this.paymentModeCheckbox.value == null || this.paymentMethodsFormGroup.value == undefined) {
 
+    if (this.paymentModeCheckbox.value != null && this.paymentMethodsFormGroup.value !== undefined) {
+      this.paymentModeForRP = CovenienceCharges.getPaymentModeName(this.paymentModeCheckbox.value);
     }
     const order = new CreateOrder();
     order.amount = MoneyConversion.inPaisa(this.total());
@@ -187,16 +100,24 @@ export class EnrollStudentComponent implements OnInit {
     };
     order.receipt = 'receipt' + this.firstForm.email;
 
-
+    Swal.fire({
+      title: 'wait...',
+      text: 'Ensuring your money reach us safely....',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      onOpen: () => {
+        Swal.showLoading();
+      }
+    });
     this.razorPay.createOrder(order).subscribe(res => {
       console.log(res);
-      Swal.showLoading();
+
       const options = {
         key: environment['razor-key-id'],
         amount: MoneyConversion.inPaisa(res.amount),
         currency: environment.currency,
         name: this.firstForm.firstName,
-        description: 'A Wild Sheep Chase is the third novel by Japanese author  Haruki Murakami',
+        description: `You are paying to Nora Tech pvt Ltd For the Course ${this.firstForm.registeredFor}`,
         image: environment['company-logo'],
         order_id: res.id,
         handler: (response) => {
@@ -205,7 +126,8 @@ export class EnrollStudentComponent implements OnInit {
         },
         prefill: {
           name: this.firstForm.firstName,
-          email: this.firstForm.contactEmail
+          email: this.firstForm.contactEmail,
+          method: this.paymentModeForRP
         },
         notes: {
           address: 'note value'
@@ -213,11 +135,27 @@ export class EnrollStudentComponent implements OnInit {
         theme: {
           color: '#F37254'
         },
-        method: 'upi',
         callback_url: this.callBackUrl
       };
+      Swal.fire({
+        title: 'Redirecting to Checkout page....',
+        timer: 500,
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        onOpen: () => {
+          Swal.showLoading();
+        }
+      });
       this.razorInstance(options);
-    }, error1 => console.error(error1));
+    }, error1 => {
+      console.error(error1);
+      Swal.fire({
+        title: 'Oops!!',
+        text: 'Something went wrong don\'t worry try again',
+        type: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    });
 
 
   }
@@ -246,29 +184,46 @@ export class EnrollStudentComponent implements OnInit {
 
     this.razorPay.enrollTheStudent(enrollThisStudent).subscribe(data => {
         console.log(data);
-      }, error1 =>
-        console.error(error1)
+        Swal.fire({
+          title: 'Gotcha!!',
+          text: 'We received your money, now lets start Learning!!',
+          type: 'success',
+          timer: 4000,
+          showConfirmButton: false
+        });
+      }, error1 => {
+        console.error(error1);
+        Swal.fire({
+          title: 'Oops!!',
+          text: 'Something went wrong don\'t worry try again',
+          type: 'error',
+          confirmButtonText: 'Try Again'
+        });
+      }
     );
   }
 
   decline() {
     console.log(this.paymentModeCheckbox.value);
-    this.calculateConvenienceCharges();
+    // this.calculateConvenienceCharges();
   }
 
-  calculateConvenienceCharges() {
-    this.amountSummingConenienceFees = this.total();
-    this.convenienceCharges = CovenienceCharges.convenienceCharges(this.setPrice(), this.paymentModeCheckbox.value);
+  calculateConvenienceCharges(percentage: number) {
+    this.amountSummingConenienceFees = CovenienceCharges.summingConvenienceCharges(this.setPrice(),
+      percentage);
+    this.convenienceCharges = CovenienceCharges.convenienceCharges(this.setPrice(),
+      percentage);
 
   }
 
   total(): number {
-    return CovenienceCharges.summingConvenienceCharges(this.setPrice(), this.paymentModeCheckbox.value);
+    return CovenienceCharges.summingConvenienceCharges(this.setPrice(),
+      CovenienceCharges.ConvToAcceptedPercentage(this.paymentModeCheckbox.value));
   }
 
-  knowThePaymentMode(node: any) {
-    console.log(CovenienceCharges.findPercentage('card', ['national', 'dinersCard']));
-    console.log(this.paymentModeCheckbox.value);
+  knowThePaymentMode(paymentMOde: string) {
+
+    this.calculateConvenienceCharges(CovenienceCharges.ConvToAcceptedPercentage(paymentMOde));
   }
 
   get phoneNumber() {
@@ -279,18 +234,15 @@ export class EnrollStudentComponent implements OnInit {
 }
 
 export function mobileNumberValidation(control: AbstractControl) {
-  console.log('contactNumber', control);
   if (control.value !== null) {
     if (control.value.toString().length === 10) {
       // console.log(' Valid', control.get('contactNumber'));
       return null;
     } else {
-      // console.log('Not Valid');
-      return { phoneNumber: true };
+      return {phoneNumber: true};
     }
   } else {
-    // console.log('Not Valid');
-    return { phoneNumber: true };
+    return {phoneNumber: true};
   }
 
 }

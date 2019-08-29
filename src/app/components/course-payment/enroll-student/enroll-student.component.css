@@ -33,7 +33,7 @@ table tr th { padding-right: 20px;}
 
 
 .detailsType{
- 
+
     font-weight:600;
     padding:10px 50px;
 
@@ -41,7 +41,7 @@ table tr th { padding-right: 20px;}
 .detailsValue{
     text-align:center;
     font-size:22px;
-    border-bottom:1px solid gray;
+    /*border-bottom:1px solid gray;*/
     padding:10px 50px;
 }
 .editbtnalign{
