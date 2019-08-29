@@ -19,7 +19,7 @@ export class MoneyConversion {
 }
 
 export const paymentMethods = {
-  card: {percentage: {national: 2, international: {dinersCard: 3, amexCard: 3}}, name: 'card'},
+  card: {percentage: {national: 2, international: 3}, name: 'card'},
   netbanking: {percentage: {national: 2, international: 3}, name: 'netbanking'},
   wallet: {percentage: 2, name: 'wallet'},
   emi: {percentage: 3, name: 'emi'},
@@ -41,11 +41,11 @@ export class CovenienceCharges {
     return amount + convenienceCharge;
   }
 
-  static findPercentage(pymtMethod: string, othrParams?: string[]): number {
+  private static findPercentage(pymtMethod: string, othrParams?: string[]): number {
     return this.recursiveFunction(paymentMethods[pymtMethod].percentage, othrParams);
   }
 
-  static recursiveFunction(obj, params) {
+ private static recursiveFunction(obj, params) {
     const length = params === undefined ? 0 : params.length;
     if (length > 0) {
       const index = params.splice(0, 1);
@@ -57,6 +57,46 @@ export class CovenienceCharges {
   }
 
   static addGST(amount: number): number {
-      return amount * (this.GST / 100) + amount;
+    return amount * (this.GST / 100) + amount;
+  }
+
+  public static ConvToAcceptedPercentage(mode: string): number {
+    switch (mode) {
+      case 'Ncard':
+        return this.findPercentage('card', ['national']);
+      case 'Icard':
+        return this.findPercentage('card', ['international']);
+      case 'Nnet':
+        return this.findPercentage('netbanking', ['national']);
+      case 'Inet':
+        return this.findPercentage('netbanking', ['international']);
+      case 'upi':
+        return this.findPercentage('upi');
+      case 'emi':
+        return this.findPercentage('emi');
+      case 'wallet':
+        return this.findPercentage('wallet');
+    }
+
+
+  }  public static getPaymentModeName(mode: string): string {
+    switch (mode) {
+      case 'Ncard':
+        return 'card';
+      case 'Icard':
+        return 'card';
+      case 'Nnet':
+        return 'netbanking';
+      case 'Inet':
+        return 'netbanking';
+      case 'upi':
+        return 'upi';
+      case 'emi':
+        return 'emi';
+      case 'wallet':
+        return 'wallet';
+    }
+
+
   }
 }
