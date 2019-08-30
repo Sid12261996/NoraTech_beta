@@ -101,8 +101,10 @@ export class EnrollStudentComponent implements OnInit {
     order.receipt = 'receipt' + this.firstForm.email;
 
     Swal.fire({
+
       title: 'wait...',
       text: 'Ensuring your money reach us safely....',
+
       allowEscapeKey: false,
       allowOutsideClick: false,
       onOpen: () => {
@@ -185,6 +187,7 @@ export class EnrollStudentComponent implements OnInit {
     this.razorPay.enrollTheStudent(enrollThisStudent).subscribe(data => {
         console.log(data);
         Swal.fire({
+
           title: 'Gotcha!!',
           text: 'We received your money, now lets start Learning!!',
           type: 'success',
@@ -200,6 +203,7 @@ export class EnrollStudentComponent implements OnInit {
           confirmButtonText: 'Try Again'
         });
       }
+
     );
   }
 
