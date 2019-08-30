@@ -1,12 +1,12 @@
-import {Component, Injectable, OnInit} from '@angular/core';
-import {AbstractControl,FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {ActivatedRoute} from '@angular/router';
 import {Course, CourseChargeSheet} from '../../../../Models/courses';
 import {WindowRefService} from '../../../../Services/window-ref.service';
 import {CreateOrder} from '../../../../Models/razorpay';
 import {EnrollStudentService} from '../../../../Services/enrollStudent.service';
-import {charges, CovenienceCharges, MoneyConversion, paymentMethods} from '../../../../Models/charges';
+import {CovenienceCharges, MoneyConversion} from '../../../../Models/charges';
 import {environment} from '../../../../environments/environment';
 import {EnrolledStudent} from '../../../../Models/EnrolledStudent';
 import Swal from 'sweetalert2';
@@ -38,6 +38,7 @@ export class EnrollStudentComponent implements OnInit {
   secondFormGroup: FormGroup;
   paymentMethodsFormGroup: FormGroup;
   private courseName: string;
+  private paymentModeForRP: string;
 
   rzp1: any;
   private callBackUrl = `http:/localhost:4200/enrollstudent/${this.courseName}/`;
@@ -45,10 +46,8 @@ export class EnrollStudentComponent implements OnInit {
 
   ngOnInit() {
 
-    // console.log(CovenienceCharges.findPercentage('card', ['national', 'dinersCard']));
-
     this.router.paramMap.subscribe(params => {
-      // console.log(params.get('course'));
+
       this.courseName = params.get('course');
 
     });
@@ -77,8 +76,8 @@ export class EnrollStudentComponent implements OnInit {
       amountToBePaid: this.setPrice(),
 
     });
-
-    this.amountSummingConenienceFees = this.setPrice();
+    this.setPrice();
+    this.knowThePaymentMode('Ncard');
   }
 
   setPrice(): number {
@@ -89,8 +88,9 @@ export class EnrollStudentComponent implements OnInit {
   }
 
   openCheckout(): void {
-    if (this.paymentModeCheckbox.value == null || this.paymentMethodsFormGroup.value == undefined) {
 
+    if (this.paymentModeCheckbox.value != null && this.paymentMethodsFormGroup.value !== undefined) {
+      this.paymentModeForRP = CovenienceCharges.getPaymentModeName(this.paymentModeCheckbox.value);
     }
     const order = new CreateOrder();
     order.amount = MoneyConversion.inPaisa(this.total());
@@ -101,7 +101,10 @@ export class EnrollStudentComponent implements OnInit {
     order.receipt = 'receipt' + this.firstForm.email;
 
     Swal.fire({
-      title: 'Ensuring your money reach us safely....',
+
+      title: 'wait...',
+      text: 'Ensuring your money reach us safely....',
+
       allowEscapeKey: false,
       allowOutsideClick: false,
       onOpen: () => {
@@ -116,7 +119,7 @@ export class EnrollStudentComponent implements OnInit {
         amount: MoneyConversion.inPaisa(res.amount),
         currency: environment.currency,
         name: this.firstForm.firstName,
-        description: 'A Wild Sheep Chase is the third novel by Japanese author  Haruki Murakami',
+        description: `You are paying to Nora Tech pvt Ltd For the Course ${this.firstForm.registeredFor}`,
         image: environment['company-logo'],
         order_id: res.id,
         handler: (response) => {
@@ -125,7 +128,8 @@ export class EnrollStudentComponent implements OnInit {
         },
         prefill: {
           name: this.firstForm.firstName,
-          email: this.firstForm.contactEmail
+          email: this.firstForm.contactEmail,
+          method: this.paymentModeForRP
         },
         notes: {
           address: 'note value'
@@ -133,7 +137,6 @@ export class EnrollStudentComponent implements OnInit {
         theme: {
           color: '#F37254'
         },
-        method: 'upi',
         callback_url: this.callBackUrl
       };
       Swal.fire({
@@ -146,7 +149,15 @@ export class EnrollStudentComponent implements OnInit {
         }
       });
       this.razorInstance(options);
-    }, error1 => console.error(error1));
+    }, error1 => {
+      console.error(error1);
+      Swal.fire({
+        title: 'Oops!!',
+        text: 'Something went wrong don\'t worry try again',
+        type: 'error',
+        confirmButtonText: 'Try Again'
+      });
+    });
 
 
   }
@@ -176,34 +187,47 @@ export class EnrollStudentComponent implements OnInit {
     this.razorPay.enrollTheStudent(enrollThisStudent).subscribe(data => {
         console.log(data);
         Swal.fire({
-          title: 'We got your money, now lets start Learning!!',
+
+          title: 'Gotcha!!',
+          text: 'We received your money, now lets start Learning!!',
           type: 'success',
-          timer: 3000,
+          timer: 4000,
           showConfirmButton: false
         });
-      }, error1 =>
-        console.error(error1)
+      }, error1 => {
+        console.error(error1);
+        Swal.fire({
+          title: 'Oops!!',
+          text: 'Something went wrong don\'t worry try again',
+          type: 'error',
+          confirmButtonText: 'Try Again'
+        });
+      }
+
     );
   }
 
   decline() {
     console.log(this.paymentModeCheckbox.value);
-    this.calculateConvenienceCharges();
+    // this.calculateConvenienceCharges();
   }
 
-  calculateConvenienceCharges() {
-    this.amountSummingConenienceFees = this.total();
-    this.convenienceCharges = CovenienceCharges.convenienceCharges(this.setPrice(), this.paymentModeCheckbox.value);
+  calculateConvenienceCharges(percentage: number) {
+    this.amountSummingConenienceFees = CovenienceCharges.summingConvenienceCharges(this.setPrice(),
+      percentage);
+    this.convenienceCharges = CovenienceCharges.convenienceCharges(this.setPrice(),
+      percentage);
 
   }
 
   total(): number {
-    return CovenienceCharges.summingConvenienceCharges(this.setPrice(), this.paymentModeCheckbox.value);
+    return CovenienceCharges.summingConvenienceCharges(this.setPrice(),
+      CovenienceCharges.ConvToAcceptedPercentage(this.paymentModeCheckbox.value));
   }
 
-  knowThePaymentMode(node: any) {
-    console.log(CovenienceCharges.findPercentage('card', ['national', 'dinersCard']));
-    console.log(this.paymentModeCheckbox.value);
+  knowThePaymentMode(paymentMOde: string) {
+
+    this.calculateConvenienceCharges(CovenienceCharges.ConvToAcceptedPercentage(paymentMOde));
   }
 
   get phoneNumber() {
@@ -214,18 +238,15 @@ export class EnrollStudentComponent implements OnInit {
 }
 
 export function mobileNumberValidation(control: AbstractControl) {
-  console.log('contactNumber', control);
   if (control.value !== null) {
     if (control.value.toString().length === 10) {
       // console.log(' Valid', control.get('contactNumber'));
       return null;
     } else {
-      // console.log('Not Valid');
-      return { phoneNumber: true };
+      return {phoneNumber: true};
     }
   } else {
-    // console.log('Not Valid');
-    return { phoneNumber: true };
+    return {phoneNumber: true};
   }
 
 }

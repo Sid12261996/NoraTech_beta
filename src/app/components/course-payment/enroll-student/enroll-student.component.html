@@ -4,8 +4,8 @@
 
 
 
-  <mat-horizontal-stepper #stepper>
-    <mat-step [stepControl]="firstFormGroup">
+  <mat-horizontal-stepper #stepper linear="true">
+    <mat-step [stepControl]="firstFormGroup" >
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Fill your details</ng-template>
 
@@ -19,16 +19,21 @@
         <div class="row d-flex justify-content-center">
           <mat-form-field class="col-md-4">
             <input matInput placeholder="First name" formControlName="firstName" required>
+
             <mat-error
               *ngIf="firstFormGroup.controls['firstName'].hasError('required') && firstFormGroup.controls['firstName'].touched">
+
+
               First name is required
             </mat-error>
           </mat-form-field>
 
           <mat-form-field class="col-md-4">
             <input matInput placeholder="Last name" formControlName="lastName" required>
+
             <mat-error
               *ngIf="firstFormGroup.controls['lastName'].hasError('required') && firstFormGroup.controls['lastName'].touched">
+
               Last name is required
             </mat-error>
           </mat-form-field>
@@ -88,7 +93,8 @@
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="secondFormGroup" [editable]="false">
+    <mat-step [editable]="false">
+
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Preview</ng-template>
         <!-- <mat-form-field>
@@ -167,6 +173,7 @@
     <mat-step>
       <ng-template matStepLabel>Payment</ng-template>
 
+
       <div class="col-md-12">
         <div class="row justify-content-center">
                   <div class="col-md-4 m-4">
@@ -225,37 +232,39 @@
                         <!--                            [checked]="checklistSelection.isSelected(node)"-->
                         <!--                            (change)="todoLeafItemSelectionToggle(node)" [value]="node.item">{{node.item}}</mat-radio-button>-->
                         <!--                            </mat-radio-group>-->
-                        <mat-radio-group [formControl]='paymentModeCheckbox'>
-                  
-                          <ul class="ul-list">
-                  
-                            <li>
-                              <div class="head">
-                                <strong>Cards:</strong><br>
-                                <mat-radio-button color="primary" value="2">National</mat-radio-button>
-                                <mat-radio-button color="primary" value="3">International</mat-radio-button>
-                              </div>
-                            </li>
-                  
-                            <li>
-                              <div class="head">
-                                <strong>Net Banking:</strong><br>
-                                <mat-radio-button color="primary" value="2">National</mat-radio-button>
-                                <mat-radio-button color="primary" value="3">International</mat-radio-button>
-                              </div>
-                            </li>
-                  
-                  
-                            <li>
-                              <mat-radio-button color="primary" value="3">EMI</mat-radio-button>
-                            </li>
-                  
-                            <li>
-                              <mat-radio-button color="primary" value="2">UPI</mat-radio-button>
-                            </li>
-                  
-                          </ul>
-                        </mat-radio-group>
+                       <mat-radio-group [formControl]='paymentModeCheckbox'>
+
+          <ul class="ul-list">
+
+            <li>
+              <div class="head">
+              <strong>Cards:</strong><br>
+              <mat-radio-button color="primary" checked value="Ncard" (click)="knowThePaymentMode('Ncard')">National</mat-radio-button>
+              <mat-radio-button color="primary" value="Icard" (click)="knowThePaymentMode('Icard')">International</mat-radio-button>
+              </div>
+            </li>
+
+            <li>
+              <div class="head">
+              <strong>Net Banking:</strong><br>
+              <mat-radio-button color="primary" value="Nnet" (click)="knowThePaymentMode('Nnet')">National</mat-radio-button>
+              <mat-radio-button color="primary" value="Inet" (click)="knowThePaymentMode('Inet')">International</mat-radio-button>
+              </div>
+            </li>
+            <li>
+              <mat-radio-button color="primary" value="wallet" (click)="knowThePaymentMode('wallet')">Wallet</mat-radio-button>
+            </li>
+
+            <li>
+              <mat-radio-button color="primary" value="emi" (click)="knowThePaymentMode('emi')">EMI</mat-radio-button>
+            </li>
+
+            <li>
+              <mat-radio-button color="primary" value="upi" (click)="knowThePaymentMode('upi')">UPI</mat-radio-button>
+            </li>
+
+          </ul>
+        </mat-radio-group>
                       </mat-card-content>
                     </mat-card>
                   </div>
@@ -301,6 +310,7 @@
                   </div>
                   </div>
                 </div>
+
 
       <div class="form3btn">
         <button mat-raised-button routerLink="." id="rzp-button1" (click)="openCheckout()">Pay</button>
