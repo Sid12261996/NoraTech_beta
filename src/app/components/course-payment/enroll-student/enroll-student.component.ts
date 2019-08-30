@@ -129,6 +129,7 @@ export class EnrollStudentComponent implements OnInit {
         prefill: {
           name: this.firstForm.firstName,
           email: this.firstForm.contactEmail,
+          contact: this.firstForm.contactNumber,
           method: this.paymentModeForRP
         },
         notes: {
