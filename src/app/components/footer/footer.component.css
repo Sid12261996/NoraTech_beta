@@ -1,62 +1,11 @@
-.sidepadding{
-    padding-left: 8%;
-    padding-right: 8%;
-    padding-top: 3%;
-    background-color: #292929;
-    color: white;
-    font-size: 14px;
-    font-family: 'Raleway', sans-serif;
-}
-.footerInfoHead{
-    font-size: 24px;
-    line-height: 24px;
-    letter-spacing: 2px;
-}
-.footerinfoPara{
-    word-spacing: 2.5px;
-    letter-spacing: 1px;
-    font-size: 13px;
-    margin-top: 25px;
-}
-.footerlinkHead{
-    font-family: 'Raleway', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    line-height: 24px;
-}
-.hrstyle{
-    background-color:#555;
-    margin-top: 12px;
-    margin-bottom: 12px;
-}
-.hrstyle2{
-    background-color:#555;
-    margin-top: 22px;
-    margin-bottom: 22px;
-}
-.footerLinks{
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-left: 0px;
-    margin-right: 0px;
-    font-weight: 600;
-    opacity: 0.8;
-    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-}.copyrightblock{
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    word-spacing: 1px;
-    font-family: 'Raleway', sans-serif;
-    opacity: 0.5;
-}
-/* media for small screen */
-@media only screen and (max-width: 600px) {
-    .footerInfoHead{
-        display: none;
-    }
-    .extramargin{
-        margin-top: 30px;
-    }
-  }
+body {margin: 0; padding: 0;}
+
+footer {background-color: #292929; color: white; padding: 10px;}
+.noratech-title {display: inline-block; border: 2px solid #85D8CE; padding: 10px; font-weight: bold;}
+.nora-title {color: #85D8CE; font-family: 'Raleway', sans-serif;}
+.foot-head {margin-top: 20px; font-family: 'Raleway', sans-serif; font-weight: bold;}
+.footer-hr {border-bottom:1px solid #85D8CE; margin: 20px 20%;}
+.follow-icon {font-size: 36px; margin: 10px; cursor: pointer;}
+.fa-facebook:hover {color: #1C9DEB;}
+.fa-twitter-square:hover {color: #1C9DEB;}
+.fa-instagram:hover {color: #1C9DEB;}
