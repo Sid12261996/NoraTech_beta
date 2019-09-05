@@ -2,8 +2,8 @@
   "env":{
     "MongoUrl":"mongodb+srv://dev1:dev123@cluster0-5zaen.mongodb.net/norasite?retryWrites=true&w=majority",
     "jwtKey":"wejghcdhbxilhbhfenjdmkfc;x45gy3wegehxoufcrdbsuh3nyr8475g",
-    "razor-key-id": "rzp_test_a0yDNvv3dMMij8",
-    "razor-secret-key": "D7uX31xBU11GKs8ylYecvdNz",
+    "razor-key-id": "rzp_live_pLmFzV4ttIXHnm",
+    "razor-secret-key": "DabhfJgK6UorWmJwgOjOAFzW",
     "account-id": "acc_CuJddEDuUWUAqe",
     "mySecret": "nora-123"
   }
