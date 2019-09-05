@@ -6,7 +6,7 @@ export const charges = {
   NodeJs: 7000,
   db: 5000,
   CEH: 16000,
-  Testing: 7000
+  Testing: 1
 
 
 };
