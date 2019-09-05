@@ -209,7 +209,7 @@ matInput{
     font-size: 40px;
     line-height: 48px;
     font-weight: 300;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
 }
 .introcol{
     margin-top: 70px;
@@ -247,16 +247,50 @@ matInput{
     line-height: 40px;
     letter-spacing: 1px;
     color: #1B6284;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
 }
-.featurecol{
+.whatwecol{
     margin-top: 60px;
+    background-image: url('../../../assets/mainback.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
+
+.whatwecolin {
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 60px 40px;
+}
+
+.whatwehr {
+    width: 100px;
+    background-color: #79D8C4;
+}
+
+.whatwecol p{
+    color: #fff;
+}
+
+.whatwecol h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: #fff;
+}
+
 .featurecolhead{
     font-size: 13px;
     letter-spacing: 2px;
     font-weight: 700;
     margin-top: 40px;
 }
+
+.easytohr {
+    margin-bottom: 6%;
+    background-color: #666;
+}
+
 .featurecolpara{
     font-size: 14px;
     line-height: 30px;
