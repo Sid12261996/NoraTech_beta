@@ -4,8 +4,8 @@ footer {background-color: #292929; color: white; padding: 10px;}
 .noratech-title {display: inline-block; border: 2px solid #85D8CE; padding: 10px; font-weight: bold;}
 .nora-title {color: #85D8CE; font-family: 'Raleway', sans-serif;}
 .foot-head {margin-top: 20px; font-family: 'Raleway', sans-serif; font-weight: bold;}
-.footer-hr {border-bottom:1px solid #85D8CE; margin: 20px 20%;}
-.follow-icon {font-size: 36px; margin: 10px; cursor: pointer;}
+.footer-hr {border-bottom:1px solid #85D8CE; margin: 20px 30%;}
+.follow-icon {font-size: 30px; margin: 10px; cursor: pointer;}
 .fa-facebook:hover {color: #1C9DEB;}
 .fa-twitter-square:hover {color: #1C9DEB;}
 .fa-instagram:hover {color: #1C9DEB;}
