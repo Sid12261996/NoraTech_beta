@@ -1,5 +1,5 @@
 <app-header></app-header><br>
-<mat-accordion class="">
+<!-- <mat-accordion class="">
   <div class="row m-0">
     <div class="col-lg-6 mt-2 mb-2" *ngFor="let c of courses|keyvalue; let first = first;let i = step">
       <mat-expansion-panel>
@@ -39,7 +39,7 @@
             </div>
           </div>
         </mat-expansion-panel-header>
-        <!-- table start -->
+
         <table class="table table-hover">
           <thead>
           <tr>
@@ -69,7 +69,7 @@
           </tr>
           </tbody>
         </table>
-        <!-- table end -->
+
 
         <button class="btn btn-primary ml-auto" [routerLink]="['/enrollStudent',c.value['name']]">Enroll
           For {{c.value['name']}}</button>
@@ -80,7 +80,7 @@
   </div>
 </mat-accordion>
 
-<!-- New Type -->
+
 <div class="row m-0 mt-2 mb-2">
   <div class="col-3">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -129,7 +129,7 @@
             </button>
           </div>
         </div>
-          <!-- table start -->
+          
         <table class="table table-hover">
           <thead>
             <tr>
@@ -159,11 +159,115 @@
             </tr>
           </tbody>
         </table>
-          <!-- table end -->
+         
         <button class="btn btn-primary ml-auto">Enroll</button>
       </div>
 
       <div class="tab-pane fade" id="React" role="tabpanel" aria-labelledby="v-pills-settings-tab">React</div>
     </div>
   </div>
+</div> -->
+
+<!-- course page design -->
+<div class="row m-0">
+  <div class="col-lg-12 loop-col" *ngFor="let c of courses|keyvalue; let first = first;let i = step">
+    <div class="row m-0 pl-5 pr-5 courserow">
+      <div class="col-lg-2">
+        <img src="../../../assets/courses/Angular_full_color_logo.svg.png" alt="" class="courseimg" >
+      </div>
+      <div class="col-lg-8 text-center mt-5">
+        <p class="coursename" shadow='Angular!'>{{c.value['name']}}</p>
+      </div>
+      <div class="col-lg-2">
+        <button class="btn btn-primary ml-auto mt-5">Enroll</button>
+      </div>
+      <div class="col-lg-12 mb-4">
+        <hr>
+      </div>
+      <div class="col-lg-6 course-desc">
+        <p class="whatlearn">What you'll learn</p>
+        <div class="row m-0">
+          <div class="col-1 p-0">
+              <i style='font-size:24px' class='fas'>&#xf00c;</i>
+          </div>
+          <div class="col-11">
+            <p class="m-0">Learn to use Angular professionally, learning both Angular 7 and Angular 8!  and many more for first sentence !</p>
+          </div>
+          <div class="col-1 p-0 mt-2">
+              <i style='font-size:24px' class='fas'>&#xf00c;</i>
+          </div>
+          <div class="col-11 mt-2">
+            <p class="m-0">Learn to use Angular professionally, learning both Angular 7 and Angular 8!  and many more for first sentence !</p>
+          </div>
+          <div class="col-1 p-0 mt-2">
+            <i style='font-size:24px' class='fas'>&#xf00c;</i>
+          </div>
+          <div class="col-11 mt-2">
+            <p class="m-0">Learn to use Angular professionally, learning both Angular 7 and Angular 8!  and many more for first sentence !</p>
+          </div>
+          <div class="col-1 p-0 mt-2">
+            <i style='font-size:24px' class='fas'>&#xf00c;</i>
+          </div>
+          <div class="col-11 mt-2">
+            <p class="m-0">Learn to use Angular professionally, learning both Angular 7 and Angular 8!  and many more for first sentence !</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <!-- table start -->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- table end -->
+      </div>
+    </div>
+  </div>
 </div>
+
+

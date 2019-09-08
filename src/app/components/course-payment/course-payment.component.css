@@ -44,3 +44,26 @@ table {
       -webkit-mask-position: -50%;
     }
   }
+
+  .courserow{
+    box-shadow:1px 1px 3px lightgray;
+    border:1px solid lightgray;
+    border-radius:4px ;
+    padding-top:35px;
+    padding-bottom:35px;
+  }
+  .loop-col{
+    margin-top:10px;
+    margin-bottom:10px;
+  }
+  .loop-col:nth-child(odd) .courserow{
+    background-color:rgba(245, 245, 245, 0.856);
+  }
+  .course-desc{
+    border-right:1px solid lightgray;
+  }
+  thead{
+    background-color:#292929;
+    color:white;
+    font-size: 1.25rem;
+  }
