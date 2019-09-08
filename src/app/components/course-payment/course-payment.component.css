@@ -44,3 +44,15 @@ table {
       -webkit-mask-position: -50%;
     }
   }
+
+  .courserow{
+    box-shadow:1px 1px 3px lightgray;
+    border:1px solid lightgray;
+    border-radius:4px ;
+    padding-top:15px;
+    padding-bottom:15px;
+  }
+  .loop-col{
+    margin-top:10px;
+    margin-bottom:10px;
+  }
