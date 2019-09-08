@@ -101,10 +101,7 @@ export class ContactUsComponent implements OnInit {
   // }
 
   setPrice(): void {
-    // const temp = [];
-    // for (const justTemp of this.form.course) {
-    //   temp.push(Course.stringToEnum(justTemp));
-    // }
+
     this.formControl.patchValue({
       price: CourseChargeSheet.CalculateChargeforAll(this.form.course)
     });

@@ -42,7 +42,7 @@
                       <div class="row m-0">
                         <label class="col-md-12"><small><b>Contact Number</b></small></label>
                         <label class="col-md-12">
-                          <input type="tel" class="form-control input" formControlName="phNum">
+                          <input type="number" class="form-control input" formControlName="phNum">
                           <mat-error *ngIf="formControl.controls['phNum'].hasError('phoneNumber') && formControl.controls['phNum'].touched">
                           Please Enter valid mobile Number (should be 10 numbers)
                           </mat-error>

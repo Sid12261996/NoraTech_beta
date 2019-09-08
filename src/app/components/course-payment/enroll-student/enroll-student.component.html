@@ -1,274 +1,327 @@
 <app-header></app-header>
-<div class="fill container">
-  <!--  <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">-->
-  <!--    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}-->
-  <!--  </button>-->
 
-  <mat-horizontal-stepper #stepper>
-    <mat-step [stepControl]="firstFormGroup">
+<div class="fill">
+
+
+
+  <mat-horizontal-stepper #stepper linear="true">
+    <mat-step [stepControl]="firstFormGroup" >
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Fill your details</ng-template>
 
+
         <div class="d-flex justify-content-start label-1">
-          <label><h4>Fill Details:</h4></label>
+          <label>
+            <h4>Fill Details:</h4>
+          </label>
         </div>
 
         <div class="row d-flex justify-content-center">
           <mat-form-field class="col-md-4">
             <input matInput placeholder="First name" formControlName="firstName" required>
+
+            <mat-error
+              *ngIf="firstFormGroup.controls['firstName'].hasError('required') && firstFormGroup.controls['firstName'].touched">
+
+
+              First name is required
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field class="col-md-4">
             <input matInput placeholder="Last name" formControlName="lastName" required>
-          </mat-form-field> 
+
+            <mat-error
+              *ngIf="firstFormGroup.controls['lastName'].hasError('required') && firstFormGroup.controls['lastName'].touched">
+
+              Last name is required
+            </mat-error>
+          </mat-form-field>
         </div>
 
         <div class="row d-flex justify-content-center">
           <mat-form-field class="col-md-4">
-            <input matInput placeholder="Course Selected" formControlName="registeredFor" required>
+            <input matInput placeholder="Course Selected" formControlName="registeredFor" required readonly>
           </mat-form-field>
 
           <mat-form-field class="col-md-4">
             <input matInput placeholder="Email" formControlName="contactEmail" required>
+            <mat-error
+              *ngIf="firstFormGroup.controls['contactEmail'].dirty && firstFormGroup.controls['contactEmail'].touched">
+              Please enter a valid Email
+            </mat-error>
+            <mat-error
+              *ngIf="firstFormGroup.controls['contactEmail'].hasError('required') && firstFormGroup.controls['contactEmail'].touched">
+              Please fill this field
+            </mat-error>
           </mat-form-field>
         </div>
 
         <div class="row d-flex justify-content-center">
-        <mat-form-field class="col-md-4">
-          <input matInput placeholder="Amount Paid" formControlName="amountPaid" required>
-        </mat-form-field>
-        
-        <mat-form-field class="col-md-4">
-          <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
-        </mat-form-field>
+          <mat-form-field class="col-md-4">
+            <input matInput placeholder="Amount Paid" formControlName="amountPaid" required readonly>
+
+          </mat-form-field>
+
+          <mat-form-field class="col-md-4">
+            <input matInput type="number" placeholder="Contact Number" formControlName="contactNumber" required>
+            <mat-error
+              *ngIf="firstFormGroup.controls['contactNumber'].hasError('phoneNumber') && firstFormGroup.controls['contactNumber'].touched">
+              Please Enter valid mobile Number (should be 10 numbers)
+            </mat-error>
+            <mat-error
+              *ngIf="firstFormGroup.controls['contactNumber'].hasError('required') && firstFormGroup.controls['contactNumber'].touched">
+              Mobile Number is required
+            </mat-error>
+          </mat-form-field>
         </div>
 
         <!-- <div class="row d-flex justify-content-center">
         <mat-form-field class="col-md-4">
           <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
         </mat-form-field>
-        
+
         <mat-form-field class="col-md-4">
           <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
         </mat-form-field>
         </div> -->
 
         <div class="d-flex justify-content-end frm-btn">
-          <button matStepperNext (click)="getOrderId()" class="d-flex justify-content-center"><i class="material-icons">send</i></button>
+          <button matStepperNext (click)="getOrderId()" class="d-flex justify-content-center"><i
+              class="material-icons">send</i></button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" [editable]="false">
+
+    <mat-step [editable]="false">
+
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Preview</ng-template>
-        <mat-form-field>
+        <!-- <mat-form-field>
           <input matInput placeholder="just some fields" formControlName="secondCtrl" required>
-        </mat-form-field>
-        <div class="row">
-          <div class="col-lg-3 detailsType">
-            First Name :
-          </div>
-          <div class="col-lg-3 detailsValue">
-            shekhar
-          </div>
-          <div class="col-lg-3 detailsType">
-            Last Name :
-          </div>
-          <div class="col-lg-3 detailsValue">
-            saini
-          </div>
-          <div class="col-lg-3 detailsType">
-            Course Selected :
-          </div>
-          <div class="col-lg-3 detailsValue">
-            Angular
-          </div>
-          <div class="col-lg-3 detailsType">
-            Email :
-          </div>
-          <div class="col-lg-3 detailsValue">
-            email@gmail.com
-          </div>
-          <div class="col-lg-3 detailsType">
-            Amount Paid :
-          </div>
-          <div class="col-lg-3 detailsValue">
-            INR 10
-          </div>
-          <div class="col-lg-3 detailsType">
-            Contact no :
-          </div>
-          <div class="col-lg-3 detailsValue">
-            100
-          </div>
+        </mat-form-field> -->
+        <div class="row justify-content-center">
+            <div class="col-md-6 m-4">
+              <mat-card class="mat-card">
+                <mat-card-header class="prev-title">
+                  <mat-card-title><h4>Preview Details:</h4></mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <div class="table-responsive table-borderless">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <th>
+                            <mat-label>Name: </mat-label>
+                          </th>
+                          <td>
+                            <mat-label readonly>{{firstForm.firstName}} {{firstForm.lastName}}</mat-label>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>
+                            <mat-label>Course Selected :</mat-label>
+                          </th>
+                          <td>
+                            <mat-label readonly>{{firstForm.registeredFor}}</mat-label>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>
+                            <mat-label>Email: </mat-label>
+                          </th>
+                          <td>
+                            <mat-label readonly>{{firstForm.contactEmail}}</mat-label>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>
+                            <mat-label>Amount Paid : </mat-label>
+                          </th>
+                          <td>
+                            <mat-label readonly>{{firstForm.amountPaid}}</mat-label>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>
+                            <mat-label>Contact no : </mat-label>
+                          </th>
+                          <td>
+                            <mat-label readonly>{{firstForm.contactNumber}}</mat-label>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
         </div>
-        <div class="row mt-3">
-          <div class="col-lg-6 editbtnalign">
+
+        <div class="form2btn">
             <button mat-button matStepperPrevious class="editbtn">Edit</button>
-          </div>
-          <div class="col-lg-6">
+
             <button mat-button matStepperNext class="proceedbtn">Proceed</button>
-          </div>
         </div>
         <div>
-          
-          
+
+
         </div>
       </form>
     </mat-step>
+
     <mat-step>
       <ng-template matStepLabel>Payment</ng-template>
 
-    <div class="row">
-      <div class="col-md-6">
-        <h4 class="page-head">Payment Details:</h4>
-        <table>
-          <tr>
-            <th>
-              <mat-label>Amount</mat-label>
-            </th>
-            <td>
-              <mat-label readonly>Rs. {{setPrice()}}</mat-label>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <mat-label>Covenience Charges</mat-label>
-            </th>
-            <td>
-              <mat-label readonly>Rs. {{convenienceCharges}}</mat-label>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <mat-label>Total Amount to be Paid</mat-label>
-            </th>
-            <td>
-              <mat-label readonly>Rs. {{amountSummingConenienceFees}}</mat-label>
-            </td>
-          </tr>
-        </table>
-      </div>
 
-      <div class="CPM col-md-6">
-        <h4 class="page-head">Choose Payment Mode:</h4>
-        <!--        <p *ngFor="let paymentOption of allPaymentOptions|keyvalue">-->
-        <!--          <mat-checkbox>{{paymentOption.key}}-->
+      <div class="col-md-12">
+        <div class="row justify-content-center">
+                  <div class="col-md-4 m-4">
+                    <mat-card class="mat-card">
+                      <mat-card-header>
+                        <mat-card-title><h4>Choose Payment Mode:</h4></mat-card-title>
+                      </mat-card-header>
+                      <mat-card-content>
+                        <!--        <p *ngFor="let paymentOption of allPaymentOptions|keyvalue">-->
+                        <!--          <mat-checkbox>{{paymentOption.key}}-->
+                  
+                        <!--          </mat-checkbox>-->
+                        <!--        </p>-->
+                  
+                        <!--        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">-->
+                        <!--          &lt;!&ndash; This is the tree node template for leaf nodes &ndash;&gt;-->
+                        <!--          <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>-->
+                        <!--            <li class="mat-tree-node">-->
+                        <!--              &lt;!&ndash; use a disabled button to provide padding for tree leaf &ndash;&gt;-->
+                        <!--              <button mat-icon-button disabled></button>-->
+                        <!--              <mat-radio-group-->
+                        <!--                aria-labelledby="example-radio-group-label"-->
+                        <!--               [formControl]='paymentModeCheckbox'>-->
+                        <!--                <mat-radio-button class="example-radio-button"-->
+                        <!--                                  [value]="node.name">{{node.name}}</mat-radio-button>-->
+                        <!--              </mat-radio-group>-->
+                        <!--            </li>-->
+                        <!--          </mat-tree-node>-->
+                        <!--          &lt;!&ndash; This is the tree node template for expandable nodes &ndash;&gt;-->
+                        <!--          <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">-->
+                        <!--            <li>-->
+                        <!--              <div class="mat-tree-node">-->
+                        <!--                <button mat-icon-button matTreeNodeToggle-->
+                        <!--                        [attr.aria-label]="'toggle ' + node.name">-->
+                        <!--                  <mat-icon class="mat-icon-rtl-mirror">-->
+                        <!--                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}-->
+                        <!--                  </mat-icon>-->
+                        <!--                </button>-->
+                        <!--                {{node.name}}-->
+                        <!--              </div>-->
+                        <!--              <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">-->
+                        <!--                <ng-container matTreeNodeOutlet></ng-container>-->
+                        <!--              </ul>-->
+                        <!--            </li>-->
+                        <!--          </mat-nested-tree-node>-->
+                        <!--        </mat-tree>-->
+                  
+                  
+                        <!--        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">-->
+                        <!--          <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>-->
+                        <!--            <button mat-icon-button disabled></button>-->
+                        <!--            <mat-radio-group-->
+                        <!--                              aria-labelledby="example-radio-group-label"-->
+                        <!--                             [formControl]='paymentModeCheckbox'>-->
+                        <!--              <mat-radio-button class="checklist-leaf-node"-->
+                        <!--                            [checked]="checklistSelection.isSelected(node)"-->
+                        <!--                            (change)="todoLeafItemSelectionToggle(node)" [value]="node.item">{{node.item}}</mat-radio-button>-->
+                        <!--                            </mat-radio-group>-->
+                       <mat-radio-group [formControl]='paymentModeCheckbox'>
 
-        <!--          </mat-checkbox>-->
-        <!--        </p>-->
-
-        <!--        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">-->
-        <!--          &lt;!&ndash; This is the tree node template for leaf nodes &ndash;&gt;-->
-        <!--          <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>-->
-        <!--            <li class="mat-tree-node">-->
-        <!--              &lt;!&ndash; use a disabled button to provide padding for tree leaf &ndash;&gt;-->
-        <!--              <button mat-icon-button disabled></button>-->
-        <!--              <mat-radio-group-->
-        <!--                aria-labelledby="example-radio-group-label"-->
-        <!--               [formControl]='paymentModeCheckbox'>-->
-        <!--                <mat-radio-button class="example-radio-button"-->
-        <!--                                  [value]="node.name">{{node.name}}</mat-radio-button>-->
-        <!--              </mat-radio-group>-->
-        <!--            </li>-->
-        <!--          </mat-tree-node>-->
-        <!--          &lt;!&ndash; This is the tree node template for expandable nodes &ndash;&gt;-->
-        <!--          <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">-->
-        <!--            <li>-->
-        <!--              <div class="mat-tree-node">-->
-        <!--                <button mat-icon-button matTreeNodeToggle-->
-        <!--                        [attr.aria-label]="'toggle ' + node.name">-->
-        <!--                  <mat-icon class="mat-icon-rtl-mirror">-->
-        <!--                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}-->
-        <!--                  </mat-icon>-->
-        <!--                </button>-->
-        <!--                {{node.name}}-->
-        <!--              </div>-->
-        <!--              <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">-->
-        <!--                <ng-container matTreeNodeOutlet></ng-container>-->
-        <!--              </ul>-->
-        <!--            </li>-->
-        <!--          </mat-nested-tree-node>-->
-        <!--        </mat-tree>-->
-
-
-        <!--        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">-->
-        <!--          <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>-->
-        <!--            <button mat-icon-button disabled></button>-->
-        <!--            <mat-radio-group-->
-        <!--                              aria-labelledby="example-radio-group-label"-->
-        <!--                             [formControl]='paymentModeCheckbox'>-->
-        <!--              <mat-radio-button class="checklist-leaf-node"-->
-        <!--                            [checked]="checklistSelection.isSelected(node)"-->
-        <!--                            (change)="todoLeafItemSelectionToggle(node)" [value]="node.item">{{node.item}}</mat-radio-button>-->
-        <!--                            </mat-radio-group>-->
-
-
-        <!--          </mat-tree-node>-->
-
-        <!--          <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>-->
-        <!--            <button mat-icon-button disabled></button>-->
-        <!--            <mat-form-field>-->
-        <!--              <input matInput #itemValue placeholder="New item...">-->
-        <!--            </mat-form-field>-->
-        <!--            <button mat-button (click)="saveNode(node, itemValue.value)">Save</button>-->
-        <!--          </mat-tree-node>-->
-
-        <!--          <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>-->
-        <!--            <button mat-icon-button matTreeNodeToggle-->
-        <!--                    [attr.aria-label]="'toggle ' + node.filename">-->
-        <!--              <mat-icon class="mat-icon-rtl-mirror">-->
-        <!--                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}-->
-        <!--              </mat-icon>-->
-        <!--            </button>-->
-        <!--            <mat-checkbox [checked]="descendantsAllSelected(node)"-->
-        <!--                          [indeterminate]="descendantsPartiallySelected(node)"-->
-        <!--                          (change)="todoItemSelectionToggle(node)">{{node.item}}</mat-checkbox>-->
-
-        <!--          </mat-tree-node>-->
-        <!--        </mat-tree>-->
-        <mat-radio-group [formControl]='paymentModeCheckbox'>
-
-          <ul>
+          <ul class="ul-list">
 
             <li>
               <div class="head">
               <strong>Cards:</strong><br>
-              <mat-radio-button color="primary" value="2">National</mat-radio-button>
-              <mat-radio-button color="primary" value="3">International</mat-radio-button>
+              <mat-radio-button color="primary" checked value="Ncard" (click)="knowThePaymentMode('Ncard')">National</mat-radio-button>
+              <mat-radio-button color="primary" value="Icard" (click)="knowThePaymentMode('Icard')">International</mat-radio-button>
               </div>
             </li>
 
             <li>
               <div class="head">
               <strong>Net Banking:</strong><br>
-              <mat-radio-button color="primary" value="2">National</mat-radio-button>
-              <mat-radio-button color="primary" value="3">International</mat-radio-button>
+              <mat-radio-button color="primary" value="Nnet" (click)="knowThePaymentMode('Nnet')">National</mat-radio-button>
+              <mat-radio-button color="primary" value="Inet" (click)="knowThePaymentMode('Inet')">International</mat-radio-button>
               </div>
             </li>
-
-            <!--<mat-radio-group >-->
             <li>
-              <mat-radio-button color="primary" value="3">EMI</mat-radio-button>
+              <mat-radio-button color="primary" value="wallet" (click)="knowThePaymentMode('wallet')">Wallet</mat-radio-button>
             </li>
 
             <li>
-              <mat-radio-button color="primary" value="2">UPI</mat-radio-button>
+              <mat-radio-button color="primary" value="emi" (click)="knowThePaymentMode('emi')">EMI</mat-radio-button>
             </li>
-            <!--</mat-radio-group>-->
+
+            <li>
+              <mat-radio-button color="primary" value="upi" (click)="knowThePaymentMode('upi')">UPI</mat-radio-button>
+            </li>
+
           </ul>
         </mat-radio-group>
-      </div>
-      </div>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+
+                  <div class="col-md-4 m-4">
+                    <mat-card class="mat-card">
+                      <mat-card-header>
+                        <mat-card-title><h4>Payment Details:</h4></mat-card-title>
+                      </mat-card-header>
+                      <mat-card-content>
+                        <div class="table-responsive table-borderless">
+                          <table class="table">
+                            <tbody>
+                              <tr>
+                                <th>
+                                  <mat-label>Amount</mat-label>
+                                </th>
+                                <td>
+                                  <mat-label readonly>Rs. {{setPrice()}}</mat-label>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th>
+                                  <mat-label>Covenience Charges</mat-label>
+                                </th>
+                                <td>
+                                  <mat-label readonly>Rs. {{convenienceCharges}}</mat-label>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th>
+                                  <mat-label>Total Amount to be Paid</mat-label>
+                                </th>
+                                <td>
+                                  <mat-label readonly>Rs. {{amountSummingConenienceFees}}</mat-label>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                  </div>
+                </div>
+
 
       <div class="form3btn">
         <button mat-raised-button routerLink="." id="rzp-button1" (click)="openCheckout()">Pay</button>
+
 
         <script type="text/javascript" src="https://checkout.razorpay.com/v1/razorpay.js"></script>
         <script type="text/javascript" src="../../../../razor.js"></script>
 
         <button mat-raised-button color="warn" matStepperPrevious (click)="decline()">Decline</button>
       </div>
+
     </mat-step>
   </mat-horizontal-stepper>
 
