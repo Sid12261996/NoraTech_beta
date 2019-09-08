@@ -30,6 +30,7 @@ table {
     font-size: 2em; 
     text-shadow: .03em .03em 0 hsla(230,40%,50%,1);
 }
+
 .coursename:hover{
     -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.5) 70%);
     -webkit-mask-size: 200%;
@@ -43,4 +44,15 @@ table {
     to {
       -webkit-mask-position: -50%;
     }
+  }
+  .courserow{
+    box-shadow:1px 1px 3px lightgray;
+    border:1px solid lightgray;
+    border-radius:4px ;
+    padding-top:15px;
+    padding-bottom:15px;
+  }
+  .loop-col{
+    margin-top:10px;
+    margin-bottom:10px;
   }
