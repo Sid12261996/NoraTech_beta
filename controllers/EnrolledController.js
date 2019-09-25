@@ -27,7 +27,8 @@ exports.Enroll_Student = (req, res, next) => {
                 createdStudent: {
                     _id: result._id,
                     name: result.name,
-                    registeredFor: result.registeredFor
+                    registeredFor: result.registeredFor,
+                    paymentId:result.paymentId
                 }
             });
         })
