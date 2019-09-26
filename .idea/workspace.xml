@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="134a45b8-9ecf-4928-93bd-96a77a7ceca3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/models/webhook.js" afterDir="false" />
+    <list default="true" id="134a45b8-9ecf-4928-93bd-96a77a7ceca3" name="Default Changelist" comment="live payment on">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/EnrolledController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/EnrolledController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/paymentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/paymentController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +33,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -60,10 +62,34 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.test">
     <configuration name="Nora API" type="NodeJSConfigurationType" path-to-js-file="server.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
+    <configuration default="true" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.Nora API" />
+      <item itemvalue="npm.test" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -102,7 +128,14 @@
       <workItem from="1566384329333" duration="757000" />
       <workItem from="1566746105886" duration="5283000" />
       <workItem from="1566885897751" duration="1400000" />
-      <workItem from="1567007771606" duration="5197000" />
+      <workItem from="1567007771606" duration="6077000" />
+      <workItem from="1567090402816" duration="1801000" />
+      <workItem from="1567147195543" duration="665000" />
+      <workItem from="1567445801825" duration="2098000" />
+      <workItem from="1567705431457" duration="2922000" />
+      <workItem from="1567792231723" duration="2009000" />
+      <workItem from="1569429162499" duration="7655000" />
+      <workItem from="1569518280308" duration="5126000" />
     </task>
     <task id="LOCAL-00001" summary="node comes to play!!">
       <created>1560883729262</created>
@@ -195,7 +228,35 @@
       <option name="project" value="LOCAL" />
       <updated>1567011288826</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="adding payload to mongo - success">
+      <created>1567013358789</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1567013358789</updated>
+    </task>
+    <task id="LOCAL-00015" summary="added logo">
+      <created>1567097957319</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1567097957319</updated>
+    </task>
+    <task id="LOCAL-00016" summary="live payment on">
+      <created>1567712470783</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1567712470783</updated>
+    </task>
+    <task id="LOCAL-00017" summary="little issues">
+      <created>1569436873708</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1569436873708</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -224,6 +285,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="node comes to play!!" />
     <MESSAGE value="NODE setup" />
     <MESSAGE value="mail config" />
@@ -238,6 +300,10 @@
     <MESSAGE value="webhook testing" />
     <MESSAGE value="webhook sending mail" />
     <MESSAGE value="webhook sending mail - 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="webhook sending mail - 2" />
+    <MESSAGE value="adding payload to mongo - success" />
+    <MESSAGE value="added logo" />
+    <MESSAGE value="live payment on" />
+    <MESSAGE value="little issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="little issues" />
   </component>
 </project>

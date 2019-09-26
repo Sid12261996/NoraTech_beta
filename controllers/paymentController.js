@@ -31,10 +31,11 @@ exports.createOrder = (req, res) => {
     let amount = req.body.amount;
     let receipt = req.body.receipt;
     let notes = req.body.notes;
-    razorPay.create(amount, receipt, notes).then(doc => {
+    razorPay.create(parseInt(amount), receipt, notes).then(doc => {
         res.status(200).json(doc);
     }).catch(err => {
-        console.error(err)
+        console.error(err);
+        res.status(400).send(err);
     });
 };
 
