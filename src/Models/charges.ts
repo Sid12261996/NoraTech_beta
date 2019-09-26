@@ -2,11 +2,11 @@ export const charges = {
   Angular: 8000,
   dotNet: 10000,
   WebDev: 12000,
-  js: 5000,
+  js: 7000,
   NodeJs: 7000,
   db: 5000,
   CEH: 16000,
-  Testing: 1
+  Testing: 7000
 
 
 };
@@ -27,7 +27,7 @@ export const paymentMethods = {
 };
 
 export class CovenienceCharges {
-  private static GST = 0;
+  private static GST = 18;
   category1: 2; // Indian Credit Cards, Indian Debit Cards, Net Banking from 58 Banks, UPI, Wallets including Freecharge, Mobikwik etc.
   category2: 3; // Diners and Amex Cards, International Cards, EMI
 
@@ -36,16 +36,16 @@ export class CovenienceCharges {
   }
 
   static summingConvenienceCharges(amount: number, percentage: number): number {
-    amount = this.addGST(amount);
     const convenienceCharge = this.convenienceCharges(amount, percentage);
-    return amount + convenienceCharge;
+    const gstapplied = this.addGST(convenienceCharge);
+    return amount + convenienceCharge + gstapplied;
   }
 
   private static findPercentage(pymtMethod: string, othrParams?: string[]): number {
     return this.recursiveFunction(paymentMethods[pymtMethod].percentage, othrParams);
   }
 
- private static recursiveFunction(obj, params) {
+  private static recursiveFunction(obj, params) {
     const length = params === undefined ? 0 : params.length;
     if (length > 0) {
       const index = params.splice(0, 1);
@@ -57,7 +57,7 @@ export class CovenienceCharges {
   }
 
   static addGST(amount: number): number {
-    return amount * (this.GST / 100) + amount;
+    return amount * (this.GST / 100) ;
   }
 
   public static ConvToAcceptedPercentage(mode: string): number {
@@ -79,7 +79,9 @@ export class CovenienceCharges {
     }
 
 
-  }  public static getPaymentModeName(mode: string): string {
+  }
+
+  public static getPaymentModeName(mode: string): string {
     switch (mode) {
       case 'Ncard':
         return 'card';
