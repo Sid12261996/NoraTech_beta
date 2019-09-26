@@ -33,6 +33,7 @@ export class EnrollStudentComponent implements OnInit {
 
   amountSummingConenienceFees = 0;
   convenienceCharges = 0;
+  Gst = 18;
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -190,10 +191,28 @@ export class EnrollStudentComponent implements OnInit {
         Swal.fire({
 
           title: 'Gotcha!!',
-          text: 'We received your money, now lets start Learning!!',
+          html: ` <p>We received your money, now lets start Learning!!</p>
+                 <p><small> Note these info for further references:</small></p>\n\n<br\>
+                 <div><p> Payment Id: <b>${data.createdStudent.paymentId}</b></p>
+                 <p> User Id:<b>${data.createdStudent._id}</b></p></div>`
+          ,
           type: 'success',
-          timer: 4000,
-          showConfirmButton: false
+          showConfirmButton: true,
+          confirmButtonText: 'Copy'
+        }).then(result => {
+          if (result.value) {
+            const selBox = document.createElement('textarea');
+            selBox.style.position = 'fixed';
+            selBox.style.left = '0';
+            selBox.style.top = '0';
+            selBox.style.opacity = '0';
+            selBox.value = `PaymentId: ${data.createdStudent.paymentId}, User Id: ${data.createdStudent._id}`;
+            document.body.appendChild(selBox);
+            selBox.focus();
+            selBox.select();
+            document.execCommand('copy');
+            document.body.removeChild(selBox);
+          }
         });
       }, error1 => {
         console.error(error1);
@@ -204,24 +223,25 @@ export class EnrollStudentComponent implements OnInit {
           confirmButtonText: 'Try Again'
         });
       }
-
     );
   }
 
   decline() {
-    console.log(this.paymentModeCheckbox.value);
-    // this.calculateConvenienceCharges();
+    location.reload();
   }
 
   calculateConvenienceCharges(percentage: number) {
     this.amountSummingConenienceFees = CovenienceCharges.summingConvenienceCharges(this.setPrice(),
       percentage);
-    this.convenienceCharges = CovenienceCharges.convenienceCharges(this.setPrice(),
+       this.convenienceCharges = CovenienceCharges.convenienceCharges(this.setPrice(),
       percentage);
+    this.Gst = CovenienceCharges.addGST(this.convenienceCharges);
 
   }
 
   total(): number {
+    console.log(typeof CovenienceCharges.summingConvenienceCharges(this.setPrice(),
+      CovenienceCharges.ConvToAcceptedPercentage(this.paymentModeCheckbox.value)),'total');
     return CovenienceCharges.summingConvenienceCharges(this.setPrice(),
       CovenienceCharges.ConvToAcceptedPercentage(this.paymentModeCheckbox.value));
   }
