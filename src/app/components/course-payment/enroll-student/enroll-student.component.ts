@@ -40,6 +40,8 @@ export class EnrollStudentComponent implements OnInit {
   paymentMethodsFormGroup: FormGroup;
   private courseName: string;
   private paymentModeForRP: string;
+  // tslint:disable-next-line:ban-types
+  modeSelected = false;
 
   rzp1: any;
   private callBackUrl = `http:/localhost:4200/enrollstudent/${this.courseName}/`;
@@ -78,7 +80,7 @@ export class EnrollStudentComponent implements OnInit {
 
     });
     this.setPrice();
-    this.knowThePaymentMode('Ncard');
+    // this.knowThePaymentMode('Ncard');
   }
 
   setPrice(): number {
@@ -233,7 +235,7 @@ export class EnrollStudentComponent implements OnInit {
   calculateConvenienceCharges(percentage: number) {
     this.amountSummingConenienceFees = CovenienceCharges.summingConvenienceCharges(this.setPrice(),
       percentage);
-       this.convenienceCharges = CovenienceCharges.convenienceCharges(this.setPrice(),
+    this.convenienceCharges = CovenienceCharges.convenienceCharges(this.setPrice(),
       percentage);
     this.Gst = CovenienceCharges.addGST(this.convenienceCharges);
 
@@ -241,7 +243,7 @@ export class EnrollStudentComponent implements OnInit {
 
   total(): number {
     console.log(typeof CovenienceCharges.summingConvenienceCharges(this.setPrice(),
-      CovenienceCharges.ConvToAcceptedPercentage(this.paymentModeCheckbox.value)),'total');
+      CovenienceCharges.ConvToAcceptedPercentage(this.paymentModeCheckbox.value)), 'total');
     return CovenienceCharges.summingConvenienceCharges(this.setPrice(),
       CovenienceCharges.ConvToAcceptedPercentage(this.paymentModeCheckbox.value));
   }
@@ -249,6 +251,8 @@ export class EnrollStudentComponent implements OnInit {
   knowThePaymentMode(paymentMOde: string) {
 
     this.calculateConvenienceCharges(CovenienceCharges.ConvToAcceptedPercentage(paymentMOde));
+    this.modeSelected = true;
+    console.log(this.modeSelected);
   }
 
   get phoneNumber() {
