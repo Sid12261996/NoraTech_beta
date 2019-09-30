@@ -238,7 +238,7 @@
                     <li>
                       <div class="head">
                         <strong>Cards:</strong><br>
-                        <mat-radio-button color="primary" checked value="Ncard" (click)="knowThePaymentMode('Ncard')">
+                        <mat-radio-button color="primary" value="Ncard" (click)="knowThePaymentMode('Ncard')">
                           National
                         </mat-radio-button>
                         <mat-radio-button color="primary" value="Icard" (click)="knowThePaymentMode('Icard')">
@@ -278,51 +278,59 @@
             </mat-card>
           </div>
 
-                  <div class="col-md-4 m-4">
-                    <mat-card class="mat-card">
-                      <mat-card-header>
-                        <mat-card-title><h4>Payment Details:</h4></mat-card-title>
-                      </mat-card-header>
-                      <mat-card-content>
-                        <div class="table-responsive table-borderless">
-                          <table class="table">
-                            <tbody>
-                              <tr>
-                                <th>
-                                  <mat-label>Amount</mat-label>
-                                </th>
-                                <td>
-                                  <mat-label readonly>Rs. {{setPrice()}}</mat-label>
-                                </td>
-                              </tr>
-                              <tr>
-                                <th>
-                                  <mat-label>Covenience Charges</mat-label>
-                                </th>
-                                <td>
-                                  <mat-label readonly>Rs. {{convenienceCharges}}</mat-label>
-                                </td>
-                              </tr>
-                              <tr>
-                                <th>
-                                  <mat-label>Total Amount to be Paid</mat-label>
-                                </th>
-                                <td>
-                                  <mat-label readonly>Rs. {{amountSummingConenienceFees}}</mat-label>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </mat-card-content>
-                    </mat-card>
-                  </div>
-                  </div>
+          <div class="col-md-4 m-4">
+            <mat-card class="mat-card">
+              <mat-card-header>
+                <mat-card-title><h4>Payment Details:</h4></mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="table-responsive table-borderless">
+                  <table class="table">
+                    <tbody>
+                    <tr>
+                      <th>
+                        <mat-label>Amount</mat-label>
+                      </th>
+                      <td>
+                        <mat-label readonly>Rs. {{setPrice()}}</mat-label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <mat-label>GST Charges</mat-label>
+                      </th>
+                      <td>
+                        <mat-label readonly>Rs. {{Gst|number:'1.0-0'}}</mat-label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <mat-label>Covenience Charges</mat-label>
+                      </th>
+                      <td>
+                        <mat-label readonly>Rs. {{convenienceCharges}}</mat-label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <mat-label>Total Amount to be Paid</mat-label>
+                      </th>
+                      <td>
+                        <mat-label readonly>Rs. {{amountSummingConenienceFees}}</mat-label>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
                 </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
 
 
       <div class="form3btn">
-        <button mat-raised-button routerLink="." id="rzp-button1" (click)="openCheckout()">Pay</button>
+        <button mat-raised-button [disabled]="!modeSelected" id="rzp-button1" (click)="openCheckout()">Pay</button>
 
 
         <script type="text/javascript" src="https://checkout.razorpay.com/v1/razorpay.js"></script>
@@ -330,7 +338,9 @@
 
         <button mat-raised-button color="warn" matStepperPrevious (click)="decline()">Decline</button>
       </div>
-
+      <div>
+        <mat-error *ngIf="!modeSelected">Please Select mode of payment</mat-error>
+      </div>
     </mat-step>
   </mat-horizontal-stepper>
 
